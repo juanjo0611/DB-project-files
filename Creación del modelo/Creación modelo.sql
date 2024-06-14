@@ -69,11 +69,11 @@ CREATE TABLE IF NOT EXISTS `proyecto`.`Programa_educativo_externo` (
 );
 
 -- -----------------------------------------------------
--- Table `proyecto`.`Historia_academca_externa`
+-- Table `proyecto`.`Historia_academica_externa`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `proyecto`.`Historia_academca_externa` ;
+DROP TABLE IF EXISTS `proyecto`.`Historia_academica_externa` ;
 
-CREATE TABLE IF NOT EXISTS `proyecto`.`Historia_academca_externa` (
+CREATE TABLE IF NOT EXISTS `proyecto`.`Historia_academica_externa` (
   `Id_historia_externa` INT AUTO_INCREMENT,
   `Id_programa_educativo_externo` INT NOT NULL COMMENT 'Carrera de la cual se graduó el estudiante ',
   `Id_egresado` BIGINT(10) NOT NULL,
@@ -81,10 +81,10 @@ CREATE TABLE IF NOT EXISTS `proyecto`.`Historia_academca_externa` (
   `Fecha_entrada` DATE NOT NULL COMMENT 'Fecha en la cual ingreso a la carrera ',
   `Fecha_grado` DATE NULL COMMENT 'Fecxha en la cual el estudiante se graduó de la universidad y por ende salio de la misma (se admite el valor nulo ya que hay estudiantes que se hayan graduado de un pregrado pero aun no lo hacen de posgrado o se graduan de un pregrado y están cursando otro pregrado del cual no se han graduado)',
   PRIMARY KEY (`Id_historia_externa`),
-  CONSTRAINT `fk_Historia_academca_externa_Id_egresado`
+  CONSTRAINT `fk_Historia_academica_externa_Id_egresado`
     FOREIGN KEY (`Id_egresado`)
     REFERENCES `proyecto`.`Egresado` (`Id_egresado`),
-  CONSTRAINT `fk_Historia_academca_externa_Id_programa_educativo_externo`
+  CONSTRAINT `fk_Historia_academica_externa_Id_programa_educativo_externo`
     FOREIGN KEY (`Id_programa_educativo_externo`)
     REFERENCES `proyecto`.`Programa_educativo_externo` (`Id_programa_educativo_externo`)
 );
@@ -120,11 +120,11 @@ CREATE TABLE IF NOT EXISTS `proyecto`.`Programa_educativo_UNAL` (
 );
 
 -- -----------------------------------------------------
--- Table `proyecto`.`Historia_academca_UNAL`
+-- Table `proyecto`.`Historia_academica_UNAL`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `proyecto`.`Historia_academca_UNAL` ;
+DROP TABLE IF EXISTS `proyecto`.`Historia_academica_UNAL` ;
 
-CREATE TABLE IF NOT EXISTS `proyecto`.`Historia_academca_UNAL` (
+CREATE TABLE IF NOT EXISTS `proyecto`.`Historia_academica_UNAL` (
   `Id_historia_UNAL` INT AUTO_INCREMENT,
   `Id_programa_educativo_UNAL` INT NOT NULL COMMENT 'Carrera de la cual se graduó el estudiante ',
   `Id_egresado` BIGINT(10) NOT NULL,
@@ -132,10 +132,10 @@ CREATE TABLE IF NOT EXISTS `proyecto`.`Historia_academca_UNAL` (
   `Fecha_entrada` DATE NOT NULL COMMENT 'Fecha en la cual ingreso a la carrera ',
   `Fecha_grado` DATE NULL COMMENT 'Fecxha en la cual el estudiante se graduó de la universidad y por ende salio de la misma (se admite el valor nulo ya que hay estudiantes que se hayan graduado de un pregrado pero aun no lo hacen de posgrado o se graduan de un pregrado y están cursando otro pregrado del cual no se han graduado)',
   PRIMARY KEY (`Id_historia_UNAL`),
-  CONSTRAINT `fk_Historia_academca_UNAL_Id_egresado`
+  CONSTRAINT `fk_Historia_academica_UNAL_Id_egresado`
     FOREIGN KEY (`Id_egresado`)
     REFERENCES `proyecto`.`Egresado` (`Id_egresado`),
-  CONSTRAINT `fk_Historia_academca_UNAL_Id_programa_educativo_UNAL`
+  CONSTRAINT `fk_Historia_academica_UNAL_Id_programa_educativo_UNAL`
     FOREIGN KEY (`Id_programa_educativo_UNAL`)
     REFERENCES `proyecto`.`Programa_educativo_UNAL` (`Id_programa_educativo_UNAL`)
 );

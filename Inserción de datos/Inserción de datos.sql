@@ -4,10 +4,10 @@ DELETE FROM `proyecto`.`Idioma`;
 DELETE FROM `proyecto`.`Convocatoria`;
 DELETE FROM `proyecto`.`Trabajo`;
 DELETE FROM `proyecto`.`Empresa`;
-DELETE FROM `proyecto`.`Historia_academca_UNAL`;
+DELETE FROM `proyecto`.`Historia_academica_UNAL`;
 DELETE FROM `proyecto`.`Programa_Educativo_UNAL`;
 DELETE FROM `proyecto`.`Facultad_UNAL`;
-DELETE FROM `proyecto`.`Historia_academca_Externa`;
+DELETE FROM `proyecto`.`Historia_academica_Externa`;
 DELETE FROM `proyecto`.`Programa_Educativo_Externo`;
 DELETE FROM `proyecto`.`Facultad_Externa`;
 DELETE FROM `proyecto`.`Institucion_Educativa`;
@@ -155,9 +155,9 @@ INSERT INTO Programa_Educativo_Externo VALUES
 
 
 -- -----------------------------------------------------
--- Inserciones en la tabla Historia_academca_Externa:
+-- Inserciones en la tabla Historia_academica_Externa:
 -- -----------------------------------------------------
-INSERT INTO Historia_academca_Externa VALUES 
+INSERT INTO Historia_academica_Externa VALUES 
 (3001, 2001, 00001, 4.5, '2018-07-15', '2022-06-30'),
 (3002, 2002, 00002, 4.2, '2017-08-20', '2021-12-15'),
 (3003, 2003, 00003, 4.7, '2016-09-10', '2020-11-25'),
@@ -234,9 +234,9 @@ INSERT INTO Programa_Educativo_UNAL VALUES
 
 
 -- -----------------------------------------------------
--- Inserciones en la tabla Historia_academca_UNAL:
+-- Inserciones en la tabla Historia_academica_UNAL:
 -- -----------------------------------------------------
-INSERT INTO Historia_academca_UNAL VALUES 
+INSERT INTO Historia_academica_UNAL VALUES 
 (30002, 20002, 00032, 4.2, '2016-09-20', '2020-12-15'),
 (30003, 20003, 00033, 4.7, '2015-10-10', '2019-11-25'),
 (30004, 20004, 00034, 4.4, '2014-11-05', '2018-10-20'),
@@ -360,3 +360,4 @@ INSERT INTO Postulado_Convocatoria VALUES
 (00013, 70007, '2024-07-16'),
 (00034, 70007, '2024-07-17'),
 (00015, 70008, '2024-07-21');
+
