@@ -1,0 +1,362 @@
+DELETE FROM `proyecto`.`Postulado_Convocatoria`;
+DELETE FROM `proyecto`.`Requerimiento_idioma`;
+DELETE FROM `proyecto`.`Idioma`;
+DELETE FROM `proyecto`.`Convocatoria`;
+DELETE FROM `proyecto`.`Trabajo`;
+DELETE FROM `proyecto`.`Empresa`;
+DELETE FROM `proyecto`.`Historia_academca_UNAL`;
+DELETE FROM `proyecto`.`Programa_Educativo_UNAL`;
+DELETE FROM `proyecto`.`Facultad_UNAL`;
+DELETE FROM `proyecto`.`Historia_academca_Externa`;
+DELETE FROM `proyecto`.`Programa_Educativo_Externo`;
+DELETE FROM `proyecto`.`Facultad_Externa`;
+DELETE FROM `proyecto`.`Institucion_Educativa`;
+DELETE FROM `proyecto`.`Egresado`;
+
+-- -----------------------------------------------------
+-- INSERCIÓN TABLA EGRESADOS:
+-- -----------------------------------------------------
+INSERT INTO Egresado
+(Id_egresado, Tipo_documento, Nom_egresado, Ape_egresado, Fecha_nacimiento, Genero, Grupo_etico, Correo_egresado, Celular_egresado, Direccion_contacto, Pais_egresado)
+VALUES
+(00001, 'CC', 'Juan Carlos', 'Moreno Moreno', '2000-02-20', 'Masculino', 'No aplica', 'juancamoreno@unal.edu.co', 3205468782, 'Bogota', 'Colombia'),
+(00002, 'CC', 'Maria Luisa', 'Lopez Correa', '2002-07-25', 'Femenino', 'Wayuu', 'Marlu@unal.edu.co', 3127894436, 'Medellin', 'Colombia' ),
+(00003, 'CC', 'Ivan', 'Lopez Hernandez', '1997-01-25', 'Masculino', 'Afro', 'Ivan222@unal.edu.co', 3116789436, 'Cali', 'Colombia' ),
+(00004, 'CC', 'Carlos Hernan', 'Marin Correa', '2001-11-25', 'Masculino', 'No aplica', 'carlito333@unal.edu.co', 3108974536, 'Bogota', 'Colombia' ),
+(00005, 'CC', 'Andrea Gissel', 'Galindo Galindo', '1995-12-02', 'Femenino', 'Afro', 'AndreaGa@unal.edu.co', 3008975410, 'Barranquilla', 'Colombia' ),
+(00006, 'CC', 'Luisa Fernanda', 'Gonzalez Perez', '1998-03-15', 'Femenino', 'No aplica', 'luisafernanda@unal.edu.co', 3012345678, 'Cali', 'Colombia'),
+(00007, 'CC', 'Pedro Pablo', 'Gomez Ramirez', '1990-05-10', 'Masculino', 'No aplica', 'pedropablo@unal.edu.co', 3156781234, 'Medellin', 'Colombia'),
+(00008, 'CC', 'Ana Maria', 'Diaz Rojas', '1993-09-12', 'Femenino', 'Afro', 'anamaria@unal.edu.co', 3209876543, 'Barranquilla', 'Colombia'),
+(00009, 'CC', 'Javier', 'Gutierrez Lopez', '1996-11-28', 'Masculino', 'Wayuu', 'javier@unal.edu.co', 3112345678, 'Cartagena', 'Colombia'),
+(00010, 'CC', 'Laura Sofia', 'Martinez Vargas', '1989-04-20', 'Femenino', 'No aplica', 'laurasofia@unal.edu.co', 3045678901, 'Bogota', 'Colombia'),
+(00011, 'CC', 'Diego Alejandro', 'Rojas Cardenas', '1992-07-18', 'Masculino', 'Zenu', 'diegoalejandro@unal.edu.co', 3134567890, 'Barranquilla', 'Colombia'),
+(00012, 'CC', 'Carolina', 'Sanchez Guerrero', '1985-02-05', 'Femenino', 'Wayuu', 'carolina@unal.edu.co', 3012345678, 'Cali', 'Colombia'),
+(00013, 'CC', 'Santiago', 'Mendez Diaz', '1987-10-03', 'Masculino', 'Afro', 'santiago@unal.edu.co', 3187654321, 'Medellin', 'Colombia'),
+(00014, 'CC', 'Valentina', 'Perez Alvarez', '1978-08-21', 'Femenino', 'No aplica', 'valentina@unal.edu.co', 3101234567, 'Bogota', 'Colombia'),
+(00015, 'CC', 'Andres Felipe', 'Garcia Ospina', '1984-06-17', 'Masculino', 'No aplica', 'andresfelipe@unal.edu.co', 3009876543, 'Barranquilla', 'Colombia'),
+(00016, 'CC', 'Camila', 'Castro Marin', '1982-12-30', 'Femenino', 'Zenu', 'camila@unal.edu.co', 3176543210, 'Cartagena', 'Colombia'),
+(00017, 'CC', 'Gabriel', 'Lopez Arias', '1980-04-14', 'Masculino', 'No aplica', 'gabriel@unal.edu.co', 3134567890, 'Medellin', 'Colombia'),
+(00018, 'CC', 'Mariana', 'Rios Lopez', '1979-01-09', 'Femenino', 'Wayuu', 'mariana@unal.edu.co', 3056789012, 'Cali', 'Colombia'),
+(00019, 'CC', 'Daniel', 'Gutierrez Ramirez', '1976-05-23', 'Masculino', 'Afro', 'daniel@unal.edu.co', 3123456789, 'Bogota', 'Colombia'),
+(00020, 'CC', 'Alejandra', 'Moreno Gonzalez', '1975-08-07', 'Femenino', 'No aplica', 'alejandra@unal.edu.co', 3201234567, 'Barranquilla', 'Colombia'),
+(00021, 'CC', 'Mateo', 'Vargas Rojas', '1973-11-19', 'Masculino', 'Zenu', 'mateo@unal.edu.co', 3145678901, 'Cartagena', 'Colombia'),
+(00022, 'CC', 'Sofia', 'Diaz Martinez', '1971-07-25', 'Femenino', 'No aplica', 'sofia@unal.edu.co', 3012345678, 'Cali', 'Colombia'),
+(00023, 'CC', 'Juan', 'Gomez Hernandez', '1969-09-11', 'Masculino', 'Wayuu', 'juandavid@unal.edu.co', 3176543210, 'Medellin', 'Colombia'),
+(00024, 'CC', 'Luisa', 'Hernandez Perez', '1967-03-06', 'Femenino', 'Afro', 'luisa@unal.edu.co', 3109876543, 'Bogota', 'Colombia'),
+(00025, 'CC', 'Andres', 'Rojas Gutierrez', '1965-12-29', 'Masculino', 'No aplica', 'andres@unal.edu.co', 3001234567, 'Barranquilla', 'Colombia'),
+(00026, 'CC', 'Maria', 'Sanchez Rojas', '1964-08-18', 'Femenino', 'No aplica', 'maria@unal.edu.co', 3209876543, 'Cartagena', 'Colombia'),
+(00027, 'CC', 'Jose', 'Lopez Martinez', '1963-05-02', 'Masculino', 'Zenu', 'jose@unal.edu.co', 3145678901, 'Cali', 'Colombia'),
+(00028, 'CC', 'Laura', 'Gonzalez Ramirez', '1962-09-27', 'Femenino', 'No aplica', 'laura@unal.edu.co', 3012345678, 'Medellin', 'Colombia'),
+(00029, 'CC', 'Carlos', 'Diaz Gutierrez', '1961-11-09', 'Masculino', 'Wayuu', 'carlos@unal.edu.co', 3176543210, 'Bogota', 'Colombia'),
+(00030, 'CC', 'Fernanda', 'Martinez Hernandez', '1960-07-13', 'Femenino', 'Afro', 'fernanda@unal.edu.co', 3109876543, 'Barranquilla', 'Colombia'),
+(00032, 'CC', 'Ana Maria', 'Ramirez Garcia', '1994-04-05', 'Femenino', 'No aplica', 'anamaria@unal.edu.co', 3012345678, 'Cali', 'Colombia'),
+(00033, 'CC', 'Luis Felipe', 'Gonzalez Torres', '1991-02-10', 'Masculino', 'Afro', 'luisfelipe@unal.edu.co', 3156781234, 'Medellin', 'Colombia'),
+(00034, 'CC', 'Juliana Andrea', 'Lopez Gutierrez', '1988-09-12', 'Femenino', 'Wayuu', 'juliana@unal.edu.co', 3209876543, 'Barranquilla', 'Colombia'),
+(00035, 'CC', 'Carlos Andres', 'Perez Martinez', '1987-11-28', 'Masculino', 'No aplica', 'carlosandres@unal.edu.co', 3112345678, 'Cartagena', 'Colombia'),
+(00036, 'CC', 'Laura Sofia', 'Gutierrez Vargas', '1986-04-20', 'Femenino', 'Zenu', 'laurasofia@unal.edu.co', 3045678901, 'Bogota', 'Colombia'),
+(00037, 'CC', 'Diego Alejandro', 'Rojas Hernandez', '1983-07-18', 'Masculino', 'No aplica', 'diegoalejandro@unal.edu.co', 3134567890, 'Barranquilla', 'Colombia'),
+(00038, 'CC', 'Maria Jose', 'Sanchez Cardenas', '1980-02-05', 'Femenino', 'Wayuu', 'mariajose@unal.edu.co', 3012345678, 'Cali', 'Colombia'),
+(00039, 'CC', 'Santiago Andres', 'Mendez Diaz', '1978-10-03', 'Masculino', 'Afro', 'santiagoandres@unal.edu.co', 3187654321, 'Medellin', 'Colombia'),
+(00040, 'CC', 'Valentina', 'Perez Alvarez', '1977-08-21', 'Femenino', 'No aplica', 'valentina@unal.edu.co', 3101234567, 'Bogota', 'Colombia'),
+(00041, 'CC', 'Andres Felipe', 'Garcia Ospina', '1976-06-17', 'Masculino', 'No aplica', 'andresfelipe@unal.edu.co', 3009876543, 'Barranquilla', 'Colombia'),
+(00042, 'CC', 'Camila Sofia', 'Castro Marin', '1974-12-30', 'Femenino', 'Zenu', 'camilasofia@unal.edu.co', 3176543210, 'Cartagena', 'Colombia'),
+(00043, 'CC', 'Gabriel Antonio', 'Lopez Arias', '1973-04-14', 'Masculino', 'No aplica', 'gabrielantonio@unal.edu.co', 3134567890, 'Medellin', 'Colombia'),
+(00044, 'CC', 'Mariana', 'Rios Lopez', '1972-01-09', 'Femenino', 'Wayuu', 'mariana@unal.edu.co', 3056789012, 'Cali', 'Colombia'),
+(00045, 'CC', 'Daniel Alejandro', 'Gutierrez Ramirez', '1969-05-23', 'Masculino', 'Afro', 'daniel@unal.edu.co', 3123456789, 'Bogota', 'Colombia'),
+(00046, 'CC', 'Alejandra Maria', 'Moreno Gonzalez', '1968-08-07', 'Femenino', 'No aplica', 'alejandra@unal.edu.co', 3201234567, 'Barranquilla', 'Colombia'),
+(00047, 'CC', 'Mateo', 'Vargas Rojas', '1967-11-19', 'Masculino', 'Zenu', 'mateo@unal.edu.co', 3145678901, 'Cartagena', 'Colombia'),
+(00048, 'CC', 'Sofia', 'Diaz Martinez', '1966-07-25', 'Femenino', 'No aplica', 'sofia@unal.edu.co', 3012345678, 'Cali', 'Colombia'),
+(00049, 'CC', 'Juan David', 'Gomez Hernandez', '1965-09-11', 'Masculino', 'Wayuu', 'juandavid@unal.edu.co', 3176543210, 'Medellin', 'Colombia'),
+(00050, 'CC', 'Luisa Fernanda', 'Hernandez Perez', '1964-03-06', 'Femenino', 'Afro', 'luisafernanda@unal.edu.co', 3109876543, 'Bogota', 'Colombia'),
+(00051, 'CC', 'Andres Felipe', 'Rojas Gutierrez', '1963-12-29', 'Masculino', 'No aplica', 'andres@unal.edu.co', 3001234567, 'Barranquilla', 'Colombia');
+
+-- -----------------------------------------------------
+-- INSERCIÓN TABLA INSTITUCION EDUCATIVA:
+-- -----------------------------------------------------
+INSERT INTO Institucion_Educativa VALUES 
+(101, 'Universidad Nacional'),
+(102, 'Universidad de los Andes'),
+(103, 'Universidad Javeriana'),
+(104, 'Universidad de la sabana'),
+(105, 'Universidad Militar'),
+(106, 'Escuela de Ingenieros'),
+(107, 'Universidad de massachusetts');
+
+
+-- -----------------------------------------------------
+-- INSERCIÓN TABLA FACULTAD EXTERNA:
+-- -----------------------------------------------------
+INSERT INTO Facultad_Externa VALUES 
+(1001, 'Quimica', 'Manuel Ortiz', 103),
+(1002, 'Ingenieria', 'Andres Forero', 106), 
+(1003, 'Arquitectura', 'Laura Martinez', 103),
+(1004, 'Ciencias Sociales', 'Carlos Rodriguez', 102),
+(1005, 'Medicina', 'Luisa Perez', 103),
+(1006, 'Derecho', 'Alejandro Gomez', 104),
+(1007, 'Economia', 'Maria Torres', 105),
+(1008, 'Odontologia', 'Juan Ramirez', 105),
+(1009, 'Psicologia', 'Ana Garcia', 102),
+(1010, 'Ciencias Politicas', 'Pedro Diaz', 103),
+(1011, 'Educacion', 'Sofia Lopez', 104),
+(1012, 'Administracion', 'Daniel Hernandez', 105),
+(1013, 'Veterinaria', 'Catalina Sanchez', 105),
+(1014, 'Biologia', 'Mateo Perez', 102),
+(1015, 'Comunicacion', 'Valentina Gutierrez', 103),
+(1016, 'Fisioterapia', 'Diego Torres', 104),
+(1017, 'Quimica', 'Laura Rojas', 102),
+(1018, 'Ingenieria', 'Andres Cuellar', 106),
+(1019, 'Arquitectura', 'Camila Rodriguez', 106),
+(1020, 'Ciencias Sociales', 'Carlos Perez', 102),
+(1021, 'Medicina', 'Luis Ramirez', 103),
+(1022, 'Derecho', 'Alejandra Martinez', 104),
+(1023, 'Economia', 'Mario Garcia', 105),
+(1024, 'Odontologia', 'Juanita Lopez', 107),
+(1025, 'Psicologia', 'Andrea Diaz', 102),
+(1026, 'Ciencias Politicas', 'Pedro Rodriguez', 103),
+(1027, 'Educacion', 'Sara Ramirez', 104),
+(1028, 'Administracion', 'David Gutierrez', 105),
+(1029, 'Veterinaria', 'Catalina Perez', 106),
+(1030, 'Biologia', 'Mateo Gomez', 102);
+
+
+-- -----------------------------------------------------
+-- Inserciones de programas educativos externos:
+-- -----------------------------------------------------
+INSERT INTO Programa_Educativo_Externo VALUES 
+(2001, 'Licenciatura en Química', 1001, 'Licenciatura', 'Presencial'),
+(2002, 'Ingeniería Civil', 1002, 'Pregrado', 'Presencial'),
+(2003, 'Arquitectura Sostenible', 1003, 'Maestría', 'Presencial'),
+(2004, 'Psicología Clínica', 1004, 'Maestría', 'Presencial'),
+(2005, 'Medicina Familiar', 1005, 'Especialización', 'Presencial'),
+(2006, 'Derecho Internacional', 1006, 'Maestría', 'Presencial'),
+(2007, 'Economía Ambiental', 1007, 'Maestría', 'Presencial'),
+(2008, 'Odontología Estética', 1008, 'Especialización', 'Presencial'),
+(2009, 'Licenciatura en Educación Física', 1009, 'Licenciatura', 'Presencial'),
+(2010, 'Ciencias Políticas y Gobierno', 1010, 'Pregrado', 'Presencial'),
+(2011, 'Administración de Empresas', 1011, 'Pregrado', 'Presencial'),
+(2012, 'Veterinaria de Pequeños Animales', 1012, 'Especialización', 'Presencial'),
+(2013, 'Biología Marina', 1013, 'Pregrado', 'Presencial'),
+(2014, 'Comunicación Audiovisual', 1014, 'Pregrado', 'Presencial'),
+(2015, 'Fisioterapia Deportiva', 1015, 'Especialización', 'Presencial'),
+(2016, 'Licenciatura en Química', 1017, 'Licenciatura', 'Presencial'),
+(2017, 'Ingeniería de Sistemas', 1018, 'Pregrado', 'Presencial'),
+(2018, 'Arquitectura Sostenible', 1019, 'Maestría', 'Presencial'),
+(2019, 'Psicología Organizacional', 1020, 'Maestría', 'Presencial'),
+(2020, 'Medicina Interna', 1021, 'Especialización', 'Presencial'),
+(2021, 'Derecho Penal', 1022, 'Maestría', 'Presencial'),
+(2022, 'Economía del Desarrollo', 1023, 'Maestría', 'Presencial'),
+(2023, 'Odontología Pediátrica', 1024, 'Especialización', 'Presencial'),
+(2024, 'Licenciatura en Filosofía', 1025, 'Licenciatura', 'Presencial'),
+(2025, 'Biología Molecular', 1026, 'Maestría', 'Presencial'),
+(2026, 'Comunicación Corporativa', 1027, 'Maestría', 'Presencial'),
+(2027, 'Fisioterapia Neurológica', 1028, 'Especialización', 'Presencial'),
+(2028, 'Licenciatura en Historia', 1029, 'Licenciatura', 'Presencial'),
+(2029, 'Ingeniería Industrial', 1030, 'Pregrado', 'Presencial');
+
+
+-- -----------------------------------------------------
+-- Inserciones en la tabla Historia_academca_Externa:
+-- -----------------------------------------------------
+INSERT INTO Historia_academca_Externa VALUES 
+(3001, 2001, 00001, 4.5, '2018-07-15', '2022-06-30'),
+(3002, 2002, 00002, 4.2, '2017-08-20', '2021-12-15'),
+(3003, 2003, 00003, 4.7, '2016-09-10', '2020-11-25'),
+(3004, 2004, 00004, 4.4, '2015-07-05', '2019-10-20'),
+(3005, 2005, 00005, 4.6, '2014-08-12', '2018-09-28'),
+(3006, 2006, 00006, 4.3, '2013-09-18', '2017-07-10'),
+(3007, 2007, 00007, 4.8, '2012-07-20', '2016-12-05'),
+(3008, 2008, 00008, 4.1, '2011-08-25', '2015-11-30'),
+(3009, 2009, 00009, 4.9, '2010-09-30', '2014-08-15'),
+(3010, 2010, 00010, 4.0, '2009-07-15', '2013-06-30'),
+(3011, 2011, 00011, 4.5, '2008-08-20', '2012-12-15'),
+(3012, 2012, 00012, 4.2, '2007-09-10', '2011-11-25'),
+(3013, 2013, 00013, 4.7, '2006-07-05', '2010-10-20'),
+(3014, 2014, 00014, 4.4, '2005-08-12', '2009-09-28'),
+(3015, 2015, 00015, 4.6, '2004-09-18', '2008-07-10'),
+(3016, 2016, 00016, 4.3, '2003-07-20', '2007-12-05'),
+(3017, 2017, 00017, 4.8, '2002-08-25', '2006-11-30'),
+(3018, 2018, 00018, 4.1, '2001-09-30', '2005-08-15'),
+(3019, 2019, 00019, 4.9, '2000-07-15', '2004-06-30'),
+(3020, 2020, 00020, 4.0, '1999-08-20', '2003-12-15'),
+(3021, 2021, 00021, 4.5, '1998-09-10', '2002-11-25'),
+(3022, 2022, 00022, 4.2, '1997-07-05', '2001-10-20'),
+(3023, 2023, 00023, 4.7, '1996-08-12', '2000-09-28'),
+(3024, 2024, 00024, 4.4, '1995-09-18', '1999-07-10'),
+(3025, 2025, 00025, 4.6, '1994-07-20', '1998-12-05'),
+(3026, 2026, 00026, 4.3, '1993-08-25', '1997-11-30'),
+(3027, 2027, 00027, 4.8, '1992-09-30', '1996-08-15'),
+(3028, 2028, 00028, 4.1, '1991-07-15', '1995-06-30'),
+(3029, 2029, 00029, 4.9, '1990-08-20', '1994-12-15'),
+(3030, 2021, 00030, 4.0, '1989-09-10', '1993-11-25');
+
+
+-- -----------------------------------------------------
+-- INSERCION Facultad_UNAL:
+-- -----------------------------------------------------
+INSERT INTO Facultad_UNAL VALUES 
+(1011, 'Artes', 'Bogota', 'Manuel Ortiz'),
+(1012, 'Ciencias', 'Bogota', 'Hernan Lopez'), 
+(1013, 'Ciencias Agrarias', 'Bogota', 'Roger Martinez'),
+(1014, 'Derecho, Ciencias Politicas', 'Bogota', 'Carlos Rodriguez'),
+(1015, 'Ciencias Economicas', 'Bogota', 'Luis Perez'),
+(1016, 'Ciencias Humanas', 'Bogota', 'Alejandro Fernandez'),
+(1017, 'Enfermeria', 'Bogota', 'Mariano Torres'),
+(1018, 'Ingenieria', 'Bogota', 'Sandra Liliana'),
+(1019, 'Medicina', 'Bogota', 'Manuel Patarroyo'),
+(10110, 'Medicina, Veterinaria', 'Bogota', 'Pedro Diaz'),
+(10111, 'Odontologia','Bogota', 'Sofia Marrugo');
+
+
+-- -----------------------------------------------------
+-- Inserciones en la tabla Programa_Educativo_UNAL:
+-- -----------------------------------------------------
+INSERT INTO Programa_Educativo_UNAL VALUES 
+(20001, 'Artes Plásticas', 1011, 'Pregrado', 'Presencial'),
+(20002, 'Matemáticas', 1012, 'Pregrado', 'Presencial'),
+(20003, 'Ingeniería Agronómica', 1013, 'Pregrado', 'Presencial'),
+(20004, 'Derecho', 1014, 'Pregrado', 'Presencial'),
+(20005, 'Economía', 1015, 'Pregrado', 'Presencial'),
+(20006, 'Antropología', 1016, 'Pregrado', 'Presencial'),
+(20007, 'Enfermería', 1017, 'Pregrado', 'Presencial'),
+(20008, 'Ingeniería Industrial', 1018, 'Pregrado', 'Presencial'),
+(20009, 'Medicina', 1019, 'Pregrado', 'Presencial'),
+(20010, 'Medicina Veterinaria', 10110, 'Pregrado', 'Presencial'),
+(20011, 'Odontología', 10111, 'Pregrado', 'Presencial'),
+(20012, 'Maestría en Escultura', 1011, 'Maestría', 'Presencial'),
+(20013, 'Maestría en Matemáticas Aplicadas', 1012, 'Maestría', 'Presencial'),
+(20014, 'Maestría en Desarrollo Rural', 1013, 'Maestría', 'Presencial'),
+(20015, 'Maestría en Derecho Penal', 1014, 'Maestría', 'Presencial'),
+(20016, 'Maestría en Economía Ambiental', 1015, 'Maestría', 'Presencial'),
+(20017, 'Maestría en Antropología Social', 1016, 'Maestría', 'Presencial'),
+(20018, 'Maestría en Enfermería Pediátrica', 1017, 'Maestría', 'Presencial'),
+(20019, 'Maestría en Gestión de la Calidad', 1018, 'Maestría', 'Presencial'),
+(20020, 'Maestría en Cirugía Plástica', 1019, 'Maestría', 'Presencial');
+
+
+-- -----------------------------------------------------
+-- Inserciones en la tabla Historia_academca_UNAL:
+-- -----------------------------------------------------
+INSERT INTO Historia_academca_UNAL VALUES 
+(30002, 20002, 00032, 4.2, '2016-09-20', '2020-12-15'),
+(30003, 20003, 00033, 4.7, '2015-10-10', '2019-11-25'),
+(30004, 20004, 00034, 4.4, '2014-11-05', '2018-10-20'),
+(30005, 20005, 00035, 4.6, '2013-12-12', '2017-09-28'),
+(30006, 20006, 00036, 4.3, '2012-07-18', '2016-07-10'),
+(30007, 20007, 00037, 4.8, '2011-08-20', '2015-12-05'),
+(30008, 20008, 00038, 4.1, '2010-09-25', '2014-11-30'),
+(30009, 20009, 00039, 4.9, '2009-10-30', '2013-08-15'),
+(30010, 20010, 00040, 4.0, '2008-07-15', '2012-06-30'),
+(30011, 20011, 00041, 4.5, '2007-08-20', '2011-12-15'),
+(30012, 20012, 00042, 4.2, '2006-09-10', '2010-11-25'),
+(30013, 20013, 00043, 4.7, '2005-10-05', '2009-10-20'),
+(30014, 20014, 00044, 4.4, '2004-11-12', '2008-09-28'),
+(30015, 20015, 00045, 4.6, '2003-12-18', '2007-07-10'),
+(30016, 20016, 00046, 4.3, '2002-07-20', '2006-12-05'),
+(30017, 20017, 00047, 4.8, '2001-08-25', '2005-11-30'),
+(30018, 20018, 00048, 4.1, '2000-09-30', '2004-08-15'),
+(30019, 20019, 00049, 4.9, '1999-07-15', '2003-06-30'),
+(30020, 20020, 00050, 4.0, '1998-08-20', '2002-12-15');
+
+
+-- -----------------------------------------------------
+-- Inserciones en la tabla Empresa:
+-- -----------------------------------------------------
+INSERT INTO Empresa VALUES 
+(50001, 'Postobón S.A.', 'Bebidas', 'Juan Pérez', 'Colombia', 'Bogotá', 'Carrera 45 # 26-54', 'Empresa líder en la producción de bebidas.'),
+(50002, 'Coca Cola Ltda.', 'Bebidas', 'María Gómez', 'Colombia', 'Bogotá', 'Avenida 68 # 12-34', 'Empresa reconocida a nivel mundial por sus bebidas refrescantes.'),
+(50003, 'Inversiones del Futuro S.A.S.', 'Finanzas', 'Luis Martínez', 'Colombia', 'Bogotá', 'Calle 100 # 15-20', 'Empresa dedicada a la gestión de inversiones y asesoramiento financiero.'),
+(50004, 'Electrodomésticos Colombianos S.A.', 'Electrodomésticos', 'Andrea López', 'Colombia', 'Bogotá', 'Carrera 80 # 30-45', 'Empresa líder en la venta de electrodomésticos en Colombia.'),
+(50005, 'Construcciones y Estructuras Ltda.', 'Construcción', 'Carlos Rodríguez', 'Estados Unidos', 'New york', 'Calle 85 # 18-25', 'Empresa especializada en la construcción de edificaciones y estructuras.'),
+(50006, 'Servicios Informáticos S.A.', 'Tecnología', 'Laura Pérez', 'Colombia', 'Medellin', 'Avenida Boyacá # 40-50', 'Empresa dedicada a brindar soluciones informáticas a empresas y particulares.'),
+(50007, 'Transporte Veloz S.A.', 'Transporte', 'David Sánchez', 'Colombia', 'Bogotá', 'Autopista Norte # 22-15', 'Empresa de transporte terrestre de carga y logística.'),
+(50008, 'Alimentos Naturales Ltda.', 'Alimentos', 'Sofía Ramírez', 'Colombia', 'Bogotá', 'Carrera 70 # 28-30', 'Empresa dedicada a la producción y distribución de alimentos naturales y saludables.'),
+(50009, 'Consultoría Estratégica Ltda.', 'Consultoría', 'Juanita Gómez', 'Colombia', 'Cartagena', 'Calle 72 # 15-10', 'Empresa especializada en consultoría estratégica para empresas de diversos sectores.'),
+(50010, 'Inversiones Inmobiliarias Ltda.', 'Inmobiliaria', 'Pedro González', 'Colombia', 'Bogotá', 'Carrera 50 # 24-18', 'Empresa dedicada a la gestión y comercialización de bienes raíces en Bogotá.'),
+(50011, 'Productos Colombianos S.A.', 'Alimentos', 'María Rodríguez', 'Colombia', 'Cali', 'Calle 65 # 20-15', 'Empresa dedicada a la producción y distribución de productos alimenticios.'),
+(50012, 'Distribuidora de Electrónicos S.A.S.', 'Electrónica', 'Andrés López', 'Colombia', 'Bogotá', 'Avenida 68 # 15-30', 'Empresa dedicada a la distribución de productos electrónicos y tecnológicos.'),
+(50013, 'Construcciones Urbanas S.A.', 'Construcción', 'Camila Martínez', 'Colombia', 'Bogotá', 'Carrera 90 # 35-40', 'Empresa especializada en proyectos de construcción urbana.'),
+(50014, 'Tecnología Avanzada Ltda.', 'Tecnología', 'Luisa González', 'Colombia', 'Bogotá', 'Calle 80 # 12-25', 'Empresa líder en soluciones tecnológicas para empresas y hogares.'),
+(50015, 'Distribuidora de Alimentos Naturales S.A.S.', 'Alimentos', 'Diego Ramírez', 'España', 'Barcelona', 'Carrera 75 # 28-15', 'Empresa dedicada a la distribución de alimentos naturales y orgánicos.'),
+(50016, 'Servicios de Logística y Distribución S.A.', 'Logística', 'Andrea Gómez', 'Colombia', 'Medellin', 'Avenida 68 # 20-30', 'Empresa especializada en servicios de logística y distribución de productos.');
+
+
+-- -----------------------------------------------------
+-- Inserciones en la tabla Trabajo:
+-- -----------------------------------------------------
+INSERT INTO Trabajo VALUES 
+(60001, 00001, 50001, 'Gerente de Marketing', 'Ana Gómez', '2020-01-15', '2022-05-30', 'Responsable de las estrategias de marketing de la empresa.', 'Precencial'),
+(60002, 00002, 50002, 'Analista Financiero', 'Luis Pérez', '2019-08-20', '2021-11-15', 'Análisis de estados financieros y proyecciones económicas.', 'Precencial'),
+(60003, 00003, 50003, 'Ingeniero Agrónomo', 'Andrés Martínez', '2018-06-10', '2020-09-25', 'Desarrollo de proyectos agrícolas y gestión de cultivos.', 'Precencial'),
+(60004, 00004, 50004, 'Jefe de Ventas', 'Sofía Rodríguez', '2017-04-05', '2019-08-12', 'Supervisión del equipo de ventas y desarrollo de estrategias comerciales.', 'Precencial'),
+(60005, 00005, 50005, 'Arquitecto', 'Juan Gómez', '2016-02-12', '2018-05-18', 'Diseño arquitectónico y supervisión de proyectos de construcción.', 'Precencial'),
+(60006, 00006, 50006, 'Desarrollador de Software', 'Laura Pérez', '2015-01-18', '2017-03-20', 'Desarrollo de aplicaciones y sistemas informáticos.', 'Remoto'),
+(60007, 00007, 50007, 'Coordinador de Logística', 'Diego Sánchez', '2014-09-20', '2016-12-25', 'Coordinación de operaciones logísticas y gestión de inventarios.', 'Precencial'),
+(60008, 00008, 50008, 'Analista de Calidad', 'María Ramírez', '2013-07-25', '2015-09-30', 'Análisis de calidad de productos y procesos de producción.', 'Precencial'),
+(60009, 00009, 50009, 'Consultor Estratégico', 'Carlos González', '2012-05-30', '2014-08-15', 'Asesoramiento en estrategias empresariales y desarrollo de planes de acción.', 'Precencial'),
+(60010, 00010, 50010, 'Asesor Inmobiliario', 'Pedro Martínez', '2011-03-15', '2013-06-30', 'Asesoramiento en compra, venta y alquiler de bienes raíces.', 'Precencial'),
+(60011, 00011, 50011, 'Diseñador Gráfico', 'Luisa Rodríguez', '2020-01-15', '2022-05-30', 'Diseño de materiales publicitarios y gráficos.', 'Remoto'),
+(60012, 00012, 50012, 'Ingeniero Electrónico', 'Andrés López', '2019-08-20', '2021-11-15', 'Desarrollo de proyectos electrónicos y mantenimiento de equipos.', 'Precencial'),
+(60013, 00013, 50013, 'Ingeniero Civil', 'Camila Martínez', '2018-06-10', '2020-09-25', 'Diseño y construcción de infraestructuras civiles.', 'Precencial'),
+(60014, 00014, 50014, 'Analista de Sistemas', 'Luis González', '2017-04-05', '2019-08-12', 'Análisis y desarrollo de sistemas informáticos.', 'Remoto');
+
+
+-- -----------------------------------------------------
+-- Inserciones en la tabla Convocatoria:
+-- -----------------------------------------------------
+INSERT INTO Convocatoria VALUES 
+(70001, '2024-06-15', '2024-07-15', 5, 'Analista de Marketing Digital', 'Marketing', 'Se busca un profesional para desarrollar estrategias de marketing digital.', 'Marketing', 'Contrato indefinido', 2000000, 4000000, 'Bogotá', 'Cundinamarca', 'Colombia', 1, 0, 'Pregrado', 'Manejo de redes sociales, Google Analytics', 50001), -- Inglés
+(70002, '2024-06-20', '2024-07-20', 3, 'Desarrollador Web', 'Tecnología', 'Se requiere un desarrollador web para proyectos innovadores.', 'Tecnología', 'Contrato a término fijo', 2500000, 4500000, 'Medellín', 'Antioquia', 'Colombia', 2, 0, 'Pregrado', 'Desarrollo de aplicaciones web, HTML, CSS, JavaScript', 50002), -- Inglés
+(70003, '2024-06-25', '2024-07-25', 2, 'Ingeniero Civil', 'Ingeniería', 'Se solicita un ingeniero civil para proyecto de construcción.', 'Construcción', 'Contrato a término indefinido', 3000000, 5000000, 'Cali', 'Valle del Cauca', 'Colombia', 3, 6, 'Pregrado', 'Diseño y construcción de infraestructuras civiles', 50003), -- Mandarin
+(70004, '2024-07-01', '2024-07-30', 4, 'Analista Financiero', 'Finanzas', 'Se busca un analista financiero con experiencia en análisis de riesgos.', 'Finanzas', 'Contrato indefinido', 2800000, 4800000, 'Barranquilla', 'Atlántico', 'Colombia', 2, 3, 'Pregrado', 'Análisis financiero, evaluación de riesgos', 50004), -- Español
+(70005, '2024-07-05', '2024-08-05', 3, 'Asesor Jurídico', 'Legal', 'Se necesita un asesor jurídico para temas corporativos.', 'Legal', 'Contrato a término indefinido', 3200000, 5200000, 'Cartagena', 'Bolívar', 'Colombia', 3, 2, 'Pregrado', 'Asesoramiento legal, elaboración de contratos', 50005), -- Español
+(70006, '2024-07-10', '2024-08-10', 5, 'Analista de Datos', 'Tecnología', 'Se busca analista de datos para análisis estadístico y modelado predictivo.', 'Tecnología', 'Contrato indefinido', 3000000, 5000000, 'Bogotá', 'Cundinamarca', 'Colombia', 3, 0, 'Pregrado', 'Análisis de datos, modelado predictivo', 50006), -- Inglés
+(70007, '2024-07-15', '2024-08-15', 2, 'Ingeniero Agrónomo', 'Agricultura', 'Se requiere ingeniero agrónomo para proyectos de agricultura sostenible.', 'Agricultura', 'Contrato a término indefinido', 3200000, 5200000, 'Medellín', 'Antioquia', 'Colombia', 2, 4, 'Pregrado', 'Gestión de cultivos, agricultura sostenible', 50007), -- N/A
+(70008, '2024-07-20', '2024-08-20', 3, 'Diseñador Gráfico', 'Diseño', 'Se necesita diseñador gráfico para desarrollo de material visual.', 'Diseño', 'Contrato a término fijo', 2500000, 4500000, 'Cali', 'Valle del Cauca', 'Colombia', 1, 1, 'Pregrado', 'Diseño gráfico, manejo de herramientas de diseño', 50008); -- N/A
+
+
+-- -----------------------------------------------------
+-- Inserciones en la tabla Idioma:
+-- -----------------------------------------------------
+INSERT INTO Idioma VALUES
+(00001, 'Inglés'),
+(00002, 'Español'),
+(00003, 'Mandarín'),
+(00004, 'Francés'),
+(00005, 'Alemán'),
+(00006, 'Ruso'),
+(00007, 'Italiano'),
+(00008, 'Japonés'),
+(00009, 'Coreano');
+
+
+-- -----------------------------------------------------
+-- Inserciones en la tabla Requerimiento_idioma:
+-- -----------------------------------------------------
+INSERT INTO Requerimiento_idioma VALUES
+(00001, 70001),
+(00001, 70002),
+(00003, 70003),
+(00002, 70004),
+(00002, 70005),
+(00001, 70006);
+
+
+-- -----------------------------------------------------
+-- Inserciones en la tabla Postulado_Convocatoria:
+-- -----------------------------------------------------
+INSERT INTO Postulado_Convocatoria VALUES 
+(00001, 70001, '2024-06-16'),
+(00042, 70001, '2024-06-17'),
+(00003, 70002, '2024-06-21'),
+(00044, 70002, '2024-06-22'),
+(00005, 70003, '2024-06-26'),
+(00006, 70003, '2024-06-27'),
+(00007, 70004, '2024-07-02'),
+(00008, 70004, '2024-07-03'),
+(00019, 70005, '2024-07-06'),
+(00020, 70005, '2024-07-07'),
+(00021, 70006, '2024-07-11'),
+(00012, 70006, '2024-07-12'),
+(00013, 70007, '2024-07-16'),
+(00034, 70007, '2024-07-17'),
+(00015, 70008, '2024-07-21');
