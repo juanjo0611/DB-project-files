@@ -1,3 +1,20 @@
+DELETE FROM `proyecto`.`Egresado_coordinador_dialogo`;
+DELETE FROM `proyecto`.`Egresado_ponente`;
+DELETE FROM `proyecto`.`Egresado_moderador`;
+DELETE FROM `proyecto`.`Moderador_externo`;
+DELETE FROM `proyecto`.`Egresado_panelista`;
+DELETE FROM `proyecto`.`Panelista_externo`;
+DELETE FROM `proyecto`.`Egresado_conferencista`;
+DELETE FROM `proyecto`.`Conferencista_externo`;
+DELETE FROM `proyecto`.`Participante_externo_dialogo_egresados`;
+DELETE FROM `proyecto`.`Dialogo_egresados_foro`;
+DELETE FROM `proyecto`.`Dialogo_egresados_conversatorio`;
+DELETE FROM `proyecto`.`Dialogo_egresados_conferencia`;
+DELETE FROM `proyecto`.`Egresado_coordinador_catedra`;
+DELETE FROM `proyecto`.`Catedra_con_egresados`;
+DELETE FROM `proyecto`.`Participacion_Investigacion`;
+DELETE FROM `proyecto`.`Documento_Investigacion`;
+DELETE FROM `proyecto`.`Seleccion_convocatoria`;
 DELETE FROM `proyecto`.`Postulado_Convocatoria`;
 DELETE FROM `proyecto`.`Requerimiento_idioma`;
 DELETE FROM `proyecto`.`Idioma`;
@@ -17,7 +34,7 @@ DELETE FROM `proyecto`.`Egresado`;
 -- INSERCIÓN TABLA EGRESADOS:
 -- -----------------------------------------------------
 INSERT INTO Egresado
-(Id_egresado, Tipo_documento, Nom_egresado, Ape_egresado, Fecha_nacimiento, Genero, Grupo_etico, Correo_egresado, Celular_egresado, Direccion_contacto, Pais_egresado)
+(Id_egresado, Tipo_documento, Nom_egresado, Ape_egresado, Fecha_nacimiento, Genero, Grupo_etnico, Correo_egresado, Celular_egresado, Direccion_contacto, Pais_egresado)
 VALUES
 (00001, 'CC', 'Juan Carlos', 'Moreno Moreno', '2000-02-20', 'Masculino', 'No aplica', 'juancamoreno@unal.edu.co', 3205468782, 'Bogota', 'Colombia'),
 (00002, 'CC', 'Maria Luisa', 'Lopez Correa', '2002-07-25', 'Femenino', 'Wayuu', 'Marlu@unal.edu.co', 3127894436, 'Medellin', 'Colombia' ),
@@ -361,3 +378,253 @@ INSERT INTO Postulado_Convocatoria VALUES
 (00034, 70007, '2024-07-17'),
 (00015, 70008, '2024-07-21');
 
+
+-- -----------------------------------------------------
+-- Inserciones en la tabla Selección_convocatoria:
+-- -----------------------------------------------------
+INSERT INTO Seleccion_convocatoria VALUES 
+(00001, 70001),
+(00021, 70006),
+(00006, 70003),
+(00008, 70004),
+(00020, 70005),
+(00015, 70008);
+
+
+-- -----------------------------------------------------
+-- Inserciones en la tabla Documento_Investigacion:
+-- -----------------------------------------------------
+INSERT INTO Documento_Investigacion VALUES
+(10029, 'Impacto de la COVID-19 en la Economía Global', 'Este documento analiza el impacto económico de la pandemia de COVID-19 a nivel global.', '2024-03-10'),
+(10032, 'Artificial Intelligence in Healthcare', 'This document discusses the applications of artificial intelligence in the healthcare industry.', '2024-02-05'),
+(10033, 'Desarrollo de Tecnologías Sostenibles', 'Este documento presenta el desarrollo de tecnologías sostenibles para mitigar el cambio climático.', '2023-11-30'),
+(10034, 'The Future of Blockchain Technology', 'This document explores the potential future applications of blockchain technology across various industries.', '2024-04-18'),
+(10035, 'Efectos del Cambio Climático en la Agricultura', 'Este documento analiza los efectos del cambio climático en la agricultura y propone estrategias de adaptación.', '2024-05-22'),
+(10036, 'Advances in Quantum Computing', 'This document reviews recent advances in the field of quantum computing and their potential impact on various sectors.', '2024-03-05'),
+(10037, 'Innovations in Biotechnology', 'This document highlights recent innovations in biotechnology and their applications in medicine, agriculture, and industry.', '2023-10-12'),
+(10038, 'Tendencias en la Industria Automotriz', 'Este documento presenta las tendencias actuales en la industria automotriz y las innovaciones tecnológicas en vehículos.', '2024-02-28'),
+(10039, 'Sustainable Urban Development Strategies', 'This document discusses sustainable urban development strategies to address challenges such as population growth and climate change.', '2023-09-08'),
+(10040, 'Avances en Medicina Regenerativa', 'Este documento revisa los avances en medicina regenerativa y su potencial para tratar enfermedades crónicas y lesiones.', '2024-01-30'),
+(10041, 'The Role of Artificial Intelligence in Education', 'This document explores the role of artificial intelligence in transforming education and enhancing learning experiences.', '2024-04-10'),
+(10042, 'Desarrollo de Energías Renovables en América Latina', 'Este documento analiza el desarrollo de energías renovables en América Latina y los desafíos para su implementación.', '2023-12-15'),
+(10043, 'Advancements in Nanotechnology', 'This document reviews recent advancements in nanotechnology and their applications in electronics, medicine, and materials science.', '2024-05-05');
+
+
+-- -----------------------------------------------------
+-- Inserciones en la tabla Participacion_Investigacion:
+-- -----------------------------------------------------
+INSERT INTO Participacion_Investigacion VALUES 
+(00001, 10029),
+(00022, 10032),
+(00003, 10033),
+(00034, 10033),
+(00005, 10035),
+(00006, 10036),
+(00047, 10037),
+(00008, 10038),
+(00029, 10039),
+(00040, 10040),
+(00011, 10041),
+(00012, 10042),
+(00050, 10043);
+
+
+-- -----------------------------------------------------
+-- Inserciones en la tabla Catedra_con_egresados:
+-- -----------------------------------------------------
+INSERT INTO Catedra_con_egresados VALUES 
+(30001, 'Cátedra de Innovación Tecnológica', 'Naría Rodríguez', 'Incríbete y aprende sobre la increíble innovación tecnológica que envuelve nuestro mundo actual', 'Presencial', '2024-06-10', '2024-07-15', '14:00:00', '16:00:00', 1013),
+(30002, 'Cátedra de Emprendimiento', 'Juan Pérez', 'Aprende a emprender con éxito en el mundo de los negocios', 'Virtual', '2024-06-20', '2024-07-25', '10:00:00', '12:00:00', 1016),
+(30003, 'Cátedra de Sostenibilidad Ambiental', 'Laura Martínez', 'Descubre cómo puedes contribuir a la sostenibilidad ambiental', 'Presencial', '2024-07-30', '2024-09-05', '09:00:00', '11:00:00', 1013),
+(30004, 'Cátedra de Liderazgo Empresarial', 'Pedro Gómez', 'Desarrolla tus habilidades de liderazgo en el ámbito empresarial', 'Virtual', '2024-08-10', '2024-09-15', '15:00:00', '17:00:00', 1015),
+(30005, 'Cátedra de Marketing Digital', 'Sofía Sánchez', 'Aprende las estrategias más efectivas de marketing digital', 'Presencial', '2024-09-20', '2024-10-25', '16:00:00', '18:00:00', 1018),
+(30006, 'Cátedra de Inteligencia Artificial', 'Carlos Fernández', 'Descubre el fascinante mundo de la inteligencia artificial', 'Virtual', '2024-11-01', '2024-12-06', '14:00:00', '16:00:00', 1012),
+(30007, 'Cátedra de Desarrollo Humano', 'Ana López', 'Explora las diferentes facetas del desarrollo humano', 'Presencial', '2025-01-10', '2025-02-15', '10:00:00', '12:00:00', 1016),
+(30008, 'Cátedra de Finanzas Corporativas', 'David Pérez', 'Adquiere conocimientos fundamentales sobre finanzas corporativas', 'Virtual', '2025-02-20', '2025-03-27', '09:00:00', '11:00:00', 1015),
+(30009, 'Cátedra de Ética Empresarial', 'Paula Díaz', 'Aprende sobre la importancia de la ética en el mundo empresarial', 'Presencial', '2025-04-05', '2025-05-10', '15:00:00', '17:00:00', 1014),
+(30010, 'Cátedra de Desarrollo Web', 'Alejandro Gómez', 'Aprende a desarrollar sitios web desde cero', 'Virtual', '2025-05-15', '2025-06-20', '16:00:00', '18:00:00', 1018),
+(30011, 'Cátedra de Derecho Laboral', 'María Martínez', 'Conoce tus derechos y obligaciones como trabajador', 'Presencial', '2025-07-01', '2025-08-05', '14:00:00', '16:00:00', 1014),
+(30012, 'Cátedra de Negocios Internacionales', 'Juan Rodríguez', 'Descubre cómo hacer negocios en el ámbito internacional', 'Virtual', '2025-08-10', '2025-09-15', '10:00:00', '12:00:00', 1015),
+(30013, 'Cátedra de Recursos Humanos', 'Laura Pérez', 'Aprende a gestionar eficazmente los recursos humanos de una empresa', 'Presencial', '2025-10-01', '2025-11-05', '09:00:00', '11:00:00', 1017),
+(30014, 'Cátedra de Economía Circular', 'Pedro Martínez', 'Descubre cómo puedes contribuir a la economía circular', 'Virtual', '2025-11-10', '2025-12-15', '15:00:00', '17:00:00', 1013),
+(30015, 'Cátedra de Comunicación Organizacional', 'Sofía Gómez', 'Aprende a comunicarte eficazmente en un entorno organizacional', 'Presencial', '2026-01-10', '2026-02-15', '16:00:00', '18:00:00', 1016),
+(30016, 'Cátedra de Gestión de Proyectos', 'Carlos Pérez', 'Adquiere habilidades para gestionar proyectos de manera eficaz', 'Virtual', '2026-02-20', '2026-03-27', '14:00:00', '16:00:00', 1018),
+(30017, 'Cátedra de Tecnología Educativa', 'Ana Gómez', 'Descubre cómo la tecnología puede mejorar la educación', 'Presencial', '2026-04-05', '2026-05-10', '10:00:00', '12:00:00', 1012),
+(30018, 'Cátedra de Derechos Humanos', 'David Fernández', 'Aprende sobre los derechos humanos y cómo protegerlos', 'Virtual', '2026-05-15', '2026-06-20', '09:00:00', '11:00:00', 1017),
+(30019, 'Cátedra de Psicología Organizacional', 'Paula Martínez', 'Descubre cómo la psicología puede mejorar el rendimiento organizacional', 'Presencial', '2026-07-01', '2026-08-05', '15:00:00', '17:00:00', 1016),
+(30020, 'Cátedra de Gestión Ambiental', 'Alejandro Pérez', 'Aprende a gestionar los recursos ambientales de manera sostenible', 'Virtual', '2026-08-10', '2026-09-15', '16:00:00', '18:00:00', 1013);
+
+
+-- -----------------------------------------------------
+-- Inserciones en la tabla Egresado_coordinador_catedra:
+-- -----------------------------------------------------
+INSERT INTO Egresado_coordinador_catedra VALUES
+(00001, 30001),
+(00002, 30002),
+(00003, 30003),
+(00004, 30004),
+(00009, 30009),
+(00010, 30010),
+(00011, 30011),
+(00012, 30012),
+(00013, 30013),
+(00014, 30014),
+(00015, 30015),
+(00016, 30016),
+(00017, 30017),
+(00018, 30018),
+(00019, 30019),
+(00020, 30020),
+(00021, 30001),
+(00022, 30002),
+(00023, 30003),
+(00024, 30004),
+(00027, 30005),
+(00033, 30006),
+(00034, 30007),
+(00036, 30008),
+(00039, 30009),
+(00038, 30010),
+(00041, 30011),
+(00045, 30012),
+(00048, 30013),
+(00049, 30014),
+(00051, 30015);
+
+
+-- -----------------------------------------------------
+-- Inserciones en la tabla Dialogo_egresados_conferencia:
+-- -----------------------------------------------------
+INSERT INTO Dialogo_egresados_conferencia VALUES
+(400001, 'Encuentro de Networking', 'Charla muy interesante sobre las claves que nadie te cuenta sobre hacer Networking', '2024-07-10', '9:00:00', '11:00:00', 'https://docs.google.com/forms/d/e/1FAIpQLScEUbAfQ7acO_ZKUjXm7NyxgXkRh9y-PsXLk1EGv9srUrXrpA/viewform'),
+(400002, 'Seminario sobre Big Data y Analítica', 'Descubre cómo el Big Data y la Analítica están cambiando el mundo', '2025-05-25', '10:00:00', '11:10:00', 'https://docs.google.com/forms/d/e/1FAIpQLScEUbAfQ7acO_ZKUjXm7NyxgXkRh9y-PsXLk1EGv9srUrXrpL/viewform'),
+(400003, 'Taller de Habilidades Comunicativas', 'Desarrolla tus habilidades comunicativas para tener éxito en el mundo profesional', '2025-06-30', '15:00:00', '15:35:00', 'https://docs.google.com/forms/d/e/1FAIpQLScEUbAfQ7acO_ZKUjXm7NyxgXkRh9y-PsXLk1EGv9srUrXrpM/viewform'),
+(400004, 'Conferencia sobre Cambio Climático', 'Aprende sobre el cambio climático y cómo puedes hacer la diferencia', '2025-07-15', '14:00:00', '14:45:00', 'https://docs.google.com/forms/d/e/1FAIpQLScEUbAfQ7acO_ZKUjXm7NyxgXkRh9y-PsXLk1EGv9srUrXrpN/viewform');
+
+
+-- -----------------------------------------------------
+-- Inserciones en la tabla Dialogo_egresados_conversatorio:
+-- -----------------------------------------------------
+INSERT INTO Dialogo_egresados_conversatorio VALUES
+(400001, 'Inteligencia artificial, ¿innovación o sentencia?', 'Interesante debate sobre la IA y sobre lo que deparará el futuro gracias a esta tecnología', '2024-07-01', '13:00:00', '17:00:00', 'https://docs.google.com/forms/d/e/1FAIpQLSdgw_hEOCJval6HHKTVHdxIBQFBjC9d5FNAbS_cvtyQERlyog/viewform'),
+(400002, 'La revolución de las criptomonedas', 'debate sobre cómo las criptomonedas están revolucionando el mundo financiero', '2024-06-25', '14:00:00', '16:00:00', 'https://docs.google.com/forms/d/e/1FAIpQLSdgw_hEOCJval6HHKTVHdxIBQFBjC9d5FNAbS_cvtyQERlyog/viewform'),
+(400003, 'El papel de la tecnología en la educación', 'Discusión sobre cómo la tecnología está cambiando la educación', '2024-06-26', '09:00:00', '11:00:00', 'https://docs.google.com/forms/d/e/1FAIpQLSdgw_hEOCJval6HHKTVHdxIBQFBjC9d5FNAbS_cvtyQERlyog/viewform'),
+(400004, 'El América y su futuro en el mundo', 'Discusión con el invitado Carlos Hernán', '2024-07-02', '13:00:00', '15:00:00', 'https://docs.google.com/forms/d/e/1FAIpQLSdgw_hEOCJval6HHKTVHdxIBQFBjC9d5FNAbS_cvtyQERlyog/viewform');
+
+
+-- -----------------------------------------------------
+-- Inserciones en la tabla Dialogo_egresados_foro:
+-- -----------------------------------------------------
+INSERT INTO Dialogo_egresados_foro VALUES
+(400001, 'Tips para ir a Japón', 'Foro donde se abordan tématicas sobre comida, comida cruda, reglas sociales, etc', '2024-07-10', '11:00:00', '13:00:00', 'https://docs.google.com/forms/d/e/1FAIpQLSfqvm98SHeRqPO06j8eW8ZReZCm0zr0H_J5Wf1c3XG8imSwNw/viewform'),
+(400002, 'Desarrollo de habilidades blandas', 'Foro para discutir la importancia de las habilidades blandas en el mundo laboral', '2024-07-15', '10:00:00', '12:00:00', 'https://docs.google.com/forms/d/e/1FAIpQLSfqvm98SHeRqPO06j8eW8ZReZCm0zr0H_J5Wf1c3XG8imSwNw/viewform'),
+(400003, 'Big Data en la toma de decisiones', 'Foro para discutir cómo el Big Data está cambiando la toma de decisiones en las empresas', '2024-08-24', '10:00:00', '12:00:00', 'https://docs.google.com/forms/d/e/1FAIpQLSfqvm98SHeRqPO06j8eW8ZReZCm0zr0H_J5Wf1c3XG8imSwNw/viewform'),
+(400004, 'El papel de la tecnología en la salud', 'Foro para discutir cómo la tecnología está cambiando el sector de la salud', '2024-09-03', '09:00:00', '11:00:00', 'https://docs.google.com/forms/d/e/1FAIpQLSfqvm98SHeRqPO06j8eW8ZReZCm0zr0H_J5Wf1c3XG8imSwNw/viewform');
+
+
+-- -----------------------------------------------------
+-- Inserciones en la tabla Participante_externo_dialogo_egresados:
+-- -----------------------------------------------------
+INSERT INTO Participante_externo_dialogo_egresados VALUES
+(100001, 'Laura Vanesa Pino Barrios'),
+(100002, 'Jonathan Cristobal Puig Costas'),
+(100003, 'Ana Maria Rodriguez Lopez'),
+(100004, 'Carlos Alberto Perez Gomez'),
+(100005, 'Sofia Carolina Martinez Diaz'),
+(100006, 'Juan David Hernandez Torres'),
+(100007, 'Luisa Fernanda Ramirez Castro'),
+(100008, 'Diego Alejandro Sanchez Vargas'),
+(100009, 'Valentina Isabella Gutierrez Arias'),
+(100010, 'Santiago Andres Morales Cardenas'),
+(100011, 'Maria Jose Rios Alvarez'),
+(100012, 'Andres Felipe Torres Marin'),
+(100013, 'Camila Sofia Gomez Rojas'),
+(100014, 'Gabriel Antonio Diaz Vargas'),
+(100015, 'Mariana Alejandra Ramirez Lopez'),
+(100016, 'Jose David Gonzalez Castro'),
+(100017, 'Luisa Maria Hernandez Morales');
+
+
+-- -----------------------------------------------------
+-- Inserciones en la tabla Conferencista_externo:
+-- -----------------------------------------------------
+INSERT INTO Conferencista_externo VALUES
+(100001, 400001, 'Experta en networking, con más de 5 años de experiencia haciendo networking'),
+(100002, 400002, 'Científico de datos muy reconocido por sus aportes en manejo de Big Data'),
+(100005, 400003, 'Psicóloga estrella de la universidad de Harvard'),
+(100017, 400004, 'Ambientalista desde niño, ha creado diversas campañas contra la contaminación y el cambio climático');
+
+
+-- -----------------------------------------------------
+-- Inserciones en la tabla Egresado_conferencista:
+-- -----------------------------------------------------
+INSERT INTO Egresado_conferencista VALUES
+(00003, 400001, 'Egresado que cuenta con contactos tan sonados como Elon Musk, Biden y demás personas de mucho poder'),
+(00004, 400002, 'Practicante como analista de datos en IBM'),
+(00005, 400003, 'Persona muy sociable y amigable según todas las personas que conoce'),
+(00017, 400004, 'Creador de varias campañas en contra del cambio climático');
+
+
+-- -----------------------------------------------------
+-- Inserciones en la tabla Panelista_externo:
+-- -----------------------------------------------------
+INSERT INTO Panelista_externo VALUES
+(100004, 400001, 'Ingeniero de inteligencia artificial desde los 8 años'),
+(100003, 400001, 'Desarrolla retos de redes neuronales por diversión en sus tiempos libres'),
+(100006, 400002, 'Es reconocido por haber desarrollado publicaciones muy complejas de cálculo vectorial y álgebra abstracta antes de aprender a hablar'),
+(100007, 400003, 'Ella se educó a sí misma con un Teléfono sin internet'),
+(100008, 400004, 'Participó en las barras bravas en los tiempos más oscuros del américa, se dice que la FIFA no lo aceptó como futbolista por tener un desempeño inhumano con el balón');
+
+
+-- -----------------------------------------------------
+-- Inserciones en la tabla Egresado_panelista:
+-- -----------------------------------------------------
+INSERT INTO Egresado_panelista VALUES
+(00001, 400001, 'Fue parte del equipo que entrenó a GPT, se especializó en IA generativo y hoy en día se identifica a sí mismo como una Inteligencia artificial'),
+(00002, 400002, 'Se dice que fue el que filtró el que Trailer de GTA VI con el Banner de Bitcoin'),
+(00006, 400003, 'Cuando estaba en el colegio, el no recibía la clase, él daba la clase con ayuda de su computador cuántico'),
+(00007, 400004, 'Su vida, sus relaciones, su presente, pasado y futúro giran en torno al América, se dice que hasta acosaba a los jugadores');
+
+
+-- -----------------------------------------------------
+-- Inserciones en la tabla Moderador_externo:
+-- -----------------------------------------------------
+INSERT INTO Moderador_externo VALUES
+(100010, 400001, 'Competidor y campeón en varios concursos de inteligencia artificial, una vez llegó a quedarse dormido en uno debido a una dificultad muy fácil para él quedando igualmente campeón'),
+(100009, 400002, 'Antes de nacer, ya tenía inversiones en Crypto por encima de los 10 millones de dólares'),
+(100011, 400003, 'Ha enseñado durante más de 5 años por medio de tecnologías digitales'),
+(100012, 400004, 'Fue un árbitro muy reconocido, aunque con varias sospechas de haber pitado a favor del América');
+
+
+-- -----------------------------------------------------
+-- Inserciones en la tabla Egresado_moderador:
+-- -----------------------------------------------------
+INSERT INTO Egresado_moderador VALUES
+(00008, 400001, 'Matemático muy respetado experto en inteligencia artificial'),
+(00009, 400002, 'Inversor y trader con más de 3 años de experiencia'),
+(00010, 400003, 'Ha publicado varios artículos sobre la influencia de la tecnología en la educación'),
+(00011, 400004, 'Deportista muy culto en el fútbol');
+
+
+-- -----------------------------------------------------
+-- Inserciones en la tabla Egresado_ponente:
+-- -----------------------------------------------------
+INSERT INTO Egresado_ponente VAlUES
+(00020, 400001, 'Amante de Japón y es muy bien conocedora de la cultura japones'),
+(00022, 400001, 'Ha viajado por bastantes lugares del mundo, se dedica a viajar y conocer nuevos lugares'),
+(00021, 400002, 'Comunicador social experto'),
+(00023, 400002, 'Periodista y humorista muy reconocido'),
+(00024, 400003, 'Project manager de proyectos de Big Data'),
+(00025, 400003, 'Profesor de Big Data en cursos online'),
+(00026, 400004, 'Ingeniera bioinformática apasionada por enseñar en comunidades online'),
+(00027, 400004, 'Ha sido profesor en distintas universidades y ha sido partícipe de varias investigaciones para innovación de la tecnología en el campo de la salud');
+
+
+-- -----------------------------------------------------
+-- Inserciones en la tabla Egresado_coordinador_dialogo:
+-- -----------------------------------------------------
+INSERT INTO Egresado_coordinador_dialogo VAlUES
+(00028, 400001, 'Vivió en Japón durante 7 años'),
+(00029, 400002, 'Psicólogo mundialmente conocido por aportes a la neurociencia'),
+(00030, 400003, 'CEO de una Startap que maneja cantidades inmensas de datos'),
+(00032, 400004, 'Ingeniera robótica, investigadora de soluciones electrónicas para el tratamiento');

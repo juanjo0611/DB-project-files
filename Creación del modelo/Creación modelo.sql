@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS `proyecto`.`Egresado` (
   `Ape_egresado` VARCHAR(50) NOT NULL COMMENT 'Apellido del egresado ',
   `Fecha_nacimiento` DATE NOT NULL COMMENT 'Se refiere a la edad actaul del egresado ',
   `Genero` VARCHAR(30) NOT NULL DEFAULT "",
-  `Grupo_etico` VARCHAR(45) NOT NULL DEFAULT "",
+  `Grupo_etnico` VARCHAR(45) NOT NULL DEFAULT "",
   `Correo_egresado` VARCHAR(45) NULL COMMENT 'El correo por el cual se puede contactar al egresado ',
   `Celular_egresado` BIGINT(10) NOT NULL COMMENT 'Número de contacto del egresado ',
   `Direccion_contacto` VARCHAR(60) NOT NULL DEFAULT "",
@@ -189,7 +189,7 @@ DROP TABLE IF EXISTS `proyecto`.`Convocatoria` ;
 CREATE TABLE IF NOT EXISTS `proyecto`.`Convocatoria` (
   `Id_convocatoria` INT AUTO_INCREMENT,
   `Fecha_incio_convoc` DATE NOT NULL,
-  `Fecha_finalización_convoc` DATE NULL,
+  `Fecha_finalizacion_convoc` DATE NULL,
   `Vacantes_convoc` INT NOT NULL COMMENT 'cantidad de vacantes disponibles ',
   `Cargo_convoc` VARCHAR(70) NOT NULL,
   `Profesion` VARCHAR(50) NOT NULL DEFAULT "",
@@ -281,11 +281,11 @@ CREATE TABLE IF NOT EXISTS `proyecto`.`Seleccion_convocatoria` (
 DROP TABLE IF EXISTS `proyecto`.`Documento_investigacion` ;
 
 CREATE TABLE IF NOT EXISTS `proyecto`.`Documento_investigacion` (
-  `Id_documento_investigación` INT AUTO_INCREMENT,
+  `Id_documento_investigacion` INT AUTO_INCREMENT,
   `Titulo` VARCHAR(100) NOT NULL,
   `Descripcion_investigacion` VARCHAR(500) NOT NULL DEFAULT "",
   `Fecha_Publicacion` DATE NOT NULL,
-  PRIMARY KEY (`Id_documento_investigación`));
+  PRIMARY KEY (`Id_documento_investigacion`));
 
 -- -----------------------------------------------------
 -- Table `proyecto`.`Participacion_investigacion`
@@ -301,7 +301,7 @@ CREATE TABLE IF NOT EXISTS `proyecto`.`Participacion_investigacion` (
     REFERENCES `proyecto`.`Egresado` (`Id_egresado`),
   CONSTRAINT `fk_Participacion_investigacion_Id_documento_investigacion`
     FOREIGN KEY (`Id_documento_investigacion`)
-    REFERENCES `proyecto`.`Documento_investigacion` (`Id_documento_investigación`)
+    REFERENCES `proyecto`.`Documento_investigacion` (`Id_documento_investigacion`)
     );
   
   -- -----------------------------------------------------
