@@ -13,6 +13,7 @@ DROP TABLE IF EXISTS `proyecto`.`Egresado` ;
 
 CREATE TABLE IF NOT EXISTS `proyecto`.`Egresado` (
   `Id_egresado` BIGINT(10),
+  `Password_egresado` VARCHAR(100) NOT NULL,
   `Tipo_documento` VARCHAR(45) NOT NULL,
   `Nom_egresado` VARCHAR(50) NOT NULL COMMENT 'Nombre del egresado ',
   `Ape_egresado` VARCHAR(50) NOT NULL COMMENT 'Apellido del egresado ',
@@ -154,7 +155,7 @@ CREATE TABLE IF NOT EXISTS `proyecto`.`Empresa` (
   `Pais_empresa` VARCHAR(60) NOT NULL COMMENT 'Lugar donde esta ubicada fisicamente la empresa ',
   `Ciudad_empresa` VARCHAR(60) NOT NULL DEFAULT "",
   `Direccion_empresa` VARCHAR(60) NOT NULL DEFAULT "",
-  `Descripción` VARCHAR(500) NOT NULL,
+  `Descripcion` VARCHAR(500) NOT NULL,
   PRIMARY KEY (`Nit_Empresa`));
 
 -- -----------------------------------------------------
@@ -170,7 +171,7 @@ CREATE TABLE IF NOT EXISTS `proyecto`.`Trabajo` (
   `Jefe_trabajo` VARCHAR(70) NOT NULL,
   `Fecha_ingreso` DATE NOT NULL,
   `Fecha_salida` DATE NOT NULL,
-  `Descripción_trabajo` VARCHAR(500) NULL,
+  `Descripcion_trabajo` VARCHAR(500) NULL,
   `Tipo_trabajo` ENUM("Precencial","Remoto") NOT NULL ,
   PRIMARY KEY (`Id_Trabajo`),
   CONSTRAINT `fk_Trabajo_Id_egresado`
@@ -194,7 +195,7 @@ CREATE TABLE IF NOT EXISTS `proyecto`.`Convocatoria` (
   `Cargo_convoc` VARCHAR(70) NOT NULL,
   `Profesion` VARCHAR(50) NOT NULL DEFAULT "",
   `Descripción_convoc` VARCHAR(500) NOT NULL,
-  `Secto_laboral` VARCHAR(60) NOT NULL DEFAULT "",
+  `Sector_laboral` VARCHAR(60) NOT NULL DEFAULT "",
   `Tipo_contrato` VARCHAR(45) NOT NULL,
   `Rango_salarial_min` INT NOT NULL,
   `Rango_salarial_max` INT NOT NULL,
