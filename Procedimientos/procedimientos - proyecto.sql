@@ -184,6 +184,7 @@ DELIMITER ;
 DELIMITER $$
 CREATE FUNCTION min_id_catedra () RETURNS INT READS SQL DATA
 BEGIN
+-- obtiene el id minimo de la tabla catedra con egresados
 DECLARE mini INT;
 SELECT MIN(Id_catedra) INTO mini FROM Catedra_con_egresados;
 IF mini IS NULL THEN
@@ -196,6 +197,7 @@ DELIMITER ;
 DELIMITER $$
 CREATE FUNCTION max_id_catedra () RETURNS INT READS SQL DATA
 BEGIN
+-- obtien el id maximo de la tabla catedra-con_egresados
 DECLARE maxi INT;
 SELECT MAX(Id_catedra) INTO maxi FROM Catedra_con_egresados;
 IF maxi IS NULL THEN
@@ -284,6 +286,7 @@ DELIMITER ;
 DELIMITER $$
 CREATE FUNCTION egresado_postulado(P_id_egresado BIGINT,P_id_convocatoria INT) RETURNS BOOLEAN READS SQL DATA
 BEGIN
+-- retorna TRUE o FALSE dependiendo si un egresado esta postulado a una convocatoria
 DECLARE postulado BOOLEAN;
 SELECT EXISTS(SELECT 1 FROM Postulado_convocatoria WHERE Id_egresado=P_id_egresado AND Id_convocatoria=P_id_convocatoria) INTO postulado;
 RETURN postulado;
@@ -319,6 +322,7 @@ DELIMITER ;
 DELIMITER $$
 CREATE FUNCTION egresado_seleccionado(P_id_egresado BIGINT,P_id_convocatoria INT) RETURNS BOOLEAN READS SQL DATA
 BEGIN
+-- retorna TRUE o FALSE dependiendo si un egresado esta seleccionado para una convocatoria
 DECLARE seleccionado BOOLEAN;
 SELECT EXISTS(SELECT 1 FROM Seleccion_convocatoria WHERE Id_egresado=P_id_egresado AND Id_convocatoria=P_id_convocatoria) INTO seleccionado;
 RETURN seleccionado;
@@ -328,6 +332,7 @@ DELIMITER ;
 DELIMITER $$
 CREATE FUNCTION min_id_convocatoria () RETURNS INT READS SQL DATA
 BEGIN
+-- obtiene el minimo id de la tabla convocatoria
 DECLARE mini INT;
 SELECT MIN(Id_convocatoria) INTO mini FROM Convocatoria;
 IF mini IS NULL THEN
@@ -340,6 +345,7 @@ DELIMITER ;
 DELIMITER $$
 CREATE FUNCTION max_id_convocatoria () RETURNS INT READS SQL DATA
 BEGIN
+-- obtiene el maximo id de la tabal convocatoria
 DECLARE maxi INT;
 SELECT MAX(Id_convocatoria) INTO maxi FROM Convocatoria;
 IF maxi IS NULL THEN
