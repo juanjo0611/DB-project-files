@@ -20,14 +20,14 @@ CREATE TABLE IF NOT EXISTS `proyecto`.`Egresado` (
   `Fecha_nacimiento` DATE NOT NULL COMMENT 'Se refiere a la edad actaul del egresado ',
   `Genero` VARCHAR(30) NOT NULL DEFAULT "",
   `Grupo_etnico` VARCHAR(45) NOT NULL DEFAULT "",
-  `Correo_egresado` VARCHAR(45) UNIQUE NOT NULL COMMENT 'El correo por el cual se puede contactar al egresado ',
+  `Correo_egresado` VARCHAR(45) NOT NULL UNIQUE COMMENT 'El correo por el cual se puede contactar al egresado ',
   `Celular_egresado` BIGINT(10) NOT NULL COMMENT 'Número de contacto del egresado ',
   `Direccion_contacto` VARCHAR(60) NOT NULL DEFAULT "",
   `Pais_egresado` VARCHAR(60) NULL COMMENT 'Hace referencia al pais natal del egresado ',
   PRIMARY KEY (`Id_egresado`));
 
 -- -----------------------------------------------------
--- Table `proyecto`.`Institucion_Educativa`
+-- Table `proyecto`.`Institucion_educativa`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `proyecto`.`Institucion_educativa` ;
 
@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `proyecto`.`Historia_academica_externa` (
   `Id_historia_externa` INT AUTO_INCREMENT,
   `Id_programa_educativo_externo` INT NOT NULL COMMENT 'Carrera de la cual se graduó el estudiante ',
   `Id_egresado` BIGINT(10) NOT NULL,
-  `Nota_promedio` INT NOT NULL COMMENT 'El promedio aritmético ponderado acumulado del estudiante durante la carrera cursada ',
+  `Nota_final` FLOAT NOT NULL,
   `Fecha_entrada` DATE NOT NULL COMMENT 'Fecha en la cual ingreso a la carrera ',
   `Fecha_grado` DATE NULL COMMENT 'Fecxha en la cual el estudiante se graduó de la universidad y por ende salio de la misma (se admite el valor nulo ya que hay estudiantes que se hayan graduado de un pregrado pero aun no lo hacen de posgrado o se graduan de un pregrado y están cursando otro pregrado del cual no se han graduado)',
   PRIMARY KEY (`Id_historia_externa`),
@@ -129,7 +129,7 @@ CREATE TABLE IF NOT EXISTS `proyecto`.`Historia_academica_UNAL` (
   `Id_historia_UNAL` INT AUTO_INCREMENT,
   `Id_programa_educativo_UNAL` INT NOT NULL COMMENT 'Carrera de la cual se graduó el estudiante ',
   `Id_egresado` BIGINT(10) NOT NULL,
-  `Nota_promedio` INT NOT NULL COMMENT 'El promedio aritmético ponderado acumulado del estudiante durante la carrera cursada ',
+  `Nota_final` FLOAT NOT NULL,
   `Fecha_entrada` DATE NOT NULL COMMENT 'Fecha en la cual ingreso a la carrera ',
   `Fecha_grado` DATE NULL COMMENT 'Fecxha en la cual el estudiante se graduó de la universidad y por ende salio de la misma (se admite el valor nulo ya que hay estudiantes que se hayan graduado de un pregrado pero aun no lo hacen de posgrado o se graduan de un pregrado y están cursando otro pregrado del cual no se han graduado)',
   PRIMARY KEY (`Id_historia_UNAL`),
@@ -149,8 +149,9 @@ DROP TABLE IF EXISTS `proyecto`.`Empresa` ;
 
 CREATE TABLE IF NOT EXISTS `proyecto`.`Empresa` (
   `Nit_empresa` BIGINT(11) NOT NULL,
+  `Password_empresa` VARCHAR(100) NOT NULL,
   `Nom_Empresa` VARCHAR(70) NOT NULL,
-  `Actividad_Economica_principal` VARCHAR(60) NOT NULL DEFAULT "",
+  `Actividad_economica_principal` VARCHAR(60) NOT NULL DEFAULT "",
   `Nombre_gerente` VARCHAR(70) NOT NULL DEFAULT "",
   `Pais_empresa` VARCHAR(60) NOT NULL COMMENT 'Lugar donde esta ubicada fisicamente la empresa ',
   `Ciudad_empresa` VARCHAR(60) NOT NULL DEFAULT "",
@@ -170,7 +171,7 @@ CREATE TABLE IF NOT EXISTS `proyecto`.`Trabajo` (
   `Cargo_trabajo` VARCHAR(70) NOT NULL,
   `Jefe_trabajo` VARCHAR(70) NOT NULL,
   `Fecha_ingreso` DATE NOT NULL,
-  `Fecha_salida` DATE NOT NULL,
+  `Fecha_salida` DATE,
   `Descripcion_trabajo` VARCHAR(500) NULL,
   `Tipo_trabajo` ENUM("Precencial","Remoto") NOT NULL ,
   PRIMARY KEY (`Id_Trabajo`),
@@ -189,8 +190,8 @@ DROP TABLE IF EXISTS `proyecto`.`Convocatoria` ;
 
 CREATE TABLE IF NOT EXISTS `proyecto`.`Convocatoria` (
   `Id_convocatoria` INT AUTO_INCREMENT,
-  `Fecha_incio_convoc` DATE NOT NULL,
-  `Fecha_finalizacion_convoc` DATE NULL,
+  `Fecha_inicio_convoc` DATE NOT NULL,
+  `Fecha_finalizacion_convoc` DATE NOT NULL,
   `Vacantes_convoc` INT NOT NULL COMMENT 'cantidad de vacantes disponibles ',
   `Cargo_convoc` VARCHAR(70) NOT NULL,
   `Profesion` VARCHAR(50) NOT NULL DEFAULT "",
