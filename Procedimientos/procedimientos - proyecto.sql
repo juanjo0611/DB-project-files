@@ -32,7 +32,7 @@ DELIMITER $$
 CREATE PROCEDURE info_inicio_sesion_egresado(IN P_cedula BIGINT(10))
 BEGIN
 -- devuelve el numero de identificacion y contraseña de un egresado especifico, se usa para el inicio de sesion
-SELECT Id_egresado, Password_egresado FROM Egresado WHERE Id_egresado=P_cedula;
+SELECT Id_egresado, Nom_egresado, Ape_egresado,Password_egresado FROM Egresado WHERE Id_egresado=P_cedula;
 END$$
 DELIMITER  ;
 
@@ -228,8 +228,9 @@ AND Vacantes_convoc>(SELECT COUNT(*) FROM Seleccion_convocatoria S_c WHERE S_c.I
 ELSE
 SELECT Id_convocatoria,Cargo_convoc, Vacantes_convoc - (SELECT COUNT(*) FROM Seleccion_convocatoria S_c WHERE S_c.Id_convocatoria= C.Id_convocatoria),
 Tipo_contrato, Rango_salarial_min, Rango_salarial_max, Fecha_finalizacion_convoc FROM Convocatoria 
-WHERE CURDATE() <= Fecha_finalizacion_convoc AND CURDATE() >= Fecha_incio_convoc AND Id_convocatoria > P_convocatoria 
-AND Vacantes_convoc>(SELECT COUNT(*) FROM Seleccion_convocatoria S_c WHERE S_c.Id_convocatoria= C.Id_convocatoria) ORDER BY Id_convocatoria LIMIT 10;
+WHERE CURDATE() <= Fecha_finalizacion_convoc AND CURDATE() >= Fecha_incio_convoc 
+AND Vacantes_convoc>(SELECT COUNT(*) FROM Seleccion_convocatoria S_c WHERE S_c.Id_convocatoria= C.Id_convocatoria) 
+AND Id_convocatoria > P_convocatoria  ORDER BY Id_convocatoria LIMIT 10;
 END IF;
 END$$
 DELIMITER ;
@@ -442,7 +443,7 @@ DELIMITER $$
 CREATE PROCEDURE info_inicion_sesion_empresa (IN P_nit_empresa BIGINT)
 -- informacion de inisio de sesion de egresados
 BEGIN
-SELECT Nit_empresa, Password_empresa FROM Empresa WHERE Nit_empresa=P_nit_empresa;
+SELECT Nit_empresa, Nom_Empresa,Password_empresa FROM Empresa WHERE Nit_empresa=P_nit_empresa;
 END$$
 DELIMITER ;
 
