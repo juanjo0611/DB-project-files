@@ -1,3 +1,20 @@
+USE `proyecto` ;
+
+
+-- -----------------------------------------------------
+-- Creación de roles
+-- -----------------------------------------------------
+DROP ROLE IF EXISTS 'General-role';
+CREATE ROLE 'General-role';
+
+DROP ROLE IF EXISTS 'Egresado-role';
+CREATE ROLE 'Egresado-role';
+
+DROP ROLE IF EXISTS 'Empresa-role';
+CREATE ROLE 'Empresa-role';
+
+DROP ROLE IF EXISTS 'Administrativo-role';
+CREATE ROLE IF EXISTS 'Administrativo-role';
 
 -- -----------------------------------------------------
 -- Tabla Egresado

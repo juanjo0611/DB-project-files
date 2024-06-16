@@ -6,8 +6,8 @@ USE `proyecto` ;
 -- -----------------------------------------------------
 DROP USER IF EXISTS 'general'@'localhost';
 CREATE USER 'general'@'localhost' IDENTIFIED BY 'generalPassword';
--- GRANT 'General-role' TO 'general'@'localhost';
--- SET DEFAULT ROLE 'General-role' TO 'general'@'localhost';
+GRANT 'General-role' TO 'general'@'localhost';
+SET DEFAULT ROLE 'General-role' TO 'general'@'localhost';
 
 
 -- -----------------------------------------------------
@@ -16,8 +16,8 @@ CREATE USER 'general'@'localhost' IDENTIFIED BY 'generalPassword';
 -- -----------------------------------------------------
 DROP USER IF EXISTS 'egresado'@'localhost';
 CREATE USER 'egresado'@'localhost' IDENTIFIED BY 'egresadoPassword';
--- GRANT 'Egresado-role' TO 'egresado'@'localhost';
--- SET DEFAULT ROLE 'Egresado-role' TO 'egresado'@'localhost';
+GRANT 'Egresado-role' TO 'egresado'@'localhost';
+SET DEFAULT ROLE 'Egresado-role' TO 'egresado'@'localhost';
 
 
 -- -----------------------------------------------------
@@ -26,8 +26,8 @@ CREATE USER 'egresado'@'localhost' IDENTIFIED BY 'egresadoPassword';
 -- -----------------------------------------------------
 DROP USER IF EXISTS 'empresa'@'localhost';
 CREATE USER 'empresa'@'localhost' IDENTIFIED by 'empresaPassword';
--- GRANT 'Empresa-role' TO 'empresa'@'localhost';
--- SET DEFAULT ROLE 'Empresa-role' TO 'empresa'@'localhost';
+GRANT 'Empresa-role' TO 'empresa'@'localhost';
+SET DEFAULT ROLE 'Empresa-role' TO 'empresa'@'localhost';
 
 
 -- -----------------------------------------------------
@@ -36,5 +36,5 @@ CREATE USER 'empresa'@'localhost' IDENTIFIED by 'empresaPassword';
 -- -----------------------------------------------------
 DROP USER IF EXISTS 'administrativo'@'localhost';
 CREATE USER 'administrativo'@'localhost' IDENTIFIED by 'administrativoPassword';
--- GRANT 'Administrativo-role' TO 'administrativo'@'localhost';
--- SET DEFAULT ROLE 'Administrativo-role' TO 'administrativo'@'localhost';
+GRANT 'Administrativo-role' TO 'administrativo'@'localhost';
+SET DEFAULT ROLE 'Administrativo-role' TO 'administrativo'@'localhost';
