@@ -281,6 +281,15 @@ INSERT INTO Postulado_convocatoria VALUES (P_cedula,P_id_convocatoria,CURDATE())
 END$$
 DELIMITER ;
 
+DELIMITER $$
+CREATE FUNCTION egresado_postulado(P_id_egresado BIGINT,P_id_convocatoria INT) RETURNS BOOLEAN READS SQL DATA
+BEGIN
+DECLARE postulado BOOLEAN;
+SELECT EXISTS(SELECT 1 FROM Postulado_convocatoria WHERE Id_egresado=P_id_egresado AND Id_convocatoria=P_id_convocatoria) INTO postulado;
+RETURN postulado;
+END $$
+DELIMITER ;
+
 -- trigger que elimine el registro de la tabla seleccion_convocatoria si ec+xiste
 DELIMITER $$
 CREATE PROCEDURE eliminar_postulante (IN P_cedula BIGINT, IN P_id_convocatoria INT)
@@ -305,6 +314,15 @@ BEGIN
 -- procedimiento que se llama cuando una empresa seleciona a un egresado postulado 
 INSERT INTO Seleccion_convocatoria VALUES (P_cedula,P_id_convocatoria);
 END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE FUNCTION egresado_seleccionado(P_id_egresado BIGINT,P_id_convocatoria INT) RETURNS BOOLEAN READS SQL DATA
+BEGIN
+DECLARE seleccionado BOOLEAN;
+SELECT EXISTS(SELECT 1 FROM Seleccion_convocatoria WHERE Id_egresado=P_id_egresado AND Id_convocatoria=P_id_convocatoria) INTO seleccionado;
+RETURN seleccionado;
+END $$
 DELIMITER ;
 
 DELIMITER $$
@@ -383,7 +401,7 @@ DELIMITER $$
 CREATE PROCEDURE eliminar_convocatoria(IN P_id_convocatoria INT)
 BEGIN
 -- Procedimiento usado para eliminar convocatoria
--- hacer el triggere para que se eliminen los requerimientos de idiom de la tabla requerimientos de idioma
+-- hacer el triggere para que se eliminen los requerimientos de idioma de la tabla requerimientos de idioma, postulados y seleccionados
 DELETE FROM Convocatoria WHERE Id_convocatoria = P_id_convocatoria;
 END$$
 DELIMITER ;
