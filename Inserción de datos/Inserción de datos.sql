@@ -279,22 +279,22 @@ INSERT INTO Historia_academica_UNAL VALUES
 -- Inserciones en la tabla Empresa:
 -- -----------------------------------------------------
 INSERT INTO Empresa VALUES 
-(50001, 'Postobón S.A.', 'Bebidas', 'Juan Pérez', 'Colombia', 'Bogotá', 'Carrera 45 # 26-54', 'Empresa líder en la producción de bebidas.'),
-(50002, 'Coca Cola Ltda.', 'Bebidas', 'María Gómez', 'Colombia', 'Bogotá', 'Avenida 68 # 12-34', 'Empresa reconocida a nivel mundial por sus bebidas refrescantes.'),
-(50003, 'Inversiones del Futuro S.A.S.', 'Finanzas', 'Luis Martínez', 'Colombia', 'Bogotá', 'Calle 100 # 15-20', 'Empresa dedicada a la gestión de inversiones y asesoramiento financiero.'),
-(50004, 'Electrodomésticos Colombianos S.A.', 'Electrodomésticos', 'Andrea López', 'Colombia', 'Bogotá', 'Carrera 80 # 30-45', 'Empresa líder en la venta de electrodomésticos en Colombia.'),
-(50005, 'Construcciones y Estructuras Ltda.', 'Construcción', 'Carlos Rodríguez', 'Estados Unidos', 'New york', 'Calle 85 # 18-25', 'Empresa especializada en la construcción de edificaciones y estructuras.'),
-(50006, 'Servicios Informáticos S.A.', 'Tecnología', 'Laura Pérez', 'Colombia', 'Medellin', 'Avenida Boyacá # 40-50', 'Empresa dedicada a brindar soluciones informáticas a empresas y particulares.'),
-(50007, 'Transporte Veloz S.A.', 'Transporte', 'David Sánchez', 'Colombia', 'Bogotá', 'Autopista Norte # 22-15', 'Empresa de transporte terrestre de carga y logística.'),
-(50008, 'Alimentos Naturales Ltda.', 'Alimentos', 'Sofía Ramírez', 'Colombia', 'Bogotá', 'Carrera 70 # 28-30', 'Empresa dedicada a la producción y distribución de alimentos naturales y saludables.'),
-(50009, 'Consultoría Estratégica Ltda.', 'Consultoría', 'Juanita Gómez', 'Colombia', 'Cartagena', 'Calle 72 # 15-10', 'Empresa especializada en consultoría estratégica para empresas de diversos sectores.'),
-(50010, 'Inversiones Inmobiliarias Ltda.', 'Inmobiliaria', 'Pedro González', 'Colombia', 'Bogotá', 'Carrera 50 # 24-18', 'Empresa dedicada a la gestión y comercialización de bienes raíces en Bogotá.'),
-(50011, 'Productos Colombianos S.A.', 'Alimentos', 'María Rodríguez', 'Colombia', 'Cali', 'Calle 65 # 20-15', 'Empresa dedicada a la producción y distribución de productos alimenticios.'),
-(50012, 'Distribuidora de Electrónicos S.A.S.', 'Electrónica', 'Andrés López', 'Colombia', 'Bogotá', 'Avenida 68 # 15-30', 'Empresa dedicada a la distribución de productos electrónicos y tecnológicos.'),
-(50013, 'Construcciones Urbanas S.A.', 'Construcción', 'Camila Martínez', 'Colombia', 'Bogotá', 'Carrera 90 # 35-40', 'Empresa especializada en proyectos de construcción urbana.'),
-(50014, 'Tecnología Avanzada Ltda.', 'Tecnología', 'Luisa González', 'Colombia', 'Bogotá', 'Calle 80 # 12-25', 'Empresa líder en soluciones tecnológicas para empresas y hogares.'),
-(50015, 'Distribuidora de Alimentos Naturales S.A.S.', 'Alimentos', 'Diego Ramírez', 'España', 'Barcelona', 'Carrera 75 # 28-15', 'Empresa dedicada a la distribución de alimentos naturales y orgánicos.'),
-(50016, 'Servicios de Logística y Distribución S.A.', 'Logística', 'Andrea Gómez', 'Colombia', 'Medellin', 'Avenida 68 # 20-30', 'Empresa especializada en servicios de logística y distribución de productos.');
+(50001, '0', 'Postobón S.A.', 'Bebidas', 'Juan Pérez', 'Colombia', 'Bogotá', 'Carrera 45 # 26-54', 'Empresa líder en la producción de bebidas.'),
+(50002, '0', 'Coca Cola Ltda.', 'Bebidas', 'María Gómez', 'Colombia', 'Bogotá', 'Avenida 68 # 12-34', 'Empresa reconocida a nivel mundial por sus bebidas refrescantes.'),
+(50003, '0', 'Inversiones del Futuro S.A.S.', 'Finanzas', 'Luis Martínez', 'Colombia', 'Bogotá', 'Calle 100 # 15-20', 'Empresa dedicada a la gestión de inversiones y asesoramiento financiero.'),
+(50004, '0', 'Electrodomésticos Colombianos S.A.', 'Electrodomésticos', 'Andrea López', 'Colombia', 'Bogotá', 'Carrera 80 # 30-45', 'Empresa líder en la venta de electrodomésticos en Colombia.'),
+(50005, '0', 'Construcciones y Estructuras Ltda.', 'Construcción', 'Carlos Rodríguez', 'Estados Unidos', 'New york', 'Calle 85 # 18-25', 'Empresa especializada en la construcción de edificaciones y estructuras.'),
+(50006, '0', 'Servicios Informáticos S.A.', 'Tecnología', 'Laura Pérez', 'Colombia', 'Medellin', 'Avenida Boyacá # 40-50', 'Empresa dedicada a brindar soluciones informáticas a empresas y particulares.'),
+(50007, '0', 'Transporte Veloz S.A.', 'Transporte', 'David Sánchez', 'Colombia', 'Bogotá', 'Autopista Norte # 22-15', 'Empresa de transporte terrestre de carga y logística.'),
+(50008, '0', 'Alimentos Naturales Ltda.', 'Alimentos', 'Sofía Ramírez', 'Colombia', 'Bogotá', 'Carrera 70 # 28-30', 'Empresa dedicada a la producción y distribución de alimentos naturales y saludables.'),
+(50009, '0', 'Consultoría Estratégica Ltda.', 'Consultoría', 'Juanita Gómez', 'Colombia', 'Cartagena', 'Calle 72 # 15-10', 'Empresa especializada en consultoría estratégica para empresas de diversos sectores.'),
+(50010, '0', 'Inversiones Inmobiliarias Ltda.', 'Inmobiliaria', 'Pedro González', 'Colombia', 'Bogotá', 'Carrera 50 # 24-18', 'Empresa dedicada a la gestión y comercialización de bienes raíces en Bogotá.'),
+(50011, '0', 'Productos Colombianos S.A.', 'Alimentos', 'María Rodríguez', 'Colombia', 'Cali', 'Calle 65 # 20-15', 'Empresa dedicada a la producción y distribución de productos alimenticios.'),
+(50012, '0', 'Distribuidora de Electrónicos S.A.S.', 'Electrónica', 'Andrés López', 'Colombia', 'Bogotá', 'Avenida 68 # 15-30', 'Empresa dedicada a la distribución de productos electrónicos y tecnológicos.'),
+(50013, '0', 'Construcciones Urbanas S.A.', 'Construcción', 'Camila Martínez', 'Colombia', 'Bogotá', 'Carrera 90 # 35-40', 'Empresa especializada en proyectos de construcción urbana.'),
+(50014, '0', 'Tecnología Avanzada Ltda.', 'Tecnología', 'Luisa González', 'Colombia', 'Bogotá', 'Calle 80 # 12-25', 'Empresa líder en soluciones tecnológicas para empresas y hogares.'),
+(50015, '0', 'Distribuidora de Alimentos Naturales S.A.S.', 'Alimentos', 'Diego Ramírez', 'España', 'Barcelona', 'Carrera 75 # 28-15', 'Empresa dedicada a la distribución de alimentos naturales y orgánicos.'),
+(50016, '0', 'Servicios de Logística y Distribución S.A.', 'Logística', 'Andrea Gómez', 'Colombia', 'Medellin', 'Avenida 68 # 20-30', 'Empresa especializada en servicios de logística y distribución de productos.');
 
 
 -- -----------------------------------------------------
