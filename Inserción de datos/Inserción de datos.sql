@@ -34,31 +34,31 @@ DELETE FROM `proyecto`.`Egresado`;
 -- INSERCIÓN TABLA EGRESADOS:
 -- -----------------------------------------------------
 INSERT INTO Egresado
-(Id_egresado, Tipo_documento, Nom_egresado, Ape_egresado, Fecha_nacimiento, Genero, Grupo_etnico, Correo_egresado, Celular_egresado, Direccion_contacto, Pais_egresado)
+(Id_egresado, Password_egresado, Tipo_documento, Nom_egresado, Ape_egresado, Fecha_nacimiento, Genero, Grupo_etnico, Correo_egresado, Celular_egresado, Direccion_contacto, Pais_egresado)
 VALUES
 (00001, '123', 'CC', 'Juan Carlos', 'Moreno Moreno', '2000-02-20', 'Masculino', 'No aplica', 'juancamoreno@unal.edu.co', 3205468782, 'Bogota', 'Colombia'),
 (00002, 'myPassword', 'CC', 'Maria Luisa', 'Lopez Correa', '2002-07-25', 'Femenino', 'Wayuu', 'Marlu@unal.edu.co', 3127894436, 'Medellin', 'Colombia' ),
 (00003, 'Contraseña', 'CC', 'Ivan', 'Lopez Hernandez', '1997-01-25', 'Masculino', 'Afro', 'Ivan222@unal.edu.co', 3116789436, 'Cali', 'Colombia' ),
-(00004, '0000', 'Carlos Hernan', 'Marin Correa', '2001-11-25', 'Masculino', 'No aplica', 'carlito333@unal.edu.co', 3108974536, 'Bogota', 'Colombia' ),
-(00005, 'qwerty', 'Andrea Gissel', 'Galindo Galindo', '1995-12-02', 'Femenino', 'Afro', 'AndreaGa@unal.edu.co', 3008975410, 'Barranquilla', 'Colombia' ),
+(00004, '0000', 'CC', 'Carlos Hernan', 'Marin Correa', '2001-11-25', 'Masculino', 'No aplica', 'carlito333@unal.edu.co', 3108974536, 'Bogota', 'Colombia' ),
+(00005, 'qwerty', 'CC', 'Andrea Gissel', 'Galindo Galindo', '1995-12-02', 'Femenino', 'Afro', 'AndreaGa@unal.edu.co', 3008975410, 'Barranquilla', 'Colombia' ),
 (00006, '0', 'CC', 'Luisa Fernanda', 'Gonzalez Perez', '1998-03-15', 'Femenino', 'No aplica', 'luisafernanda@unal.edu.co', 3012345678, 'Cali', 'Colombia'),
 (00007, '0', 'CC', 'Pedro Pablo', 'Gomez Ramirez', '1990-05-10', 'Masculino', 'No aplica', 'pedropablo@unal.edu.co', 3156781234, 'Medellin', 'Colombia'),
 (00008, '0', 'CC', 'Ana Maria', 'Diaz Rojas', '1993-09-12', 'Femenino', 'Afro', 'anamaria@unal.edu.co', 3209876543, 'Barranquilla', 'Colombia'),
 (00009, '0', 'CC', 'Javier', 'Gutierrez Lopez', '1996-11-28', 'Masculino', 'Wayuu', 'javier@unal.edu.co', 3112345678, 'Cartagena', 'Colombia'),
-(00010, '0', 'CC', 'Laura Sofia', 'Martinez Vargas', '1989-04-20', 'Femenino', 'No aplica', 'laurasofia@unal.edu.co', 3045678901, 'Bogota', 'Colombia'),
-(00011, '0', 'CC', 'Diego Alejandro', 'Rojas Cardenas', '1992-07-18', 'Masculino', 'Zenu', 'diegoalejandro@unal.edu.co', 3134567890, 'Barranquilla', 'Colombia'),
+(00010, '0', 'CC', 'Laura Sofia', 'Martinez Vargas', '1989-04-20', 'Femenino', 'No aplica', 'laurasofiama@unal.edu.co', 3045678901, 'Bogota', 'Colombia'),
+(00011, '0', 'CC', 'Diego Alejandro', 'Rojas Cardenas', '1992-07-18', 'Masculino', 'Zenu', 'diegoalejandroro@unal.edu.co', 3134567890, 'Barranquilla', 'Colombia'),
 (00012, '0', 'CC', 'Carolina', 'Sanchez Guerrero', '1985-02-05', 'Femenino', 'Wayuu', 'carolina@unal.edu.co', 3012345678, 'Cali', 'Colombia'),
 (00013, '0', 'CC', 'Santiago', 'Mendez Diaz', '1987-10-03', 'Masculino', 'Afro', 'santiago@unal.edu.co', 3187654321, 'Medellin', 'Colombia'),
-(00014, '0', 'CC', 'Valentina', 'Perez Alvarez', '1978-08-21', 'Femenino', 'No aplica', 'valentina@unal.edu.co', 3101234567, 'Bogota', 'Colombia'),
-(00015, '0', 'CC', 'Andres Felipe', 'Garcia Ospina', '1984-06-17', 'Masculino', 'No aplica', 'andresfelipe@unal.edu.co', 3009876543, 'Barranquilla', 'Colombia'),
+(00014, '0', 'CC', 'Valentina', 'Perez Alvarez', '1978-08-21', 'Femenino', 'No aplica', 'valentinape@unal.edu.co', 3101234567, 'Bogota', 'Colombia'),
+(00015, '0', 'CC', 'Andres Felipe', 'Garcia Ospina', '1984-06-17', 'Masculino', 'No aplica', 'andresfelipega@unal.edu.co', 3009876543, 'Barranquilla', 'Colombia'),
 (00016, '0', 'CC', 'Camila', 'Castro Marin', '1982-12-30', 'Femenino', 'Zenu', 'camila@unal.edu.co', 3176543210, 'Cartagena', 'Colombia'),
 (00017, '0', 'CC', 'Gabriel', 'Lopez Arias', '1980-04-14', 'Masculino', 'No aplica', 'gabriel@unal.edu.co', 3134567890, 'Medellin', 'Colombia'),
-(00018, '0', 'CC', 'Mariana', 'Rios Lopez', '1979-01-09', 'Femenino', 'Wayuu', 'mariana@unal.edu.co', 3056789012, 'Cali', 'Colombia'),
-(00019, '0', 'CC', 'Daniel', 'Gutierrez Ramirez', '1976-05-23', 'Masculino', 'Afro', 'daniel@unal.edu.co', 3123456789, 'Bogota', 'Colombia'),
-(00020, '0', 'CC', 'Alejandra', 'Moreno Gonzalez', '1975-08-07', 'Femenino', 'No aplica', 'alejandra@unal.edu.co', 3201234567, 'Barranquilla', 'Colombia'),
-(00021, '0', 'CC', 'Mateo', 'Vargas Rojas', '1973-11-19', 'Masculino', 'Zenu', 'mateo@unal.edu.co', 3145678901, 'Cartagena', 'Colombia'),
-(00022, '0', 'CC', 'Sofia', 'Diaz Martinez', '1971-07-25', 'Femenino', 'No aplica', 'sofia@unal.edu.co', 3012345678, 'Cali', 'Colombia'),
-(00023, '0', 'CC', 'Juan', 'Gomez Hernandez', '1969-09-11', 'Masculino', 'Wayuu', 'juandavid@unal.edu.co', 3176543210, 'Medellin', 'Colombia'),
+(00018, '0', 'CC', 'Mariana', 'Rios Lopez', '1979-01-09', 'Femenino', 'Wayuu', 'marianari@unal.edu.co', 3056789012, 'Cali', 'Colombia'),
+(00019, '0', 'CC', 'Daniel', 'Gutierrez Ramirez', '1976-05-23', 'Masculino', 'Afro', 'danielgu@unal.edu.co', 3123456789, 'Bogota', 'Colombia'),
+(00020, '0', 'CC', 'Alejandra', 'Moreno Gonzalez', '1975-08-07', 'Femenino', 'No aplica', 'alejandramo@unal.edu.co', 3201234567, 'Barranquilla', 'Colombia'),
+(00021, '0', 'CC', 'Mateo', 'Vargas Rojas', '1973-11-19', 'Masculino', 'Zenu', 'mateovarg@unal.edu.co', 3145678901, 'Cartagena', 'Colombia'),
+(00022, '0', 'CC', 'Sofia', 'Diaz Martinez', '1971-07-25', 'Femenino', 'No aplica', 'sofiadi@unal.edu.co', 3012345678, 'Cali', 'Colombia'),
+(00023, '0', 'CC', 'Juan', 'Gomez Hernandez', '1969-09-11', 'Masculino', 'Wayuu', 'juandavidgo@unal.edu.co', 3176543210, 'Medellin', 'Colombia'),
 (00024, '0', 'CC', 'Luisa', 'Hernandez Perez', '1967-03-06', 'Femenino', 'Afro', 'luisa@unal.edu.co', 3109876543, 'Bogota', 'Colombia'),
 (00025, '0', 'CC', 'Andres', 'Rojas Gutierrez', '1965-12-29', 'Masculino', 'No aplica', 'andres@unal.edu.co', 3001234567, 'Barranquilla', 'Colombia'),
 (00026, '0', 'CC', 'Maria', 'Sanchez Rojas', '1964-08-18', 'Femenino', 'No aplica', 'maria@unal.edu.co', 3209876543, 'Cartagena', 'Colombia'),
@@ -66,7 +66,7 @@ VALUES
 (00028, '0', 'CC', 'Laura', 'Gonzalez Ramirez', '1962-09-27', 'Femenino', 'No aplica', 'laura@unal.edu.co', 3012345678, 'Medellin', 'Colombia'),
 (00029, '0', 'CC', 'Carlos', 'Diaz Gutierrez', '1961-11-09', 'Masculino', 'Wayuu', 'carlos@unal.edu.co', 3176543210, 'Bogota', 'Colombia'),
 (00030, '0', 'CC', 'Fernanda', 'Martinez Hernandez', '1960-07-13', 'Femenino', 'Afro', 'fernanda@unal.edu.co', 3109876543, 'Barranquilla', 'Colombia'),
-(00032, '0', 'CC', 'Ana Maria', 'Ramirez Garcia', '1994-04-05', 'Femenino', 'No aplica', 'anamaria@unal.edu.co', 3012345678, 'Cali', 'Colombia'),
+(00032, '0', 'CC', 'Ana Maria', 'Ramirez Garcia', '1994-04-05', 'Femenino', 'No aplica', 'anamariara@unal.edu.co', 3012345678, 'Cali', 'Colombia'),
 (00033, '0', 'CC', 'Luis Felipe', 'Gonzalez Torres', '1991-02-10', 'Masculino', 'Afro', 'luisfelipe@unal.edu.co', 3156781234, 'Medellin', 'Colombia'),
 (00034, '0', 'CC', 'Juliana Andrea', 'Lopez Gutierrez', '1988-09-12', 'Femenino', 'Wayuu', 'juliana@unal.edu.co', 3209876543, 'Barranquilla', 'Colombia'),
 (00035, '0', 'CC', 'Carlos Andres', 'Perez Martinez', '1987-11-28', 'Masculino', 'No aplica', 'carlosandres@unal.edu.co', 3112345678, 'Cartagena', 'Colombia'),
@@ -84,8 +84,8 @@ VALUES
 (00047, '0', 'CC', 'Mateo', 'Vargas Rojas', '1967-11-19', 'Masculino', 'Zenu', 'mateo@unal.edu.co', 3145678901, 'Cartagena', 'Colombia'),
 (00048, '0', 'CC', 'Sofia', 'Diaz Martinez', '1966-07-25', 'Femenino', 'No aplica', 'sofia@unal.edu.co', 3012345678, 'Cali', 'Colombia'),
 (00049, '0', 'CC', 'Juan David', 'Gomez Hernandez', '1965-09-11', 'Masculino', 'Wayuu', 'juandavid@unal.edu.co', 3176543210, 'Medellin', 'Colombia'),
-(00050, '0', 'CC', 'Luisa Fernanda', 'Hernandez Perez', '1964-03-06', 'Femenino', 'Afro', 'luisafernanda@unal.edu.co', 3109876543, 'Bogota', 'Colombia'),
-(00051, '0', 'CC', 'Andres Felipe', 'Rojas Gutierrez', '1963-12-29', 'Masculino', 'No aplica', 'andres@unal.edu.co', 3001234567, 'Barranquilla', 'Colombia');
+(00050, '0', 'CC', 'Luisa Fernanda', 'Hernandez Perez', '1964-03-06', 'Femenino', 'Afro', 'luisafernandahe@unal.edu.co', 3109876543, 'Bogota', 'Colombia'),
+(00051, '0', 'CC', 'Andres Felipe', 'Rojas Gutierrez', '1963-12-29', 'Masculino', 'No aplica', 'andresfero@unal.edu.co', 3001234567, 'Barranquilla', 'Colombia');
 
 -- -----------------------------------------------------
 -- INSERCIÓN TABLA INSTITUCION EDUCATIVA:
@@ -432,7 +432,7 @@ INSERT INTO Participacion_Investigacion VALUES
 -- -----------------------------------------------------
 -- Inserciones en la tabla Catedra_con_egresados:
 -- -----------------------------------------------------
-INSERT INTO Catedra_con_egresados VALUES 
+INSERT INTO Catedra_con_egresados VALUES
 (30001, 'Cátedra de Innovación Tecnológica', 'Naría Rodríguez', 'Incríbete y aprende sobre la increíble innovación tecnológica que envuelve nuestro mundo actual', 'Presencial', '2024-06-10', '2024-07-15', '14:00:00', '16:00:00', 1013),
 (30002, 'Cátedra de Emprendimiento', 'Juan Pérez', 'Aprende a emprender con éxito en el mundo de los negocios', 'Virtual', '2024-06-20', '2024-07-25', '10:00:00', '12:00:00', 1016),
 (30003, 'Cátedra de Sostenibilidad Ambiental', 'Laura Martínez', 'Descubre cómo puedes contribuir a la sostenibilidad ambiental', 'Presencial', '2024-07-30', '2024-09-05', '09:00:00', '11:00:00', 1013),
