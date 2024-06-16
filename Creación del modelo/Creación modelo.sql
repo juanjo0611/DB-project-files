@@ -20,11 +20,7 @@ CREATE TABLE IF NOT EXISTS `proyecto`.`Egresado` (
   `Fecha_nacimiento` DATE NOT NULL COMMENT 'Se refiere a la edad actaul del egresado ',
   `Genero` VARCHAR(30) NOT NULL DEFAULT "",
   `Grupo_etnico` VARCHAR(45) NOT NULL DEFAULT "",
-<<<<<<< HEAD
   `Correo_egresado` VARCHAR(45) NOT NULL UNIQUE COMMENT 'El correo por el cual se puede contactar al egresado ',
-=======
-  `Correo_egresado` VARCHAR(45) UNIQUE NOT NULL COMMENT 'El correo por el cual se puede contactar al egresado ',
->>>>>>> 2b1f5ecc0a1437d46af5bc0334f5572a182b61cd
   `Celular_egresado` BIGINT(10) NOT NULL COMMENT 'Número de contacto del egresado ',
   `Direccion_contacto` VARCHAR(60) NOT NULL DEFAULT "",
   `Pais_egresado` VARCHAR(60) NULL COMMENT 'Hace referencia al pais natal del egresado ',
