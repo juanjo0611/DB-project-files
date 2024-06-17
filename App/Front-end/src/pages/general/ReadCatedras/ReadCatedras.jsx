@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { POST } from '../../../CRUD/POST'
+import Header from '../../../components/global/Header/Header'
 
 const ReadCatedras = () => {
   const [response, setResponse] = useState(null)
@@ -7,9 +8,10 @@ const ReadCatedras = () => {
   const handleClick = async () => {
     console.log(id)
     const qy = await POST({
-      resource: '/auth/login',
+      resource: '/auth/login-egresado',
       body: {
-        dni: parseInt(id)
+        dni: parseInt(id),
+        password: 'Peritoperez'
       }
     })
     console.log(qy)
@@ -22,16 +24,19 @@ const ReadCatedras = () => {
 
   return (
     <>
-      <input type='text' onKeyUp={handleKey} />
-      <button onClick={() => handleClick()}>
-        Llamar procediminento almacenado
-      </button>
-      <div>
-        <span>Nombre: </span>{response?.[0]?.Nom_egresado ?? ''}
-      </div>
-      <div>
-        <span>Apellido: </span>{response?.[0]?.Ape_egresado ?? ''}
-      </div>
+      <Header />
+      <main>
+        <input type='text' onKeyUp={handleKey} />
+        <button onClick={() => handleClick()}>
+          Llamar procediminento almacenado
+        </button>
+        <div>
+          <span>Nombre: </span>{response?.[0]?.Nom_egresado ?? ''}
+        </div>
+        <div>
+          <span>Apellido: </span>{response?.[0]?.Ape_egresado ?? ''}
+        </div>
+      </main>
     </>
   )
 }

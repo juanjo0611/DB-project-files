@@ -1,13 +1,100 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import Header from '../../../components/global/Header/Header'
 import { ROLES } from '../../../globalVariables/Data'
 import css from './Login.module.css'
+import Swal from 'sweetalert2'
+import { POST } from '../../../CRUD/POST'
+import { useNavigate } from 'react-router-dom'
+import { WhoContext } from '../../../Routes'
 
 const Login = () => {
   const [selectedRole, setSelectedRole] = useState(ROLES.EGRESADO)
+  const { info } = useContext(WhoContext)
+  const navigate = useNavigate()
+
+  if (info.role === ROLES.EGRESADO) {
+    navigate('/ver-mi-perfil-de-egresado')
+  }
+  if (info.role === ROLES.EMPRESA) {
+    navigate('/ver-mi-perfil-de-empresa')
+  }
+  if (info.role === ROLES.ADMINISTRATIVO) {
+    navigate('/')
+  }
 
   const changeRole = event => {
     setSelectedRole(event.target.value)
+  }
+
+  const loginEgresado = async ({ dni, password }) => {
+    if (isNaN(parseInt(dni))) {
+      return Swal.fire({
+        title: 'El campo número de documento debe ser numérico',
+        icon: 'error'
+      })
+    }
+    const response = await POST({
+      resource: '/auth/login-egresado',
+      body: {
+        dni: parseInt(dni),
+        password
+      }
+    })
+    if (response?.token) {
+      Swal.fire({
+        icon: 'success',
+        title: 'Iniciando sesión',
+        showConfirmButton: false,
+        timer: 900
+      })
+      window.localStorage.setItem('token', response.token)
+      setTimeout(() => window.location.reload(), 900)
+    }
+  }
+  const loginEmpresa = async ({ nit, password }) => {
+    if (isNaN(parseInt(nit))) {
+      return Swal.fire({
+        title: 'El campo NIT debe ser numérico',
+        icon: 'error'
+      })
+    }
+    const response = await POST({
+      resource: '/auth/login-empresa',
+      body: {
+        nit: parseInt(nit),
+        password
+      }
+    })
+    console.log(response)
+  }
+
+  const loginAdministrativo = async ({ user, password }) => {
+    const response = await POST({
+      resource: '/auth/login-empresa',
+      body: {
+        user,
+        password
+      }
+    })
+    console.log(response)
+  }
+
+  const login = event => {
+    event.preventDefault()
+    const formData = new FormData(event.target)
+    const identifier = formData.get('identifier')
+    const password = formData.get('password')
+
+    if (identifier === '' || password === '') {
+      return Swal.fire({
+        title: 'Llena todos los campos antes de continuar',
+        icon: 'error'
+      })
+    }
+
+    if (selectedRole === ROLES.EGRESADO) loginEgresado({ dni: identifier, password })
+    if (selectedRole === ROLES.EMPRESA) loginEmpresa({ nit: identifier, password })
+    if (selectedRole === ROLES.ADMINISTRATIVO) loginAdministrativo({ user: identifier, password })
   }
 
   return (
@@ -20,70 +107,33 @@ const Login = () => {
           </h2>
           <form onChange={changeRole} className={css.loginCard__formRole}>
             <div>
-              <input type='radio' name='role' value={ROLES.EMPRESA} />
-              <label>Cuenta de empresa</label>
-            </div>
-            <div>
               <input type='radio' name='role' value={ROLES.EGRESADO} defaultChecked />
               <label>Egresado</label>
+            </div>
+            <div>
+              <input type='radio' name='role' value={ROLES.EMPRESA} />
+              <label>Cuenta de empresa</label>
             </div>
             <div>
               <input type='radio' name='role' value={ROLES.ADMINISTRATIVO} />
               <label>Administrativo</label>
             </div>
           </form>
-
-          {selectedRole === ROLES.EMPRESA
-            ? (
-              <form className={css.loginCard__formLogin}>
-                <div>
-                  <label>NIT</label>
-                  <input type='text' className={css.loginCard__formLogin__input} />
-                </div>
-                <div>
-                  <label>Contraseña</label>
-                  <input type='text' className={css.loginCard__formLogin__input} />
-                </div>
-                <div className={css.loginCard__formLogin__submitContainer}>
-                  <input type='submit' className={css.loginCard__formLogin__submitButton} />
-                </div>
-              </form>
-              )
-            : null}
-          {selectedRole === ROLES.EGRESADO
-            ? (
-              <form className={css.loginCard__formLogin}>
-                <div>
-                  <label>Número de documento</label>
-                  <input type='text' className={css.loginCard__formLogin__input} />
-                </div>
-                <div>
-                  <label>Contraseña</label>
-                  <input type='text' className={css.loginCard__formLogin__input} />
-                </div>
-                <div className={css.loginCard__formLogin__submitContainer}>
-                  <input type='submit' className={css.loginCard__formLogin__submitButton} />
-                </div>
-              </form>
-              )
-            : null}
-          {selectedRole === ROLES.ADMINISTRATIVO
-            ? (
-              <form className={css.loginCard__formLogin}>
-                <div>
-                  <label>Usuario</label>
-                  <input type='text' className={css.loginCard__formLogin__input} />
-                </div>
-                <div>
-                  <label>Contraseña</label>
-                  <input type='text' className={css.loginCard__formLogin__input} />
-                </div>
-                <div className={css.loginCard__formLogin__submitContainer}>
-                  <input type='submit' className={css.loginCard__formLogin__submitButton} />
-                </div>
-              </form>
-              )
-            : null}
+          <form className={css.loginCard__formLogin} onSubmit={event => login(event)}>
+            <div>
+              {selectedRole === ROLES.EGRESADO ? <label>Número de documento</label> : null}
+              {selectedRole === ROLES.EMPRESA ? <label>NIT</label> : null}
+              {selectedRole === ROLES.ADMINISTRATIVO ? <label>Usuario</label> : null}
+              <input type='text' name='identifier' className={css.loginCard__formLogin__input} />
+            </div>
+            <div>
+              <label>Contraseña</label>
+              <input type='text' name='password' className={css.loginCard__formLogin__input} />
+            </div>
+            <div className={css.loginCard__formLogin__submitContainer}>
+              <input type='submit' className={css.loginCard__formLogin__submitButton} />
+            </div>
+          </form>
         </section>
       </main>
     </>

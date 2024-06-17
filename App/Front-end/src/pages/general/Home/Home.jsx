@@ -28,7 +28,7 @@ const Home = () => {
           <a
             href='/consultar-empresa'
             className={`${css.homeLink} ${css.homeLink_consultarEmpresa}`}
-          >Ver cátedras
+          >Consultar empresa
           </a>
         </div>
       </main>

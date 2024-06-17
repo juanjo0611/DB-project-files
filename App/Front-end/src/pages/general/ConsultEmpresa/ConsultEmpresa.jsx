@@ -1,13 +1,13 @@
 import Header from '../../../components/global/Header/Header'
 
-const ReadConvocatorias = () => {
+const ConsultEmpresa = () => {
   return (
     <>
       <Header />
       <main>
-        <h1>Bienvenido a la sección convocatoria</h1>
+        <h1>Bienvenido a la sección de egresados</h1>
       </main>
     </>
   )
 }
-export default ReadConvocatorias
+export default ConsultEmpresa

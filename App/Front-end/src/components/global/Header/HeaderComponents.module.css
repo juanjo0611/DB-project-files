@@ -1,4 +1,9 @@
-.Header__a {
+.Header__a, .Header__logout {
   text-decoration: none;
   color: var(--dark-green-3);
+  cursor: pointer;
+}
+
+.Header__username {
+  color: #fff;
 }

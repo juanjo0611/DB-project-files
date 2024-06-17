@@ -1,5 +1,5 @@
 import css from './Header.module.css'
-import { HomeLinkItem, LoginLinkItem, RegisterAsCompanyLinkItem } from './HeaderComponents'
+import { HomeLinkItem, LoginLinkItem, LogoutBtnItem, MyProfileEgresadoLinkItem, NameInfoItem, RegisterAsCompanyLinkItem } from './HeaderComponents'
 
 const Header = () => {
   return (
@@ -16,6 +16,10 @@ const Header = () => {
           <ul className={`${css.Header__ul} ${css.Header__ul_right}`}>
             <RegisterAsCompanyLinkItem />
             <LoginLinkItem />
+
+            <LogoutBtnItem />
+            <MyProfileEgresadoLinkItem />
+            <NameInfoItem />
           </ul>
         </nav>
       </div>

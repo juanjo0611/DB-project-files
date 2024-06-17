@@ -3,49 +3,88 @@ import { ROLES } from '../../../globalVariables/Data'
 import css from './HeaderComponents.module.css'
 import { WhoContext } from '../../../Routes'
 
-export const HomeLinkItem = () => {
+const LinkGroup = ({ link, anchor }) => {
   return (
     <li className={css.Header__li}>
-      <a href='/' className={css.Header__a}>
-        Home
+      <a href={link} className={css.Header__a}>
+        {anchor}
       </a>
     </li>
   )
 }
 
-export const RegisterAsCompanyLinkItem = () => {
-  const { role } = useContext(WhoContext)
+export const HomeLinkItem = () => {
+  return <LinkGroup link='/' anchor='Home' />
+}
 
-  const element = (
-    <li>
-      <a href='/register-empresa' className={css.Header__a}>
-        Registrarse como empresa
-      </a>
-    </li>
-  )
+export const RegisterAsCompanyLinkItem = () => {
+  const { info } = useContext(WhoContext)
+
   return (
     <>
-      {role === ROLES.GENERAL
-        ? element
+      {info.role === ROLES.GENERAL
+        ? <LinkGroup link='/registrar-empresa' anchor='Registrarse como empresa' />
         : null}
     </>
   )
 }
 
 export const LoginLinkItem = () => {
-  const { role } = useContext(WhoContext)
+  const { info } = useContext(WhoContext)
+
+  return (
+    <>
+      {info.role === ROLES.GENERAL
+        ? <LinkGroup link='/login' anchor='Iniciar sesión' />
+        : null}
+    </>
+  )
+}
+
+export const LogoutBtnItem = () => {
+  const { info } = useContext(WhoContext)
+
+  const logout = () => {
+    window.localStorage.removeItem('token')
+    window.location.reload()
+  }
 
   const element = (
     <li>
-      <a href='/login' className={css.Header__a}>
-        Iniciar sesión
-      </a>
+      <span className={css.Header__logout} onClick={logout}>
+        Cerrar sesión
+      </span>
     </li>
   )
+
   return (
     <>
-      {role === ROLES.GENERAL
+      {info.role !== ROLES.GENERAL
         ? element
+        : null}
+    </>
+  )
+}
+
+export const MyProfileEgresadoLinkItem = () => {
+  const { info } = useContext(WhoContext)
+
+  return (
+    <>
+      {info.role === ROLES.EGRESADO
+        ? <LinkGroup link='/ver-mi-perfil-de-egresado' anchor='Mirar mi perfil' />
+        : null}
+    </>
+  )
+}
+
+export const NameInfoItem = () => {
+  const { info } = useContext(WhoContext)
+
+  return (
+    <>
+      {info.role !== ROLES.GENERAL
+        ? <span className={css.Header__username}>{info.name}</span>
         : null}
     </>
   )
