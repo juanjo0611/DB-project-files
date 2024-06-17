@@ -1,3 +1,5 @@
+USE `proyecto` ;
+
 DELETE FROM `proyecto`.`Egresado_coordinador_dialogo`;
 DELETE FROM `proyecto`.`Egresado_ponente`;
 DELETE FROM `proyecto`.`Egresado_moderador`;
