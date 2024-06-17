@@ -246,7 +246,7 @@ BEGIN
 -- funcion que devuelve la cantidad de egresados que consiguieron obtener trabajos con las catedras
 DECLARE cuenta_seleccionados INT;
 SELECT Count(DISTINCT Id_egresado) INTO cuenta_seleccionados FROM Seleccion_convocatoria;
-RETURN cuanta_seleccionados;
+RETURN cuenta_seleccionados;
 END$$
 DELIMITER ;
 
