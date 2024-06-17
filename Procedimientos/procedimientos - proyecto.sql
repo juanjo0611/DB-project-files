@@ -101,7 +101,7 @@ DELIMITER ;
 -- Catedra
 DROP PROCEDURE IF EXISTS catedras_egresados_siquientes;
 
-DELIMITER SS
+DELIMITER $$
 CREATE PROCEDURE catedras_egresados_siquientes (IN P_catedra INT)
 BEGIN
 -- devuelve de 10 en 10, segun el id inical que se le pase, la informacion mas relevante de catedras con egresados
@@ -117,7 +117,7 @@ DELIMITER ;
 
 DROP PROCEDURE IF EXISTS catedras_egresados_anteriores;
 
-DELIMITER SS
+DELIMITER $$
 CREATE PROCEDURE catedras_egresados_anteriores (IN P_catedra INT)
 BEGIN
 -- devuelve de 10 en 10, segun el id inical que se le pase, la informacion mas relevante de catedras con egresados
@@ -246,7 +246,7 @@ BEGIN
 -- funcion que devuelve la cantidad de egresados que consiguieron obtener trabajos con las catedras
 DECLARE cuenta_seleccionados INT;
 SELECT Count(DISTINCT Id_egresado) INTO cuenta_seleccionados FROM Seleccion_convocatoria;
-RETURN cuanta_seleccionados;
+RETURN cuenta_seleccionados;
 END$$
 DELIMITER ;
 
@@ -298,7 +298,7 @@ DELIMITER ;
 
 DROP PROCEDURE IF EXISTS idiomas_convocatoria;
 
-DELIMITER SS
+DELIMITER $$
 CREATE PROCEDURE idiomas_convocatoria(IN P_convocatoria INT)
 BEGIN
 -- devuelve los idiomas que son requerimientos de una convocatoria
@@ -534,6 +534,16 @@ CREATE PROCEDURE info_inicion_sesion_empresa (IN P_nit_empresa BIGINT)
 -- informacion de inisio de sesion de egresados
 BEGIN
 SELECT Nit_empresa, Nom_Empresa,Password_empresa FROM Empresa WHERE Nit_empresa=P_nit_empresa;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE registrar_empresa(IN P_nit_empresa bigint,IN P_password_empresa varchar(100),IN P_nom_Empresa varchar(70),
+IN P_actividad_economica_principal varchar(60),IN P_nombre_gerente varchar(70),IN P_pais_empresa varchar(60),IN P_ciudad_empresa varchar(60),
+IN P_direccion_empresa varchar(60),IN P_descripcion varchar(500))
+BEGIN
+INSERT INTO Empresa VALUES(P_nit_empresa,P_password_empresa,P_nom_Empresa,P_actividad_economica_principal,P_nombre_gerente,P_pais_empresa,
+P_ciudad_empresa,P_direccion_empresa,P_descripcion);
 END$$
 DELIMITER ;
 

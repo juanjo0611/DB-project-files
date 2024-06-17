@@ -1,20 +1,30 @@
--- mostrar la cantidad de egresados que trabajaron para empresas de diversos países = Mostrar la cantidad de egresados que han trabajado en al menos 2 paises
-SELECT * FROM egresado;
-
--- Convocatorias existentes por cargo / profesión /rangos salariales / fecha de inicio y fin/ sector/ tipo de contrato/ experiencia/ nivel educativo (ten en cuenta que voy a crear una tabla llamada Lenguaje con campos (Id_lenguage,Nombre_lenguaje) y otra tabla que los conecta con nombre Requisito_lenguaje con campos (Id_lenguaje,Id_convocatoria))
-
--- Cantidad de egresados por carrera ofertada por la universidad
-
--- Cantidad de egresados de la universidad que han conseguido trabajo por medio de las convocatorias (solo se cuenta a un egresado una vez)
-
--- Promedio de notas de la universidad por programa educativo
-
--- Investigar cátedras próximas, y poder filtrar por facultad/ modalidad/ fecha/ hora
-
--- mostrar la cantidad de documentos de investigación que participaron egresados según su facultad (pueden haber egresados que pertenezcan a varias facultades en este se cuenta los documentos en los que participaron para ambas creería yo)
-
--- Consultar todos los documentos de investigación cuya autoría tenga a un egresado en específico (esta es una que se reemplaza por la de los diálogos porque eso ahora son 3 tablas)
-
--- Porcentaje de los egresados que cursan un programa de posgrado con la universidad (solo se cuenta a un egresado una vez aunque curse varios programas de posgrado con la unal)
-
--- Empresas en las que ha trabajado un egresado en específico
+-- consultas
+-- 1 Mostrar la cantidad de egresados que trabajaron para empresas de diversos países
+SELECT Pais_empresa, COUNT(DISTINCT Id_egresado) AS N_egresados
+FROM Empresa JOIN Trabajo USING(Nit_empresa) GROUP BY Pais_empresa ORDER BY Pais_empresa ;
+-- 2 Mostrar los 5 idiomas mas requeridos en las convocatorias
+SELECT Id_idioma, Nombre_idioma FROM Idioma JOIN Requerimiento_idioma USING (Id_idioma) GROUP BY Id_idioma ORDER BY COUNT(*) DESC LIMIT 5;
+-- 3 Cantidad de egresados por carrera ofertada por la universidad
+SELECT Id_programa_educativo_UNAL,Nom_programa_UNAL, COUNT(Id_egresado) AS N_egresados
+FROM Historia_academica_UNAL JOIN Programa_educativo_UNAL USING (Id_programa_educativo_UNAL) GROUP BY Id_programa_educativo_UNAL ORDER BY Nom_programa_UNAL;
+-- 4 Cantidad de egresados de la universidad que han conseguido trabajo por medio de las convocatorias
+SELECT Count(DISTINCT Id_egresado) AS C_egresados_trabajo INTO cuenta_seleccionados FROM Seleccion_convocatoria;
+-- 5 Promedio de notas de la universidad por programa educativo
+SELECT Id_programa_educativo_UNAL,Nom_programa_UNAL, AVG(Nota_final) AS Promedio_Nota
+FROM Historia_academica_UNAL JOIN Programa_educativo_UNAL USING (Id_programa_educativo_UNAL) GROUP BY Id_programa_educativo_UNAL ORDER BY Nom_programa_UNAL;
+-- 6 Mostrar 5 intituciones educativas externas en las que mas han estudiado egresados de la univesidad
+SELECT Id_ins_edu, Nombre_inst_edu FROM Institucion_educativa JOIN Facultad_externa USING(Id_ins_edu) JOIN Programa_educativo_externo USING(Id_facultad_externa)
+JOIN Historia_academica_externa USING (Id_programa_educativo_externo) GROUP BY Id_ins_edu ORDER BY COUNT(DISTINCT Id_egresado) DESC;
+-- 7 Mostrar la cantidad de documentos de investigación que participaron egresados según su facultad
+SELECT Id_facultad_UNAL, Nombre_facultad_UNAL, COUNT(DISTINCT Id_documento_investigacion) AS C_documentos
+FROM Facultad_UNAL JOIN Programa_educativo_UNAL USING (Id_facultad_UNAL) JOIN Historia_academica_UNAL USING(Id_programa_educativo_UNAL) 
+JOIN Participacion_investigacion USING (Id_egresado) GROUP BY Id_facultad_UNAL ORDER BY Nombre_facultad_UNAL;
+-- 8 Mirar numero de participantes
+SELECT Id_documento_investigacion,Titulo, Fecha_Publicacion, COUNT(Id_egresado) AS N_participantes
+FROM Documento_investigacion JOIN Participacion_investigacion USING(Id_documento_investigacion) GROUP BY Id_documento_investigacion;
+-- 9 Porcentaje de los egresados que cursan un programa de posgrado con la universidad
+SELECT (SELECT COUNT(DISTINCT Id_egresado) FROM Historia_academica_UNAL JOIN Programa_educativo_UNAL 
+USING(Id_programa_educativo_UNAL) WHERE Tipo_programa != "Pregrado")*100/(SELECT COUNT(*) FROM Egresado) AS Porcentaje_egresados_posgrado;
+-- 10 Numero de trabajos que le handado las empresas registradas a los egresados por empresa
+SELECT Nit_empresa,Nom_empresa,COUNT(Id_trabajo) AS N_trabajos
+FROM Trabajo JOIN Empresa USING(Nit_empresa)GROUP BY Nit_empresa;
