@@ -1,0 +1,55 @@
+.main {
+  min-height: calc(100vh - 55px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.home__title {
+  text-align: center;
+  font-size: 50px;
+  padding: 5px 10px;
+  margin: 0;
+}
+
+.home__p1 {
+  text-align: center;
+  font-size: 23px;
+  padding: 5px 10px;
+  color: var(--gray-a6);  
+}
+
+.home__p2 {
+  text-align: center;
+  font-size: 20px;
+  padding: 5px 10px;
+  color: var(--gray-54);
+}
+
+.homeLinksContainer {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+.homeLink {
+  font-size: 25px;
+  padding: 20px 10px;
+  text-decoration: none;
+  color: #fff;  
+  border-radius: 5px;
+  text-align: center;
+}
+
+.homeLink_verConvocatorias {
+  background-color: var(--strong-red);
+}
+.homeLink_verCatedras {
+  background-color: var(--strong-purple);
+}
+.homeLink_seccionEgresados {
+  background-color: var(--dark-green-3);
+}
+.homeLink_consultarEmpresa {
+  background-color: var(--strong-light-blue);
+}

@@ -4,7 +4,7 @@ import get_egresado_for_login from "../Procedures/login/get_egresado_for_login.j
 
 // @POST
 export const loginEgresado = async (req, res) => {
-  const {dni, password} = req.body;
+  const { dni } = req.body;
 
   try {
     const egresado = await get_egresado_for_login({ Id_egresado: dni });
@@ -14,6 +14,10 @@ export const loginEgresado = async (req, res) => {
     console.log(error);
   }
 }
+
+
+
+
 
 
 
