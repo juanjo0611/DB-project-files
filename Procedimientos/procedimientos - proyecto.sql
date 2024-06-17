@@ -537,3 +537,13 @@ SELECT Nit_empresa, Nom_Empresa,Password_empresa FROM Empresa WHERE Nit_empresa=
 END$$
 DELIMITER ;
 
+DELIMITER $$
+CREATE PROCEDURE registrar_empresa(IN P_nit_empresa bigint,IN P_password_empresa varchar(100),IN P_nom_Empresa varchar(70),
+IN P_actividad_economica_principal varchar(60),IN P_nombre_gerente varchar(70),IN P_pais_empresa varchar(60),IN P_ciudad_empresa varchar(60),
+IN P_direccion_empresa varchar(60),IN P_descripcion varchar(500))
+BEGIN
+INSERT INTO Empresa VALUES(P_nit_empresa,P_password_empresa,P_nom_Empresa,P_actividad_economica_principal,P_nombre_gerente,P_pais_empresa,
+P_ciudad_empresa,P_direccion_empresa,P_descripcion);
+END$$
+DELIMITER ;
+
