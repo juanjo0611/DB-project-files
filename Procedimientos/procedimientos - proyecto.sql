@@ -34,7 +34,7 @@ DELIMITER ;
 DROP PROCEDURE IF EXISTS info_inicio_sesion_egresado;
 
 DELIMITER $$
-CREATE PROCEDURE info_inicio_sesion_egresado(IN P_cedula BIGINT(10))
+CREATE PROCEDURE info_inicio_sesion_egresado(IN P_cedula BIGINT)
 BEGIN
 -- devuelve el numero de identificacion y contraseña de un egresado especifico, se usa para el inicio de sesion
 SELECT Id_egresado, Nom_egresado, Ape_egresado,Password_egresado FROM Egresado WHERE Id_egresado=P_cedula;
@@ -44,7 +44,7 @@ DELIMITER  ;
 DROP PROCEDURE IF EXISTS informacion_usuario_egresado;
 
 DELIMITER $$
-CREATE PROCEDURE informacion_usuario_egresado (IN P_cedula BIGINT(10))
+CREATE PROCEDURE informacion_usuario_egresado (IN P_cedula BIGINT)
 BEGIN
 -- da la informacion de un usuario egresado en especifico
 SELECT Id_egresado, Tipo_documento, Nom_egresado, Ape_egresado, Fecha_nacimiento, Genero, Grupo_etnico, Correo_egresado, 
@@ -68,7 +68,7 @@ DELIMITER ;
 DROP PROCEDURE IF EXISTS informacion_egresado;
 
 DELIMITER $$
-CREATE PROCEDURE informacion_egresado (IN P_cedula BIGINT(10))
+CREATE PROCEDURE informacion_egresado (IN P_cedula BIGINT)
 BEGIN
 -- da la informacion mas relevante se un egresado en especifico, se usa para la pestaña 'publica' que describe detalladamente a un egresado  
 SELECT Id_egresado, Tipo_documento, Nom_egresado, Ape_egresado, Fecha_nacimiento, Genero, Grupo_etnico, Correo_egresado, Pais_egresado
@@ -79,7 +79,7 @@ DELIMITER ;
 DROP PROCEDURE IF EXISTS egresado_historia_academica_UNAL;
 
 DELIMITER $$
-CREATE PROCEDURE egresado_historia_academica_UNAL (IN P_cedula BIGINT(10))
+CREATE PROCEDURE egresado_historia_academica_UNAL (IN P_cedula BIGINT)
 BEGIN
 -- da la infromacion de la historia academica de un egresado en especifico, se usa para la pestaña 'publica' que describe detalladamente a un egresado
 SELECT Id_historia_UNAL,Nom_programa_UNAL,Tipo_programa, Nombre_facultad_UNAL,Nota_final,IF(Fecha_grado IS NULL,"Actualidad",Fecha_grado)
@@ -91,7 +91,7 @@ DELIMITER ;
 DROP PROCEDURE IF EXISTS egresado_historia_academica_externa;
 
 DELIMITER $$
-CREATE PROCEDURE egresado_historia_academica_externa (IN P_cedula BIGINT(10))
+CREATE PROCEDURE egresado_historia_academica_externa (IN P_cedula BIGINT)
 BEGIN
 -- da el historial externo de una egresado, se usa para la pestaña 'publica' que describe detalladamente a un egresado
 SELECT  Id_historia_externa,Nombre_programa_externo,Tipo_programa, Nombre_facultad_externa,Nombre_inst_edu,Nota_final,IF(Fecha_grado IS NULL,"Actualidad",Fecha_grado)
@@ -176,7 +176,7 @@ DELIMITER ;
 DROP PROCEDURE IF EXISTS inserta_egresado_catedra;
 
 DELIMITER $$
-CREATE PROCEDURE inserta_egresado_catedra (IN P_cedula BIGINT(10),IN P_catedra INT)
+CREATE PROCEDURE inserta_egresado_catedra (IN P_cedula BIGINT,IN P_catedra INT)
 BEGIN
 -- se usa para insertar a los egresados que participan en las catedra, es llamado por el procedimiento que inserta las catedras
 DECLARE EXIT HANDLER FOR SQLEXCEPTION    

@@ -12,7 +12,7 @@ USE `proyecto` ;
 DROP TABLE IF EXISTS `proyecto`.`Egresado` ;
 
 CREATE TABLE IF NOT EXISTS `proyecto`.`Egresado` (
-  `Id_egresado` BIGINT(10),
+  `Id_egresado` BIGINT,
   `Password_egresado` VARCHAR(100) NOT NULL,
   `Tipo_documento` VARCHAR(45) NOT NULL,
   `Nom_egresado` VARCHAR(50) NOT NULL COMMENT 'Nombre del egresado ',
@@ -77,7 +77,7 @@ DROP TABLE IF EXISTS `proyecto`.`Historia_academica_externa` ;
 CREATE TABLE IF NOT EXISTS `proyecto`.`Historia_academica_externa` (
   `Id_historia_externa` INT AUTO_INCREMENT,
   `Id_programa_educativo_externo` INT NOT NULL COMMENT 'Carrera de la cual se graduó el estudiante ',
-  `Id_egresado` BIGINT(10) NOT NULL,
+  `Id_egresado` BIGINT NOT NULL,
   `Nota_final` FLOAT NOT NULL,
   `Fecha_entrada` DATE NOT NULL COMMENT 'Fecha en la cual ingreso a la carrera ',
   `Fecha_grado` DATE NULL COMMENT 'Fecxha en la cual el estudiante se graduó de la universidad y por ende salio de la misma (se admite el valor nulo ya que hay estudiantes que se hayan graduado de un pregrado pero aun no lo hacen de posgrado o se graduan de un pregrado y están cursando otro pregrado del cual no se han graduado)',
@@ -128,7 +128,7 @@ DROP TABLE IF EXISTS `proyecto`.`Historia_academica_UNAL` ;
 CREATE TABLE IF NOT EXISTS `proyecto`.`Historia_academica_UNAL` (
   `Id_historia_UNAL` INT AUTO_INCREMENT,
   `Id_programa_educativo_UNAL` INT NOT NULL COMMENT 'Carrera de la cual se graduó el estudiante ',
-  `Id_egresado` BIGINT(10) NOT NULL,
+  `Id_egresado` BIGINT NOT NULL,
   `Nota_final` FLOAT NOT NULL,
   `Fecha_entrada` DATE NOT NULL COMMENT 'Fecha en la cual ingreso a la carrera ',
   `Fecha_grado` DATE NULL COMMENT 'Fecxha en la cual el estudiante se graduó de la universidad y por ende salio de la misma (se admite el valor nulo ya que hay estudiantes que se hayan graduado de un pregrado pero aun no lo hacen de posgrado o se graduan de un pregrado y están cursando otro pregrado del cual no se han graduado)',
@@ -148,7 +148,7 @@ CREATE TABLE IF NOT EXISTS `proyecto`.`Historia_academica_UNAL` (
 DROP TABLE IF EXISTS `proyecto`.`Empresa` ;
 
 CREATE TABLE IF NOT EXISTS `proyecto`.`Empresa` (
-  `Nit_empresa` BIGINT(11) NOT NULL,
+  `Nit_empresa` BIGINT NOT NULL,
   `Password_empresa` VARCHAR(100) NOT NULL,
   `Nom_Empresa` VARCHAR(70) NOT NULL,
   `Actividad_economica_principal` VARCHAR(60) NOT NULL DEFAULT "",
@@ -166,8 +166,8 @@ DROP TABLE IF EXISTS `proyecto`.`Trabajo` ;
 
 CREATE TABLE IF NOT EXISTS `proyecto`.`Trabajo` (
   `Id_trabajo` INT AUTO_INCREMENT,
-  `Id_egresado` BIGINT(10) NOT NULL,
-  `Nit_empresa` BIGINT(11) NOT NULL,
+  `Id_egresado` BIGINT NOT NULL,
+  `Nit_empresa` BIGINT NOT NULL,
   `Cargo_trabajo` VARCHAR(70) NOT NULL,
   `Jefe_trabajo` VARCHAR(70) NOT NULL,
   `Fecha_ingreso` DATE NOT NULL,
@@ -207,7 +207,7 @@ CREATE TABLE IF NOT EXISTS `proyecto`.`Convocatoria` (
   `Experiencia_meses` TINYINT NOT NULL DEFAULT 0,
   `Nivel_educativo` VARCHAR(20) NOT NULL DEFAULT "Pregrado",
   `Requirimientos_especificos` VARCHAR(200) NOT NULL DEFAULT "",
-  `Nit_empresa` BIGINT(11) NOT NULL,
+  `Nit_empresa` BIGINT NOT NULL,
   PRIMARY KEY (`Id_convocatoria`),
   CONSTRAINT `fk_Convocatoria_Id_empresa`
     FOREIGN KEY (`Nit_empresa`)
@@ -248,7 +248,7 @@ CREATE TABLE IF NOT EXISTS `proyecto`.`Requerimiento_idioma` (
 DROP TABLE IF EXISTS `proyecto`.`Postulado_convocatoria` ;
 
 CREATE TABLE IF NOT EXISTS `proyecto`.`Postulado_convocatoria` (
-  `Id_egresado` BIGINT(10) NOT NULL,
+  `Id_egresado` BIGINT NOT NULL,
   `Id_convocatoria` INT NOT NULL,
   `Fecha_posutulación` DATE NOT NULL COMMENT 'Representa la fecha en la que el estudiante hace su postulación a la convocatoria ',
   PRIMARY KEY (`Id_egresado`, `Id_convocatoria`),
@@ -266,7 +266,7 @@ CREATE TABLE IF NOT EXISTS `proyecto`.`Postulado_convocatoria` (
 DROP TABLE IF EXISTS `proyecto`.`Seleccion_convocatoria` ;
 
 CREATE TABLE IF NOT EXISTS `proyecto`.`Seleccion_convocatoria` (
-  `Id_egresado` BIGINT(10) NOT NULL,
+  `Id_egresado` BIGINT NOT NULL,
   `Id_convocatoria` INT NOT NULL,
   PRIMARY KEY (`Id_egresado`, `Id_convocatoria`),
   CONSTRAINT `fk_Selección_convocatória_Id_egresado`
@@ -295,7 +295,7 @@ CREATE TABLE IF NOT EXISTS `proyecto`.`Documento_investigacion` (
 DROP TABLE IF EXISTS `proyecto`.`Participacion_investigacion` ;
 
 CREATE TABLE IF NOT EXISTS `proyecto`.`Participacion_investigacion` (
-  `Id_egresado` BIGINT(10) NOT NULL,
+  `Id_egresado` BIGINT NOT NULL,
   `Id_documento_investigacion` INT NOT NULL,
   PRIMARY KEY (`Id_egresado`, `Id_documento_investigacion`),
   CONSTRAINT `fk_Participacion_investigacion_Id_Egresado`
@@ -357,7 +357,7 @@ CREATE TABLE IF NOT EXISTS `proyecto`.`Dialogo_egresados_foro` (
 DROP TABLE IF EXISTS `proyecto`.`Participante_externo_dialogo_egresados` ;
 
 CREATE TABLE IF NOT EXISTS `proyecto`.`Participante_externo_dialogo_egresados` (
-  `Id_participante_externo` BIGINT(10) AUTO_INCREMENT,
+  `Id_participante_externo` BIGINT AUTO_INCREMENT,
   `Nombre_participante_externo` VARCHAR(70) NOT NULL,
   PRIMARY KEY (`Id_participante_externo`)
 );
@@ -368,7 +368,7 @@ CREATE TABLE IF NOT EXISTS `proyecto`.`Participante_externo_dialogo_egresados` (
 DROP TABLE IF EXISTS `proyecto`.`Conferencista_externo` ;
 
 CREATE TABLE IF NOT EXISTS `proyecto`.`Conferencista_externo` (
-  `Id_participante_externo` BIGINT(10) NOT NULL,
+  `Id_participante_externo` BIGINT NOT NULL,
   `Id_dialogo_egresados_conferencia` INT NOT NULL,
   `Descripcion_perfil` VARCHAR(250) NOT NULL DEFAULT "",
   PRIMARY KEY (`Id_participante_externo`, `Id_dialogo_egresados_conferencia`),
@@ -386,7 +386,7 @@ CREATE TABLE IF NOT EXISTS `proyecto`.`Conferencista_externo` (
 DROP TABLE IF EXISTS `proyecto`.`Egresado_conferencista` ;
 
 CREATE TABLE IF NOT EXISTS `proyecto`.`Egresado_conferencista` (
-  `Id_egresado` BIGINT(10) NOT NULL,
+  `Id_egresado` BIGINT NOT NULL,
   `Id_dialogo_egresados_conferencia` INT NOT NULL,
   `Descripcion_perfil` VARCHAR(250) NOT NULL DEFAULT "",
   PRIMARY KEY (`Id_egresado`, `Id_dialogo_egresados_conferencia`),
@@ -404,7 +404,7 @@ CREATE TABLE IF NOT EXISTS `proyecto`.`Egresado_conferencista` (
 DROP TABLE IF EXISTS `proyecto`.`Panelista_externo` ;
 
 CREATE TABLE IF NOT EXISTS `proyecto`.`Panelista_externo` (
-  `Id_participante_externo` BIGINT(10) NOT NULL,
+  `Id_participante_externo` BIGINT NOT NULL,
   `Id_dialogo_egresados_conversatorio` INT NOT NULL,
   `Descripcion_perfil` VARCHAR(250) NOT NULL DEFAULT "",
   PRIMARY KEY (`Id_participante_externo`, `Id_dialogo_egresados_conversatorio`),
@@ -422,7 +422,7 @@ CREATE TABLE IF NOT EXISTS `proyecto`.`Panelista_externo` (
 DROP TABLE IF EXISTS `proyecto`.`Egresado_panelista` ;
 
 CREATE TABLE IF NOT EXISTS `proyecto`.`Egresado_panelista` (
-  `Id_egresado` BIGINT(10) NOT NULL,
+  `Id_egresado` BIGINT NOT NULL,
   `Id_dialogo_egresados_conversatorio` INT NOT NULL,
   `Descripcion_perfil` VARCHAR(250) NOT NULL DEFAULT "",
   PRIMARY KEY (`Id_egresado`, `Id_dialogo_egresados_conversatorio`),
@@ -440,7 +440,7 @@ CREATE TABLE IF NOT EXISTS `proyecto`.`Egresado_panelista` (
 DROP TABLE IF EXISTS `proyecto`.`Moderador_externo` ;
 
 CREATE TABLE IF NOT EXISTS `proyecto`.`Moderador_externo` (
-  `Id_participante_externo` BIGINT(10) NOT NULL,
+  `Id_participante_externo` BIGINT NOT NULL,
   `Id_dialogo_egresados_conversatorio` INT NOT NULL,
   `Descripcion_perfil` VARCHAR(250) NOT NULL DEFAULT "",
   PRIMARY KEY (`Id_participante_externo`, `Id_dialogo_egresados_conversatorio`),
@@ -458,7 +458,7 @@ CREATE TABLE IF NOT EXISTS `proyecto`.`Moderador_externo` (
 DROP TABLE IF EXISTS `proyecto`.`Egresado_moderador` ;
 
 CREATE TABLE IF NOT EXISTS `proyecto`.`Egresado_moderador` (
-  `Id_egresado` BIGINT(10) NOT NULL,
+  `Id_egresado` BIGINT NOT NULL,
   `Id_dialogo_egresados_conversatorio` INT NOT NULL,
   `Descripcion_perfil` VARCHAR(250) NOT NULL DEFAULT "",
   PRIMARY KEY (`Id_egresado`, `Id_dialogo_egresados_conversatorio`),
@@ -476,7 +476,7 @@ CREATE TABLE IF NOT EXISTS `proyecto`.`Egresado_moderador` (
 DROP TABLE IF EXISTS `proyecto`.`Ponente_externo` ;
 
 CREATE TABLE IF NOT EXISTS `proyecto`.`Ponente_externo` (
-  `Id_participante_externo` BIGINT(10) NOT NULL,
+  `Id_participante_externo` BIGINT NOT NULL,
   `Id_dialogo_egresados_foro` INT NOT NULL,
   `Descripcion_perfil` VARCHAR(250) NOT NULL DEFAULT "",
   PRIMARY KEY (`Id_participante_externo`, `Id_dialogo_egresados_foro`),
@@ -494,7 +494,7 @@ CREATE TABLE IF NOT EXISTS `proyecto`.`Ponente_externo` (
 DROP TABLE IF EXISTS `proyecto`.`Egresado_ponente` ;
 
 CREATE TABLE IF NOT EXISTS `proyecto`.`Egresado_ponente` (
-  `Id_egresado` BIGINT(10) NOT NULL,
+  `Id_egresado` BIGINT NOT NULL,
   `Id_dialogo_egresados_foro` INT NOT NULL,
   `Descripcion_perfil` VARCHAR(250) NOT NULL DEFAULT "",
   PRIMARY KEY (`Id_egresado`, `Id_dialogo_egresados_foro`),
@@ -512,7 +512,7 @@ CREATE TABLE IF NOT EXISTS `proyecto`.`Egresado_ponente` (
 DROP TABLE IF EXISTS `proyecto`.`Coordinador_externo` ;
 
 CREATE TABLE IF NOT EXISTS `proyecto`.`Coordinador_externo` (
-  `Id_participante_externo` BIGINT(10) NOT NULL,
+  `Id_participante_externo` BIGINT NOT NULL,
   `Id_dialogo_egresados_foro` INT NOT NULL,
   `Descripcion_perfil` VARCHAR(250) NOT NULL DEFAULT "",
   PRIMARY KEY (`Id_participante_externo`, `Id_dialogo_egresados_foro`),
@@ -530,7 +530,7 @@ CREATE TABLE IF NOT EXISTS `proyecto`.`Coordinador_externo` (
 DROP TABLE IF EXISTS `proyecto`.`Egresado_coordinador_dialogo` ;
 
 CREATE TABLE IF NOT EXISTS `proyecto`.`Egresado_coordinador_dialogo` (
-  `Id_egresado` BIGINT(10) NOT NULL,
+  `Id_egresado` BIGINT NOT NULL,
   `Id_dialogo_egresados_foro` INT NOT NULL,
   `Descripcion_perfil` VARCHAR(250) NOT NULL DEFAULT "",
   PRIMARY KEY (`Id_egresado`, `Id_dialogo_egresados_foro`),
@@ -570,7 +570,7 @@ CREATE TABLE IF NOT EXISTS `proyecto`.`Catedra_con_egresados` (
 DROP TABLE IF EXISTS `proyecto`.`Egresado_coordinador_catedra` ;
 
 CREATE TABLE IF NOT EXISTS `proyecto`.`Egresado_coordinador_catedra` (
-  `Id_egresado` BIGINT(10) NOT NULL,
+  `Id_egresado` BIGINT NOT NULL,
   `Id_catedra` INT NOT NULL,
   PRIMARY KEY (`Id_egresado`, `Id_catedra`),
   CONSTRAINT `fk_Egresado_coordinador_catedra_Id_egresado`
