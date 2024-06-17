@@ -1,6 +1,8 @@
 USE proyecto;
 -- Procedimientos almacenados y funciones
 -- Sector de egresados
+DROP FUNCTION IF EXISTS  porcentaje_egresados_posgrado;
+
 DELIMITER $$
 CREATE FUNCTION porcentaje_egresados_posgrado() RETURNS DECIMAL(4,2) READS SQL DATA
 BEGIN
@@ -17,6 +19,8 @@ END$$
 DELIMITER ;
 
 -- Facultades
+DROP PROCEDURE IF EXISTS todas_facultades_UNAL;
+ 
 DELIMITER $$
 CREATE PROCEDURE todas_facultades_UNAL()
 BEGIN
@@ -27,6 +31,7 @@ DELIMITER ;
 
 
 -- Informacion del egresado
+DROP PROCEDURE IF EXISTS info_inicio_sesion_egresado;
 
 DELIMITER $$
 CREATE PROCEDURE info_inicio_sesion_egresado(IN P_cedula BIGINT(10))
@@ -36,6 +41,8 @@ SELECT Id_egresado, Nom_egresado, Ape_egresado,Password_egresado FROM Egresado W
 END$$
 DELIMITER  ;
 
+DROP PROCEDURE IF EXISTS informacion_egresado;
+
 DELIMITER $$
 CREATE PROCEDURE informacion_egresado (IN P_cedula BIGINT(10))
 BEGIN
@@ -44,6 +51,8 @@ SELECT Id_egresado, Tipo_documento, Nom_egresado, Ape_egresado, Fecha_nacimiento
 FROM Egresado WHERE Id_egresado=P_cedula;
 END$$
 DELIMITER ;
+
+DROP PROCEDURE IF EXISTS egresado_historia_academica_UNAL;
 
 DELIMITER $$
 CREATE PROCEDURE egresado_historia_academica_UNAL (IN P_cedula BIGINT(10))
@@ -55,6 +64,8 @@ JOIN FacultaD_UNAL USING (Id_facultad_UNAL) WHERE Id_egresado=P_cedula;
 END$$
 DELIMITER ;
 
+DROP PROCEDURE IF EXISTS egresado_historia_academica_externa;
+
 DELIMITER $$
 CREATE PROCEDURE egresado_historia_academica_externa (IN P_cedula BIGINT(10))
 BEGIN
@@ -65,6 +76,8 @@ JOIN Facultad_externa USING (Id_facultad_externa) JOIN Institucion_educativa USI
 END$$
 DELIMITER ;
 
+DROP PROCEDURE IF EXISTS egresado_documento_investigacion;
+
 DELIMITER $$
 CREATE PROCEDURE egresado_documento_investigacion (IN P_cedula INT) 
 BEGIN
@@ -73,6 +86,8 @@ SELECT Id_documento_investigacion,Titulo, Fecha_Publicacion
 FROM Documento_investigacion JOIN Participacion_investigacion USING(Id_documento_investigacion) WHERE Id_egresado = P_cedula;
 END$$
 DELIMITER ;
+
+DROP PROCEDURE IF EXISTS Trabajo_egresado;
 
 DELIMITER $$
 CREATE PROCEDURE Trabajo_egresado (IN P_cedula INT) 
@@ -84,6 +99,7 @@ END$$
 DELIMITER ;
 
 -- Catedra
+DROP PROCEDURE IF EXISTS catedras_egresados_siquientes;
 
 DELIMITER SS
 CREATE PROCEDURE catedras_egresados_siquientes (IN P_catedra INT)
@@ -99,6 +115,8 @@ END IF;
 END $$
 DELIMITER ;
 
+DROP PROCEDURE IF EXISTS catedras_egresados_anteriores;
+
 DELIMITER SS
 CREATE PROCEDURE catedras_egresados_anteriores (IN P_catedra INT)
 BEGIN
@@ -107,6 +125,8 @@ SELECT Id_catedra, Nombre_catedra, Fecha_inicio,Fecha_final FROM Catedra_con_egr
 WHERE Fecha_final >= CURDATE() AND Id_catedra < P_catedra ORDER BY Id_catedra DESC LIMIT 10;
 END $$
 DELIMITER ;
+
+DROP PROCEDURE IF EXISTS info_catedra;
 
 DELIMITER $$
 CREATE PROCEDURE info_catedra (IN P_catedra INT)
@@ -118,6 +138,8 @@ Facultad_UNAL USING (Id_facultad_UNAL) WHERE Id_catedra=P_catedra;
 END$$
 DELIMITER ;
 
+DROP PROCEDURE IF EXISTS egresados_coordinar_catedra;
+
 DELIMITER $$
 CREATE PROCEDURE egresados_coordinar_catedra (IN P_catedra INT)
 BEGIN
@@ -126,6 +148,8 @@ SELECT Id_egresado, Nom_egresado, Ape_egresado FROM Egresado_coordinador_catedra
 USING (Id_egresado) WHERE Id_catedra=P_catedra;
 END$$
 DELIMITER ;
+
+DROP PROCEDURE IF EXISTS inserta_egresado_catedra;
 
 DELIMITER $$
 CREATE PROCEDURE inserta_egresado_catedra (IN P_cedula BIGINT(10),IN P_catedra INT)
@@ -141,25 +165,56 @@ END;
 END$$
 DELIMITER ;
 
--- recordar pasaro el parametro P_egresados_coordinadores como una lista de json '[1,"aaa","aaa"]'
+DROP FUNCTION IF EXISTS min_id_catedra;
+
 DELIMITER $$
-CREATE PROCEDURE incertar_catedra(IN P_nombre_catedra varchar(100), IN P_docente varchar(70), IN P_Descripcion varchar(500), 
+CREATE FUNCTION min_id_catedra () RETURNS INT READS SQL DATA
+BEGIN
+-- obtiene el id minimo de la tabla catedra con egresados
+DECLARE mini INT;
+SELECT MIN(Id_catedra) INTO mini FROM Catedra_con_egresados;
+IF mini IS NULL THEN
+SET mini = -1;
+END IF; 
+RETURN mini;
+END$$
+DELIMITER ;
+
+DROP FUNCTION IF EXISTS max_id_catedra;
+
+DELIMITER $$
+CREATE FUNCTION max_id_catedra () RETURNS INT READS SQL DATA
+BEGIN
+-- obtien el id maximo de la tabla catedra-con_egresados
+DECLARE maxi INT;
+SELECT MAX(Id_catedra) INTO maxi FROM Catedra_con_egresados;
+IF maxi IS NULL THEN
+SET maxi = -1;
+END IF; 
+RETURN maxi;
+END$$
+DELIMITER ;
+
+
+-- recordar pasaro el parametro P_egresados_coordinadores como una lista de json '[1,"aaa","aaa"]'
+DROP PROCEDURE IF EXISTS insertar_catedra;
+
+DELIMITER $$
+CREATE PROCEDURE insertar_catedra(IN P_nombre_catedra varchar(100), IN P_docente varchar(70), IN P_Descripcion varchar(500), 
 IN P_modalidad enum('Presencial','Virtual'), IN P_fecha_inicio date,IN P_fecha_final date,IN P_hora_inicio time,IN P_hora_final time, IN P_id_facultad_UNAL int, 
 IN P_egresados_coordinadores JSON)
 BEGIN
 -- Procedimietno usado para insertar las catedras con egresados
+DECLARE ID INT;
+DECLARE egresado BIGINT(10);
+DECLARE i INT DEFAULT 0;
 DECLARE EXIT HANDLER FOR SQLEXCEPTION    
 BEGIN
 ROLLBACK;
 SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Iserción fallida';
-LEAVE Proceso;
 END;
-Proceso : BEGIN
-DECLARE ID INT;
-DECLARE egresado BIGINT(10);
-DECLARE i INT DEFAULT 0;
 START TRANSACTION;
-SELECT MAX(Id_catedra)+1 INTO ID FROM Catedra_con_egresados;
+SET ID = max_id_catedra()+1;
 INSERT INTO catedra_con_egresados VALUES (ID,P_nombre_catedra,P_docente,P_Descripcion,P_modalidad,P_fecha_inicio,
 P_fecha_final,P_hora_inicio,P_hora_final,P_id_facultad_UNAL);
 WHILE i<JSON_LENGTH(P_egresados_coordinadores) DO
@@ -168,9 +223,10 @@ CALL inserta_egresado_catedra(egresado,ID);
 SET i = i+1;
 END WHILE;
 COMMIT;
-END;
 END$$
 DELIMITER ;
+
+DROP PROCEDURE IF EXISTS eliminar_catedra;
 
 DELIMITER $$
 CREATE PROCEDURE eliminar_catedra(IN P_id_catedra INT)
@@ -181,31 +237,9 @@ DELETE FROM Catedra_con_egresados WHERE Id_catedra = P_id_catedra;
 END$$
 DELIMITER ;
 
-DELIMITER $$
-CREATE FUNCTION min_id_catedra () RETURNS INT READS SQL DATA
-BEGIN
-DECLARE mini INT;
-SELECT MIN(Id_catedra) INTO mini FROM Catedra_con_egresados;
-IF mini IS NULL THEN
-SET mini = -1;
-END IF; 
-RETURN mini;
-END$$
-DELIMITER ;
-
-DELIMITER $$
-CREATE FUNCTION max_id_catedra () RETURNS INT READS SQL DATA
-BEGIN
-DECLARE maxi INT;
-SELECT MAX(Id_catedra) INTO maxi FROM Catedra_con_egresados;
-IF maxi IS NULL THEN
-SET maxi = -1;
-END IF; 
-RETURN maxi;
-END$$
-DELIMITER ;
-
 -- Convocatoria
+DROP FUNCTION IF EXISTS cantidad_egresados_seleccionados_convocatoria;
+
 DELIMITER $$
 CREATE FUNCTION cantidad_egresados_seleccionados_convocatoria () RETURNS INT READS SQL DATA
 BEGIN
@@ -216,8 +250,10 @@ RETURN cuanta_seleccionados;
 END$$
 DELIMITER ;
 
+DROP PROCEDURE IF EXISTS buscar_convocatorias_siguientes;
+
 DELIMITER $$
-CREATE PROCEDURE buscar_convocatorias_siguientes (IN P_convocatoria INT)
+CREATE PROCEDURE buscar_convocatorias_siguientes(IN P_convocatoria INT)
 -- Procedimiento que devuelve de 10 en 10 los datos mas importantes de las convocatorias vigentes
 BEGIN
 IF P_convocatoria IS NULL THEN
@@ -235,6 +271,8 @@ END IF;
 END$$
 DELIMITER ;
 
+DROP PROCEDURE IF EXISTS buscar_convocatorias_anteriores;
+
 DELIMITER $$
 CREATE PROCEDURE buscar_convocatorias_anteriores (IN P_convocatoria INT)
 -- Procedimiento que devuelve de 10 en 10 los datos mas importantes de las convocatorias vigentes
@@ -246,6 +284,8 @@ AND Vacantes_convoc>(SELECT COUNT(*) FROM Seleccion_convocatoria S_c WHERE S_c.I
 END$$
 DELIMITER ;
 
+DROP PROCEDURE IF EXISTS info_convocatoria;
+
 DELIMITER $$
 CREATE PROCEDURE info_convocatoria (IN P_convocatoria INT)
 BEGIN
@@ -256,22 +296,28 @@ Nit_empresa,Nom_empresa FROM Convocatoria JOiN Empresa USING (Nit_empresa) WHERE
 END$$
 DELIMITER ;
 
+DROP PROCEDURE IF EXISTS idiomas_convocatoria;
+
 DELIMITER SS
-CREATE PROCEDURE idiomas_convocatoria (IN P_convocatoria INT)
+CREATE PROCEDURE idiomas_convocatoria(IN P_convocatoria INT)
 BEGIN
 -- devuelve los idiomas que son requerimientos de una convocatoria
 SELECT Id_idioma, Nombre_idioma FROM Idioma JOIN Requerimiento_idioma USING (Id_idioma) WHERE Id_convocatoria=P_convocatoria;
 END$$
 DELIMITER ;
 
+DROP PROCEDURE IF EXISTS postulados_convocatoria;
+
 DELIMITER $$
-CREATE PROCEDURE postulados_convocatoria (IN P_convocatoria INT)
+CREATE PROCEDURE postulados_convocatoria(IN P_convocatoria INT)
 BEGIN
 -- devuelve los postulados a una convocatoria en especifico
 SELECT Id_egresado, Nom_egresado, Ape_egresado FROM Postulado_convocatoria JOIN Egresado USING(Id_egresado)
  WHERE Id_convocatoria=P_convocatoria;
 END$$
 DELIMITER ;
+
+DROP PROCEDURE IF EXISTS postularse;
 
 DELIMITER $$
 CREATE PROCEDURE postularse(IN P_cedula BIGINT, IN P_id_convocatoria INT)
@@ -281,7 +327,21 @@ INSERT INTO Postulado_convocatoria VALUES (P_cedula,P_id_convocatoria,CURDATE())
 END$$
 DELIMITER ;
 
+DROP FUNCTION IF EXISTS egresado_postulado;
+
+DELIMITER $$
+CREATE FUNCTION egresado_postulado(P_id_egresado BIGINT,P_id_convocatoria INT) RETURNS BOOLEAN READS SQL DATA
+BEGIN
+-- retorna TRUE o FALSE dependiendo si un egresado esta postulado a una convocatoria
+DECLARE postulado BOOLEAN;
+SELECT EXISTS(SELECT 1 FROM Postulado_convocatoria WHERE Id_egresado=P_id_egresado AND Id_convocatoria=P_id_convocatoria) INTO postulado;
+RETURN postulado;
+END $$
+DELIMITER ;
+
 -- trigger que elimine el registro de la tabla seleccion_convocatoria si ec+xiste
+DROP PROCEDURE IF EXISTS eliminar_postulante;
+
 DELIMITER $$
 CREATE PROCEDURE eliminar_postulante (IN P_cedula BIGINT, IN P_id_convocatoria INT)
 BEGIN
@@ -290,8 +350,10 @@ DELETE FROM Postulado_convocatoria WHERE Id_egresado=P_cedula AND Id_convocatori
 END$$
 DELIMITER ;
 
+DROP PROCEDURE IF EXISTS eliminar_seleccion_convocatoria;
+
 DELIMITER $$
-CREATE PROCEDURE Seleccion_convocatoria(IN P_cedula BIGINT, IN P_id_convocatoria INT)
+CREATE PROCEDURE eliminar_seleccion_convocatoria(IN P_cedula BIGINT, IN P_id_convocatoria INT)
 BEGIN
 -- eliminar una seleccion
 DELETE FROM Seleccion_convocatoria WHERE Id_egresado=P_cedula AND Id_convocatoria=P_id_convocatoria;
@@ -299,6 +361,8 @@ END$$
 DELIMITER ;
 
 -- trigger que verifique las vacantes disponibles
+DROP PROCEDURE IF EXISTS selecionar_postulante;
+
 DELIMITER $$
 CREATE PROCEDURE selecionar_postulante(IN P_cedula BIGINT, IN P_id_convocatoria INT)
 BEGIN
@@ -307,9 +371,24 @@ INSERT INTO Seleccion_convocatoria VALUES (P_cedula,P_id_convocatoria);
 END$$
 DELIMITER ;
 
+DROP FUNCTION IF EXISTS egresado_seleccionado;
+
+DELIMITER $$
+CREATE FUNCTION egresado_seleccionado(P_id_egresado BIGINT,P_id_convocatoria INT) RETURNS BOOLEAN READS SQL DATA
+BEGIN
+-- retorna TRUE o FALSE dependiendo si un egresado esta seleccionado para una convocatoria
+DECLARE seleccionado BOOLEAN;
+SELECT EXISTS(SELECT 1 FROM Seleccion_convocatoria WHERE Id_egresado=P_id_egresado AND Id_convocatoria=P_id_convocatoria) INTO seleccionado;
+RETURN seleccionado;
+END $$
+DELIMITER ;
+
+DROP FUNCTION IF EXISTS min_id_convocatoria;
+
 DELIMITER $$
 CREATE FUNCTION min_id_convocatoria () RETURNS INT READS SQL DATA
 BEGIN
+-- obtiene el minimo id de la tabla convocatoria
 DECLARE mini INT;
 SELECT MIN(Id_convocatoria) INTO mini FROM Convocatoria;
 IF mini IS NULL THEN
@@ -319,9 +398,12 @@ RETURN mini;
 END$$
 DELIMITER ;
 
+DROP FUNCTION IF EXISTS max_id_convocatoria;
+
 DELIMITER $$
 CREATE FUNCTION max_id_convocatoria () RETURNS INT READS SQL DATA
 BEGIN
+-- obtiene el maximo id de la tabal convocatoria
 DECLARE maxi INT;
 SELECT MAX(Id_convocatoria) INTO maxi FROM Convocatoria;
 IF maxi IS NULL THEN
@@ -330,6 +412,8 @@ END IF;
 RETURN maxi;
 END$$
 DELIMITER ;
+
+DROP PROCEDURE IF EXISTS inserta_requerimiento_idioma;
 
 DELIMITER $$
 CREATE PROCEDURE inserta_requerimiento_idioma (IN P_id_idioma INT,IN P_convocatoria INT)
@@ -345,27 +429,27 @@ END;
 END$$
 DELIMITER ;
 
+DROP PROCEDURE IF EXISTS insertar_convocatoria;
+
 DELIMITER $$
 --  se tiene que pasar el id de la empresa que lo esta creando
 -- el atributo idiomas es una lista JSON '[1,"aaa","aaa"]'
-CREATE PROCEDURE incertar_convocatoria(IN P_fecha_incio_convoc date, IN P_fecha_finalizacion_convoc date,IN P_vacantes_convoc int,IN P_cargo_convoc varchar(70), 
+CREATE PROCEDURE insertar_convocatoria(IN P_fecha_incio_convoc date, IN P_fecha_finalizacion_convoc date,IN P_vacantes_convoc int,IN P_cargo_convoc varchar(70), 
 IN P_profesion varchar(50),In P_descripcion_convoc varchar(500),IN P_sector_laboral varchar(60),IN P_tipo_contrato varchar(45),IN P_rango_salarial_min int, 
 IN P_rango_salarial_max int,IN P_ciudad varchar(60),IN P_region varchar(60),IN P_pais varchar(60),IN P_experiencia_años tinyint,IN P_experiencia_meses tinyint,
 IN P_nivel_educativo varchar(20),IN P_requirimientos_especificos varchar(200),IN P_nit_empresa bigint, IN idiomas JSON)
 BEGIN
 -- Procedimietno usado para insertar las convocatorias
+DECLARE ID INT;
+DECLARE idioma INT;
+DECLARE i INT DEFAULT 0;
 DECLARE EXIT HANDLER FOR SQLEXCEPTION    
 BEGIN
 ROLLBACK;
 SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Iserción fallida';
-LEAVE Proceso;
 END;
-Proceso : BEGIN
-DECLARE ID INT;
-DECLARE idioma INT;
-DECLARE i INT DEFAULT 0;
 START TRANSACTION;
-SELECT MAX(Id_convocatoria)+1 INTO ID FROM Convocatoria;
+SET ID = max_id_convocatoria()+1;
 INSERT INTO Convocatoria VALUES (ID,P_fecha_incio_convoc,P_fecha_finalizacion_convoc,P_vacantes_convoc,P_cargo_convoc,P_profesion,P_descripcion_convoc,P_sector_laboral,
 P_tipo_contrato,P_rango_salarial_min,P_rango_salarial_max,P_ciudad,P_region,P_pais,P_experiencia_años,P_experiencia_meses,P_nivel_educativo,P_requirimientos_especificos,
 P_nit_empresa);
@@ -375,18 +459,21 @@ CALL inserta_requerimietno_idioma(idioma,ID);
 SET i = i+1;
 END WHILE;
 COMMIT;
-END;
 END$$
 DELIMITER ;
+
+DROP PROCEDURE IF EXISTS eliminar_convocatoria;
 
 DELIMITER $$
 CREATE PROCEDURE eliminar_convocatoria(IN P_id_convocatoria INT)
 BEGIN
 -- Procedimiento usado para eliminar convocatoria
--- hacer el triggere para que se eliminen los requerimientos de idiom de la tabla requerimientos de idioma
+-- hacer el triggere para que se eliminen los requerimientos de idioma de la tabla requerimientos de idioma, postulados y seleccionados
 DELETE FROM Convocatoria WHERE Id_convocatoria = P_id_convocatoria;
 END$$
 DELIMITER ;
+
+DROP PROCEDURE IF EXISTS actualizar_convocatoria;
 
 DELIMITER $$
 CREATE PROCEDURE actualizar_convocatoria (IN P_id_convocatoria INT,IN P_fecha_incio_convoc date, IN P_fecha_finalizacion_convoc date,IN P_vacantes_convoc int,IN P_cargo_convoc varchar(70), 
@@ -395,15 +482,13 @@ IN P_rango_salarial_max int,IN P_ciudad varchar(60),IN P_region varchar(60),IN P
 IN P_nivel_educativo varchar(20),IN P_requirimientos_especificos varchar(200), IN idiomas JSON)
 BEGIN
 -- Procedimiento para actualizar convocatorias
+DECLARE idioma INT;
+DECLARE i INT DEFAULT 0;
 DECLARE EXIT HANDLER FOR SQLEXCEPTION    
 BEGIN
 ROLLBACK;
 SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Actualización fallida';
-LEAVE Proceso;
 END;
-Proceso : BEGIN
-DECLARE idioma INT;
-DECLARE i INT DEFAULT 0;
 START TRANSACTION;
 UPDATE Convocatoria SET Fecha_incio_convoc=P_fecha_incio_convoc,Fecha_finalizacion_convoc=P_fecha_finalizacion_convoc,Vacantes_convoc=P_vacantes_convoc,Cargo_convoc=P_cargo_convoc,
 Profesion=P_profesion,Descripcion_convoc=P_descripcion_convoc ,Sector_laboral=P_sector_laboral,Tipo_contrato=P_tipo_contrato,Rango_salarial_min=P_rango_salarial_min,
@@ -416,11 +501,12 @@ CALL inserta_requerimietno_idioma(idioma,P_id_convocatoria);
 SET i = i+1;
 END WHILE;
 COMMIT;
-END;
 END$$
 DELIMITER ;
 
 -- Idioma
+DROP PROCEDURE IF EXISTS todos_idiomas;
+
 DELIMITER $$
 CREATE PROCEDURE todos_idiomas ()
 BEGIN
@@ -430,6 +516,8 @@ END$$
 DELIMITER ;
 
 -- Empresa
+DROP PROCEDURE IF EXISTS info_empresa;
+
 DELIMITER $$
 CREATE PROCEDURE info_empresa(IN P_nit_empresa BIGINT)
 BEGIN
@@ -438,6 +526,8 @@ SELECT Nit_empresa,Nom_Empresa,Actividad_economica_principal,Nombre_gerente,Pais
 FROM Empresa WHERE Nit_empresa=P_nit_empresa;
 END$$
 DELIMITER ;
+
+DROP PROCEDURE IF EXISTS info_inicion_sesion_empresa;
 
 DELIMITER $$
 CREATE PROCEDURE info_inicion_sesion_empresa (IN P_nit_empresa BIGINT)
