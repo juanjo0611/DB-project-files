@@ -1,0 +1,79 @@
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 55px);
+  background-color: var(--gray-d9);
+}
+
+.loginCard {
+  background-color: #fff;
+  height: fit-content;
+  padding: 10px 10px;
+  border-radius: 4px;
+  margin: 0 10px;
+  width: 90%;
+  max-width: 600px;
+}
+
+.loginCard__title {
+  text-align: center;
+  font-weight: normal;
+  margin: 10px 0 20px 0;
+  padding: 0 30px;
+}
+
+.loginCard__formRole {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.loginCard__formRole div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.loginCard__formRole div input[type='radio'] {
+  cursor: pointer;
+  width: 17px;
+  height: 17px;
+}
+
+.loginCard__formLogin {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 0 20px;
+}
+
+
+.loginCard__formLogin div {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 10px;
+}
+
+.loginCard__formLogin__input {
+  background-color: var(--gray-e4);
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  padding: 5px 10px;
+}
+
+.loginCard__formLogin__submitContainer {
+  margin-top: 20px;
+}
+
+.loginCard__formLogin__submitButton {
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--dark-green-3);
+  color: #fff;
+  padding: 7px;
+}
