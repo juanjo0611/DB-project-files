@@ -41,6 +41,30 @@ SELECT Id_egresado, Nom_egresado, Ape_egresado,Password_egresado FROM Egresado W
 END$$
 DELIMITER  ;
 
+DROP PROCEDURE IF EXISTS informacion_usuario_egresado;
+
+DELIMITER $$
+CREATE PROCEDURE informacion_usuario_egresado (IN P_cedula BIGINT(10))
+BEGIN
+-- da la informacion de un usuario egresado en especifico
+SELECT Id_egresado, Tipo_documento, Nom_egresado, Ape_egresado, Fecha_nacimiento, Genero, Grupo_etnico, Correo_egresado, 
+Celular_egresado, Direccion_contacto,Pais_egresado FROM Egresado WHERE Id_egresado=P_cedula;
+END$$
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS editar_informacion_usuario_egresado;
+
+DELIMITER $$
+CREATE PROCEDURE editar_informacion_usuario_egresado (IN P_cedula BIGINT,IN P_nom_egresado varchar(50), 
+IN P_ape_egresado varchar(50), IN P_genero varchar(30),IN P_grupo_etnico varchar(45),IN P_celular_egresado bigint,
+IN P_direccion_contacto varchar(60),IN P_pais_egresado varchar(60))
+BEGIN
+-- actualizza la informacion permitida de el usuaruio egresado
+UPDATE Egresado SET Nom_egresado=P_nom_egresado , Ape_egresado=P_ape_egresado, Genero=P_genero, Grupo_etnico=P_grupo_etnico,Celular_egresado=P_celular_egresado,
+Direccion_contacto=P_direccion_contacto,Pais_egresado=P_pais_egresado WHERE Id_egresado=P_cedula;
+END$$
+DELIMITER ;
+
 DROP PROCEDURE IF EXISTS informacion_egresado;
 
 DELIMITER $$
@@ -527,6 +551,19 @@ FROM Empresa WHERE Nit_empresa=P_nit_empresa;
 END$$
 DELIMITER ;
 
+DROP PROCEDURE IF EXISTS editar_info_empresa;
+
+DELIMITER $$
+CREATE PROCEDURE editar_info_empresa(IN P_nit_empresa BIGINT,IN P_nom_Empresa varchar(70),IN P_actividad_economica_principal varchar(60),
+IN P_nombre_gerente varchar(70),IN P_ciudad_empresa varchar(60),IN P_direccion_empresa varchar(70),IN P_descripcion varchar(500))
+BEGIN
+-- dedita la informacion del usuario empresa
+UPDATE Empresa SET Nom_Empresa=P_nom_Empresa, Actividad_economica_principal=P_actividad_economica_principal, Nombre_gerente=P_nombre_gerente,
+Ciudad_empresa=P_ciudad_empresa, Direccion_empresa=P_direccion_empresa, Descripcion=P_descripcion
+WHERE Nit_empresa=P_nit_empresa;
+END$$
+DELIMITER ;
+
 DROP PROCEDURE IF EXISTS info_inicion_sesion_empresa;
 
 DELIMITER $$
@@ -536,6 +573,8 @@ BEGIN
 SELECT Nit_empresa, Nom_Empresa,Password_empresa FROM Empresa WHERE Nit_empresa=P_nit_empresa;
 END$$
 DELIMITER ;
+
+DROP PROCEDURE IF EXISTS registrar_empresa;
 
 DELIMITER $$
 CREATE PROCEDURE registrar_empresa(IN P_nit_empresa bigint,IN P_password_empresa varchar(100),IN P_nom_Empresa varchar(70),
