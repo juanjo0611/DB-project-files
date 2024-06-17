@@ -101,7 +101,7 @@ DELIMITER ;
 -- Catedra
 DROP PROCEDURE IF EXISTS catedras_egresados_siquientes;
 
-DELIMITER SS
+DELIMITER $$
 CREATE PROCEDURE catedras_egresados_siquientes (IN P_catedra INT)
 BEGIN
 -- devuelve de 10 en 10, segun el id inical que se le pase, la informacion mas relevante de catedras con egresados
@@ -117,7 +117,7 @@ DELIMITER ;
 
 DROP PROCEDURE IF EXISTS catedras_egresados_anteriores;
 
-DELIMITER SS
+DELIMITER $$
 CREATE PROCEDURE catedras_egresados_anteriores (IN P_catedra INT)
 BEGIN
 -- devuelve de 10 en 10, segun el id inical que se le pase, la informacion mas relevante de catedras con egresados
@@ -298,7 +298,7 @@ DELIMITER ;
 
 DROP PROCEDURE IF EXISTS idiomas_convocatoria;
 
-DELIMITER SS
+DELIMITER $$
 CREATE PROCEDURE idiomas_convocatoria(IN P_convocatoria INT)
 BEGIN
 -- devuelve los idiomas que son requerimientos de una convocatoria
