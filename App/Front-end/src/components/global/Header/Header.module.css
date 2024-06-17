@@ -1,0 +1,23 @@
+.Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #000;
+  font-size: 17px;
+  height: 55px;
+}
+
+.Header__div_left, .Header__div_right {
+  padding: 13px 10px;
+}
+
+.Header__ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.Header__ul_right {
+  display: flex;
+  gap: 15px;
+}

@@ -1,23 +1,26 @@
 import { useContext } from 'react'
-import { Link } from 'react-router-dom'
-import Header, { HeaderRoleContext } from './Header'
 import { ROLES } from '../../../globalVariables/Data'
+import css from './HeaderComponents.module.css'
+import { WhoContext } from '../../../Routes'
 
 export const HomeLinkItem = () => {
-  const { role } = useContext(HeaderRoleContext)
   return (
-    <li>
-      <Link to='/'>Home</Link>
+    <li className={css.Header__li}>
+      <a href='/' className={css.Header__a}>
+        Home
+      </a>
     </li>
   )
 }
 
 export const RegisterAsCompanyLinkItem = () => {
-  const { role } = useContext(HeaderRoleContext)
+  const { role } = useContext(WhoContext)
 
   const element = (
     <li>
-      <Link to='/register-empresa'>Registrarse como empresa</Link>
+      <a href='/register-empresa' className={css.Header__a}>
+        Registrarse como empresa
+      </a>
     </li>
   )
   return (
@@ -30,11 +33,13 @@ export const RegisterAsCompanyLinkItem = () => {
 }
 
 export const LoginLinkItem = () => {
-  const { role } = useContext(HeaderRoleContext)
+  const { role } = useContext(WhoContext)
 
   const element = (
     <li>
-      <Link to='/login'>Iniciar sesión</Link>
+      <a href='/login' className={css.Header__a}>
+        Iniciar sesión
+      </a>
     </li>
   )
   return (
