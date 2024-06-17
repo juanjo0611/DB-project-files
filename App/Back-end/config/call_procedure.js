@@ -1,22 +1,31 @@
 import { getConnection } from "./db.js";
 
-const textQueryProcedure = ({ procedureName }) => {
-  return 'Callr'
+const textQueryProcedure = ({ procedureName, params }) => {
+  const textParams = params.join(', ');
+  return `CALL ${procedureName}(${textParams})`
 }
 
-export const callProcedures = async ({procedureName, role}) => {
+export const callProcedure = async ({procedureName, params, role}) => {
   let connection;
   try {
     connection = await getConnection({
       db_user: 'root',
       db_password: 'Contraseña123*'
-    })
-    const textQuery = textQueryProcedure({
-      procedureName
     });
+    const textQuery = textQueryProcedure({
+      procedureName,
+      params
+    });
+    const [results, fields] = await connection.query(
+      textQuery
+    );
+    const [response, queryInfo] = results;
+    return response
   }
+  catch (error) {console.log(error);}
+  finally {if (connection) connection.end();}
 }
-
+/* 
 export const doQuery = async () => {
   let connection;
   try {
@@ -38,5 +47,5 @@ export const doQuery = async () => {
       await connection.end();
     }
   }
-}
+} */
 
