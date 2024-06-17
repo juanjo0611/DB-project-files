@@ -1,5 +1,5 @@
 import { createConnection } from "mysql2/promise";
-import { DB_INFO } from "../utilities/global variables";
+import { DB_INFO } from "../utilities/globalVariables.js";
 
 export async function getConnection({ db_user, db_password }) {
   try {

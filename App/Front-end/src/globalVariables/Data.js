@@ -10,5 +10,5 @@ export const ROLES = {
   GENERAL: 'general',
   EGRESADO: 'egresado',
   EMPRESA: 'empresa',
-  ADMINISTRATIVO: 'adminstrativo'
+  ADMINISTRATIVO: 'administrativo'
 }
