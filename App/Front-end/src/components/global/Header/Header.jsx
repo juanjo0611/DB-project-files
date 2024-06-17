@@ -1,35 +1,33 @@
-// import { createContext } from 'react'
-import { GET } from '../../../CRUD/GET'
+import { createContext } from 'react'
 import css from './Header.module.css'
+import { ROLES } from '../../../globalVariables/Data'
+import { HomeLinkItem, LoginLinkItem, RegisterAsCompanyLinkItem } from './HeaderComponents'
+
+export const HeaderRoleContext = createContext()
 
 const Header = () => {
-  const doQuery = async () => {
-    const res = await GET({ resource: '/auth' })
-    // const json = await res.json()
-    console.log(res)
-  }
+  const role = ROLES.GENERAL
 
   return (
-    <header className={css.Header}>
-      <div className={css.Header_leftSection}>
-        <nav className={`${css.HeaderNav} ${css.HeaderLeftNav}`}>
-          <ul>
-            <li>
-              <a href='losa' />
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <div className={css.Header_rightSection}>
-        <nav className={`${css.HeaderNav} ${css.HeaderRightNav}`}>
-          <ul>
-            <li>
-              <button onClick={() => doQuery()}>Hacer query</button>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+    <HeaderRoleContext.Provider value={{ role }}>
+      <header className={css.Header}>
+        <div className={css.Header_leftSection}>
+          <nav className={`${css.HeaderNav} ${css.HeaderLeftNav}`}>
+            <ul>
+              <HomeLinkItem />
+            </ul>
+          </nav>
+        </div>
+        <div className={css.Header_rightSection}>
+          <nav className={`${css.HeaderNav} ${css.HeaderRightNav}`}>
+            <ul>
+              <RegisterAsCompanyLinkItem />
+              <LoginLinkItem />
+            </ul>
+          </nav>
+        </div>
+      </header>
+    </HeaderRoleContext.Provider>
   )
 }
 

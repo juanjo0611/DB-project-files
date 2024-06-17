@@ -14,7 +14,7 @@ DROP ROLE IF EXISTS 'Empresa-role';
 CREATE ROLE 'Empresa-role';
 
 DROP ROLE IF EXISTS 'Administrativo-role';
-CREATE ROLE IF EXISTS 'Administrativo-role';
+CREATE ROLE 'Administrativo-role';
 
 -- -----------------------------------------------------
 -- Tabla Egresado

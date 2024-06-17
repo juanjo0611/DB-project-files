@@ -10,7 +10,8 @@ export async function getConnection({ db_user, db_password }) {
       user: db_user,
       password: db_password,
     });
-  } catch (e) {
+  }
+  catch (e) {
     console.error(e);
     throw new Error;
   }
