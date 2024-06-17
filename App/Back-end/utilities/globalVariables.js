@@ -3,7 +3,14 @@ export const PORT = 4000;
 export const DB_INFO = {
   PORT: 3306,
   HOST: 'localhost',
-  NAME: 'Proyecto Base de Datos'
+  NAME: 'proyecto'
+}
+
+export const ROLES = {
+  GENERAL: 'general',
+  EGRESADO: 'egresado',
+  EMPRESA: 'empresa',
+  ADMINISTRATIVO: 'administrativo'
 }
 
 export const DB_CREDENTIALS = {
