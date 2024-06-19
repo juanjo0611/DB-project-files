@@ -18,11 +18,11 @@ export const HomeLinkItem = () => {
 }
 
 export const RegisterAsCompanyLinkItem = () => {
-  const { info } = useContext(WhoContext)
+  const { who } = useContext(WhoContext)
 
   return (
     <>
-      {info.role === ROLES.GENERAL
+      {who.role === ROLES.GENERAL
         ? <LinkGroup link='/registrar-empresa' anchor='Registrarse como empresa' />
         : null}
     </>
@@ -30,11 +30,11 @@ export const RegisterAsCompanyLinkItem = () => {
 }
 
 export const LoginLinkItem = () => {
-  const { info } = useContext(WhoContext)
+  const { who } = useContext(WhoContext)
 
   return (
     <>
-      {info.role === ROLES.GENERAL
+      {who.role === ROLES.GENERAL
         ? <LinkGroup link='/login' anchor='Iniciar sesión' />
         : null}
     </>
@@ -42,7 +42,7 @@ export const LoginLinkItem = () => {
 }
 
 export const LogoutBtnItem = () => {
-  const { info } = useContext(WhoContext)
+  const { who } = useContext(WhoContext)
 
   const logout = () => {
     window.localStorage.removeItem('token')
@@ -59,7 +59,7 @@ export const LogoutBtnItem = () => {
 
   return (
     <>
-      {info.role !== ROLES.GENERAL
+      {who.role !== ROLES.GENERAL
         ? element
         : null}
     </>
@@ -67,25 +67,49 @@ export const LogoutBtnItem = () => {
 }
 
 export const MyProfileEgresadoLinkItem = () => {
-  const { info } = useContext(WhoContext)
+  const { who } = useContext(WhoContext)
 
   return (
     <>
-      {info.role === ROLES.EGRESADO
+      {who.role === ROLES.EGRESADO
         ? <LinkGroup link='/ver-mi-perfil-de-egresado' anchor='Mirar mi perfil' />
         : null}
     </>
   )
 }
 
-export const NameInfoItem = () => {
-  const { info } = useContext(WhoContext)
+export const MyConvocatoriasLinkItem = () => {
+  const { who } = useContext(WhoContext)
 
   return (
     <>
-      {info.role !== ROLES.GENERAL
-        ? <span className={css.Header__username}>{info.name}</span>
+      {who.role === ROLES.EMPRESA || who.role === ROLES.ADMINISTRATIVO
+        ? <LinkGroup link='/mis-convocatorias-manager' anchor='Mis convocatorias' />
         : null}
     </>
+  )
+}
+
+export const MyProfileEmpresaLinkItem = () => {
+  const { who } = useContext(WhoContext)
+
+  return (
+    <>
+      {who.role === ROLES.EMPRESA
+        ? <LinkGroup link='/ver-mi-perfil-de-empresa' anchor='Mi perfil' />
+        : null}
+    </>
+  )
+}
+
+export const NameInfoItem = () => {
+  const { who } = useContext(WhoContext)
+
+  return (
+    <li>
+      {who.role !== ROLES.GENERAL
+        ? <span className={css.Header__username}>{who.name}</span>
+        : null}
+    </li>
   )
 }

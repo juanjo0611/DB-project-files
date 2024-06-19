@@ -1,0 +1,39 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.label {
+  font-size: 20px;
+  color: var(--gray-a6);
+}
+
+.inputsContainer {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.inputContent, .inputSubmit {
+  border: none;
+  outline: 0;
+  min-width: 220px;
+  text-align: center;
+  padding: 5px;
+  font-size: 17px;
+  border-radius: 4px;
+}
+
+.inputContent {
+  background-color: var(--gray-ed);
+  color: var(--gray-54);
+}
+
+.inputSubmit {
+  background-color: var(--dark-green-3);
+  color: #fff;
+}

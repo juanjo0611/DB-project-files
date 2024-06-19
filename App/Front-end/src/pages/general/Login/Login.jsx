@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import Header from '../../../components/global/Header/Header'
 import { ROLES } from '../../../globalVariables/Data'
 import css from './Login.module.css'
@@ -6,28 +6,31 @@ import Swal from 'sweetalert2'
 import { POST } from '../../../CRUD/POST'
 import { useNavigate } from 'react-router-dom'
 import { WhoContext } from '../../../Routes'
+import { stringIsNumber } from '../../../utilities/stringIsNumber'
 
 const Login = () => {
   const [selectedRole, setSelectedRole] = useState(ROLES.EGRESADO)
-  const { info } = useContext(WhoContext)
+  const { who } = useContext(WhoContext)
   const navigate = useNavigate()
 
-  if (info.role === ROLES.EGRESADO) {
-    navigate('/ver-mi-perfil-de-egresado')
-  }
-  if (info.role === ROLES.EMPRESA) {
-    navigate('/ver-mi-perfil-de-empresa')
-  }
-  if (info.role === ROLES.ADMINISTRATIVO) {
-    navigate('/')
-  }
+  useEffect(() => {
+    if (who.role !== undefined && who.role === ROLES.EGRESADO) {
+      navigate('/ver-mi-perfil-de-egresado')
+    }
+    if (who.role !== undefined && who.role === ROLES.EMPRESA) {
+      navigate('/ver-mi-perfil-de-empresa')
+    }
+    if (who.role !== undefined && who.role === ROLES.ADMINISTRATIVO) {
+      navigate('/')
+    }
+  }, [who.role])
 
   const changeRole = event => {
     setSelectedRole(event.target.value)
   }
 
   const loginEgresado = async ({ dni, password }) => {
-    if (isNaN(parseInt(dni))) {
+    if (!stringIsNumber(dni)) {
       return Swal.fire({
         title: 'El campo número de documento debe ser numérico',
         icon: 'error'
@@ -49,10 +52,15 @@ const Login = () => {
       })
       window.localStorage.setItem('token', response.token)
       setTimeout(() => window.location.reload(), 900)
+    } else {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Credenciales incorrectas'
+      })
     }
   }
   const loginEmpresa = async ({ nit, password }) => {
-    if (isNaN(parseInt(nit))) {
+    if (!stringIsNumber(nit)) {
       return Swal.fire({
         title: 'El campo NIT debe ser numérico',
         icon: 'error'
@@ -65,18 +73,46 @@ const Login = () => {
         password
       }
     })
-    console.log(response)
+    if (response?.token) {
+      Swal.fire({
+        icon: 'success',
+        title: 'Iniciando sesión',
+        showConfirmButton: false,
+        timer: 900
+      })
+      window.localStorage.setItem('token', response.token)
+      setTimeout(() => window.location.reload(), 900)
+    } else {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Credenciales incorrectas'
+      })
+    }
   }
 
   const loginAdministrativo = async ({ user, password }) => {
     const response = await POST({
-      resource: '/auth/login-empresa',
+      resource: '/auth/login-administrativo',
       body: {
         user,
         password
       }
     })
-    console.log(response)
+    if (response?.token) {
+      Swal.fire({
+        icon: 'success',
+        title: 'Iniciando sesión',
+        showConfirmButton: false,
+        timer: 900
+      })
+      window.localStorage.setItem('token', response.token)
+      setTimeout(() => window.location.reload(), 900)
+    } else {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Credenciales incorrectas'
+      })
+    }
   }
 
   const login = event => {

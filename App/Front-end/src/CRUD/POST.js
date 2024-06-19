@@ -14,7 +14,11 @@ export const POST = async ({ resource, body }) => {
   }
 
   const url = BACK.BASE_URL + resource
-  const response = await fetch(url, data)
-  const jsn = response.json()
-  return jsn
+  try {
+    const response = await fetch(url, data)
+    const jsn = response.json()
+    return jsn
+  } catch (error) {
+    console.log(error)
+  }
 }

@@ -1,5 +1,5 @@
 import css from './Header.module.css'
-import { HomeLinkItem, LoginLinkItem, LogoutBtnItem, MyProfileEgresadoLinkItem, NameInfoItem, RegisterAsCompanyLinkItem } from './HeaderComponents'
+import { HomeLinkItem, LoginLinkItem, LogoutBtnItem, MyConvocatoriasLinkItem, MyProfileEgresadoLinkItem, MyProfileEmpresaLinkItem, NameInfoItem, RegisterAsCompanyLinkItem } from './HeaderComponents'
 
 const Header = () => {
   return (
@@ -19,6 +19,10 @@ const Header = () => {
 
             <LogoutBtnItem />
             <MyProfileEgresadoLinkItem />
+
+            <MyConvocatoriasLinkItem />
+            <MyProfileEmpresaLinkItem />
+
             <NameInfoItem />
           </ul>
         </nav>

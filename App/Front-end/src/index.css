@@ -1,5 +1,6 @@
 :root {
   --dark-green-3: #00BF63;
+  --light-green-3: #CCFFE6;
   --strong-red: #FF3131;
   --strong-purple: #8C52FF;
   --strong-light-blue: #0CC0DF;
@@ -9,8 +10,12 @@
   --gray-54: #545454;
   --gray-d9: #d9d9d9;
   --gray-e4: #e4e4e4;
+  --gray-ed: #ededed;
 }
 
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;

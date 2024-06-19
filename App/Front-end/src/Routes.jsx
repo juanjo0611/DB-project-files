@@ -9,13 +9,17 @@ import ReadConvocatorias from './pages/general/ReadConvocatorias/ReadConvocatori
 import ReadSeccionEgresados from './pages/general/ReadSeccionEgresados/ReadSeccionEgresados.jsx'
 import ConsultEmpresa from './pages/general/ConsultEmpresa/ConsultEmpresa.jsx'
 import MyProfileEgresado from './pages/egresado/MyProfileEgresado/MyProfileEgresado.jsx'
+import EditMyProfileEgresado from './pages/egresado/EditMyProfileEgresado/EditMyProfileEgresado.jsx'
+import MyProfileEmpresa from './pages/empresa/MyProfileEmpresa/MyProfileEmpresa.jsx'
+import EditMyProfileEmpresa from './pages/empresa/EditMyProfileEmpresa/EditMyProfileEmpresa.jsx'
+import InitialConsultEmpresa from './pages/general/ConsultEmpresa/InitialConsultEmpresa.jsx'
 
 export const WhoContext = createContext()
 
 const App = () => {
-  const { info } = useWho()
+  const { who } = useWho()
   return (
-    <WhoContext.Provider value={{ info }}>
+    <WhoContext.Provider value={{ who }}>
       <Router>
         <Routes>
           <Route path='/' exact element={<Home />} />
@@ -23,8 +27,12 @@ const App = () => {
           <Route path='/ver-convocatorias' exact element={<ReadConvocatorias />} />
           <Route path='/ver-catedras' exact element={<ReadCatedras />} />
           <Route path='/seccion-egresados' exact element={<ReadSeccionEgresados />} />
-          <Route path='/consultar-empresa' exact element={<ConsultEmpresa />} />
+          <Route path='/consultar-empresa' exact element={<InitialConsultEmpresa />} />
+          <Route path='/consultar-empresa/:id' exact element={<ConsultEmpresa />} />
           <Route path='/ver-mi-perfil-de-egresado' exact element={<MyProfileEgresado />} />
+          <Route path='/editar-mi-perfil-de-egresado' exact element={<EditMyProfileEgresado />} />
+          <Route path='/ver-mi-perfil-de-empresa' exact element={<MyProfileEmpresa />} />
+          <Route path='/editar-mi-perfil-de-empresa' exact element={<EditMyProfileEmpresa />} />
         </Routes>
       </Router>
     </WhoContext.Provider>

@@ -23,5 +23,5 @@ export const useWho = () => {
     updateInfo()
   }, [])
 
-  return { info }
+  return { who: info }
 }

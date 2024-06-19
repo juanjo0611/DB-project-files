@@ -1,6 +1,6 @@
 import get_egresado_for_login from "../Procedures/login/get_egresado_for_login.js";
 import get_empresa_for_login from "../Procedures/login/get_empresa_for_login.js";
-import { DB_CREDENTIALS, ROLES, SECRET } from "../utilities/globalVariables.js";
+import { DB_CREDENTIALS, ROLES, SECRET, TOKEN_EXP_TIME } from "../utilities/globalVariables.js";
 import jwt from 'jsonwebtoken'
 
 // @POST
@@ -14,7 +14,7 @@ export const loginEgresado = async (req, res) => {
 
   try {
     // Revisar que el egresado esté registrado
-    const egresado_list = await get_egresado_for_login({ Id_egresado: dni });
+    const egresado_list = await get_egresado_for_login({ Id_egresado: dni, role: req.role });
     if (egresado_list.length === 0) {
       return res.status(404).json({msg: 'Egresado doesn`t exist'});
     }
@@ -36,7 +36,7 @@ export const loginEgresado = async (req, res) => {
     jwt.sign(
       payload,
       SECRET,
-      {expiresIn: 300}, // 5 minutos <-> 300 segundos
+      {expiresIn: TOKEN_EXP_TIME},
       (error, token) => {
         if (error) throw error;
         // Mensaje de confirmación
@@ -60,7 +60,7 @@ export const loginEmpresa = async (req, res) => {
 
   try {
     // Revisar que la empresa esté registrada
-    const empresa_list = await get_empresa_for_login({ Nit_empresa: nit});
+    const empresa_list = await get_empresa_for_login({ Nit_empresa: nit, role: req.role });
     if (empresa_list.length === 0) {
       return res.status(404).json({msg: 'Empresa doesn`t exist'})
     }
@@ -82,7 +82,7 @@ export const loginEmpresa = async (req, res) => {
     jwt.sign(
       payload,
       SECRET,
-      {expiresIn: 300}, // 5 minutos <-> 300 segundos
+      {expiresIn: TOKEN_EXP_TIME},
       (error, token) => {
         if (error) throw error;
         // Mensaje de confirmación
@@ -116,7 +116,7 @@ export const loginAdministrativo = async (req, res) => {
     // En caso de ser todo correcto, Crear y firmar un Token
     const payload = {
       content : {
-        nit,
+        nit: 1,
         name: 'Administrativo',
         role: ROLES.ADMINISTRATIVO
       }
@@ -124,7 +124,7 @@ export const loginAdministrativo = async (req, res) => {
     jwt.sign(
       payload,
       SECRET,
-      {expiresIn: 300}, // 5 minutos <-> 300 segundos
+      {expiresIn: TOKEN_EXP_TIME}, // 5 minutos <-> 300 segundos
       (error, token) => {
         if (error) throw error;
         // Mensaje de confirmación
