@@ -123,33 +123,6 @@ END$$
 DELIMITER ;
 
 -- Catedra
-DROP PROCEDURE IF EXISTS catedras_egresados_siquientes;
-
-DELIMITER $$
-CREATE PROCEDURE catedras_egresados_siquientes (IN P_catedra INT)
-BEGIN
--- devuelve de 10 en 10, segun el id inical que se le pase, la informacion mas relevante de catedras con egresados
-IF P_catedra IS NULL THEN
-SELECT Id_catedra, Nombre_catedra, Fecha_inicio,Fecha_final FROM Catedra_con_egresados 
-WHERE Fecha_final >= CURDATE() ORDER BY Id_catedra LIMIT 10;
-ELSE
-SELECT Id_catedra, Nombre_catedra, Fecha_inicio,Fecha_final FROM Catedra_con_egresados 
-WHERE Fecha_final >= CURDATE() AND Id_catedra > P_catedra ORDER BY Id_catedra LIMIT 10;
-END IF;
-END $$
-DELIMITER ;
-
-DROP PROCEDURE IF EXISTS catedras_egresados_anteriores;
-
-DELIMITER $$
-CREATE PROCEDURE catedras_egresados_anteriores (IN P_catedra INT)
-BEGIN
--- devuelve de 10 en 10, segun el id inical que se le pase, la informacion mas relevante de catedras con egresados
-SELECT Id_catedra, Nombre_catedra, Fecha_inicio,Fecha_final FROM Catedra_con_egresados 
-WHERE Fecha_final >= CURDATE() AND Id_catedra < P_catedra ORDER BY Id_catedra DESC LIMIT 10;
-END $$
-DELIMITER ;
-
 DROP PROCEDURE IF EXISTS info_catedra;
 
 DELIMITER $$
