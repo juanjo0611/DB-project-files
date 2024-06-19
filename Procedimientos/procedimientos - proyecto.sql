@@ -276,38 +276,6 @@ DELIMITER ;
 
 DROP PROCEDURE IF EXISTS buscar_convocatorias_siguientes;
 
-DELIMITER $$
-CREATE PROCEDURE buscar_convocatorias_siguientes(IN P_convocatoria INT)
--- Procedimiento que devuelve de 10 en 10 los datos mas importantes de las convocatorias vigentes
-BEGIN
-IF P_convocatoria IS NULL THEN
-SELECT Id_convocatoria,Cargo_convoc, Vacantes_convoc - (SELECT COUNT(*) FROM Seleccion_convocatoria S_c WHERE S_c.Id_convocatoria= C.Id_convocatoria),
-Tipo_contrato, Rango_salarial_min, Rango_salarial_max, Fecha_finalizacion_convoc FROM Convocatoria C 
-WHERE CURDATE() <= Fecha_finalizacion_convoc AND CURDATE() >= Fecha_incio_convoc 
-AND Vacantes_convoc>(SELECT COUNT(*) FROM Seleccion_convocatoria S_c WHERE S_c.Id_convocatoria= C.Id_convocatoria) ORDER BY Id_convocatoria LIMIT 10;
-ELSE
-SELECT Id_convocatoria,Cargo_convoc, Vacantes_convoc - (SELECT COUNT(*) FROM Seleccion_convocatoria S_c WHERE S_c.Id_convocatoria= C.Id_convocatoria),
-Tipo_contrato, Rango_salarial_min, Rango_salarial_max, Fecha_finalizacion_convoc FROM Convocatoria 
-WHERE CURDATE() <= Fecha_finalizacion_convoc AND CURDATE() >= Fecha_incio_convoc 
-AND Vacantes_convoc>(SELECT COUNT(*) FROM Seleccion_convocatoria S_c WHERE S_c.Id_convocatoria= C.Id_convocatoria) 
-AND Id_convocatoria > P_convocatoria  ORDER BY Id_convocatoria LIMIT 10;
-END IF;
-END$$
-DELIMITER ;
-
-DROP PROCEDURE IF EXISTS buscar_convocatorias_anteriores;
-
-DELIMITER $$
-CREATE PROCEDURE buscar_convocatorias_anteriores (IN P_convocatoria INT)
--- Procedimiento que devuelve de 10 en 10 los datos mas importantes de las convocatorias vigentes
-BEGIN
-SELECT Id_convocatoria,Cargo_convoc, Vacantes_convoc - (SELECT COUNT(*) FROM Seleccion_convocatoria S_c WHERE S_c.Id_convocatoria= C.Id_convocatoria),
-Tipo_contrato, Rango_salarial_min, Rango_salarial_max, Fecha_finalizacion_convoc FROM Convocatoria 
-WHERE CURDATE() <= Fecha_finalizacion_convoc AND CURDATE() >= Fecha_incio_convoc AND Id_convocatoria < P_convocatoria 
-AND Vacantes_convoc>(SELECT COUNT(*) FROM Seleccion_convocatoria S_c WHERE S_c.Id_convocatoria= C.Id_convocatoria) ORDER BY Id_convocatoria DESC LIMIT 10;
-END$$
-DELIMITER ;
-
 DROP PROCEDURE IF EXISTS info_convocatoria;
 
 DELIMITER $$
@@ -405,6 +373,17 @@ DECLARE seleccionado BOOLEAN;
 SELECT EXISTS(SELECT 1 FROM Seleccion_convocatoria WHERE Id_egresado=P_id_egresado AND Id_convocatoria=P_id_convocatoria) INTO seleccionado;
 RETURN seleccionado;
 END $$
+DELIMITER ;
+
+DROP FUNCTION IF EXISTS seleccionados_convocatoria;
+
+DELIMITER $$
+CREATE PROCEDURE seleccionados_convocatoria(IN P_convocatoria INT)
+BEGIN
+-- devuelve los postulados a una convocatoria en especifico
+SELECT Id_egresado, Nom_egresado, Ape_egresado FROM Seleccion_convocatoria JOIN Egresado USING(Id_egresado)
+ WHERE Id_convocatoria=P_convocatoria;
+END$$
 DELIMITER ;
 
 DROP FUNCTION IF EXISTS min_id_convocatoria;
@@ -583,6 +562,17 @@ IN P_direccion_empresa varchar(60),IN P_descripcion varchar(500))
 BEGIN
 INSERT INTO Empresa VALUES(P_nit_empresa,P_password_empresa,P_nom_Empresa,P_actividad_economica_principal,P_nombre_gerente,P_pais_empresa,
 P_ciudad_empresa,P_direccion_empresa,P_descripcion);
+END$$
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS convocatorias_empresa;
+
+DELIMITER $$
+CREATE PROCEDURE convocatorias_empresa(IN P_nit_empresa bigint)
+BEGIN
+SELECT Id_convocatoria,Cargo_convoc, Vacantes_convoc,Tipo_contrato, Rango_salarial_min, Rango_salarial_max, Fecha_finalizacion_convoc FROM Convocatoria C 
+WHERE CURDATE() <= Fecha_finalizacion_convoc AND CURDATE() >= Fecha_incio_convoc 
+AND Vacantes_convoc>(SELECT COUNT(*) FROM Seleccion_convocatoria S_c WHERE S_c.Id_convocatoria= C.Id_convocatoria) AND Nit_empresa = P_nit_empresa;
 END$$
 DELIMITER ;
 
