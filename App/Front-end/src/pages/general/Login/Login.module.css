@@ -76,4 +76,5 @@
   background-color: var(--dark-green-3);
   color: #fff;
   padding: 7px;
+  cursor: pointer;
 }

@@ -96,7 +96,7 @@ BEGIN
 -- da el historial externo de una egresado, se usa para la pestaña 'publica' que describe detalladamente a un egresado
 SELECT  Id_historia_externa,Nombre_programa_externo,Tipo_programa, Nombre_facultad_externa,Nombre_inst_edu,Nota_final,IF(Fecha_grado IS NULL,"Actualidad",Fecha_grado)
 FROM Historia_academica_externa JOIN Programa_educativo_externo USING(Id_programa_educativo_externo) 
-JOIN Facultad_externa USING (Id_facultad_externa) JOIN Institucion_educativa USING(Id_ins_edu) WHERE Id_egresado=cedula;
+JOIN Facultad_externa USING (Id_facultad_externa) JOIN Institucion_educativa USING(Id_ins_edu) WHERE Id_egresado=P_cedula;
 END$$
 DELIMITER ;
 
