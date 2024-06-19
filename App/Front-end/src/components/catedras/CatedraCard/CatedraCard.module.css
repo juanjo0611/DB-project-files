@@ -1,9 +1,10 @@
 .catedraCard {
   display: flex;
+  justify-content: space-between;
+  gap: 10px;
   padding: 15px;
   border: solid 2px var(--dark-green-3);
   text-align: center;
-  gap: 10px;
 }
 
 .divName {
@@ -16,10 +17,18 @@
   width: 200px;
 }
 
+.spanInitDate {
+  color: var(--gray-a6);
+}
+
 .divEndDate {
   display: flex;
   flex-direction: column;
   width: 200px;
+}
+
+.spanEndDate {
+  color: var(--gray-a6);
 }
 
 .divButton {

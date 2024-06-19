@@ -13,6 +13,7 @@ import EditMyProfileEgresado from './pages/egresado/EditMyProfileEgresado/EditMy
 import MyProfileEmpresa from './pages/empresa/MyProfileEmpresa/MyProfileEmpresa.jsx'
 import EditMyProfileEmpresa from './pages/empresa/EditMyProfileEmpresa/EditMyProfileEmpresa.jsx'
 import InitialConsultEmpresa from './pages/general/ConsultEmpresa/InitialConsultEmpresa.jsx'
+import ReadCatedraEspecifica from './pages/general/ReadCatedraEspecifica/ReadCatedraEspecifica.jsx'
 
 export const WhoContext = createContext()
 
@@ -26,6 +27,7 @@ const App = () => {
           <Route path='/login' exact element={<Login />} />
           <Route path='/ver-convocatorias' exact element={<ReadConvocatorias />} />
           <Route path='/ver-catedras' exact element={<ReadCatedras />} />
+          <Route path='/ver-catedra-especifica/:id' exact element={<ReadCatedraEspecifica />} />
           <Route path='/seccion-egresados' exact element={<ReadSeccionEgresados />} />
           <Route path='/consultar-empresa' exact element={<InitialConsultEmpresa />} />
           <Route path='/consultar-empresa/:id' exact element={<ConsultEmpresa />} />
