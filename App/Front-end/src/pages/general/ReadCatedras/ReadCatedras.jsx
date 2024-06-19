@@ -10,7 +10,11 @@ const ReadCatedras = () => {
       <Header />
       <main>
         <h1 className={css.title}>Cátedras</h1>
-        <CatedraCard />
+        <CatedraCard
+          name='Cátedra de inteligencia artificial'
+          initDate='2025 - Julio - 23'
+          endDate='2026 - Enero - 20'
+        />
       </main>
     </>
   )
