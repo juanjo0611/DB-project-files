@@ -167,7 +167,7 @@ const Login = () => {
               <input type='text' name='password' className={css.loginCard__formLogin__input} />
             </div>
             <div className={css.loginCard__formLogin__submitContainer}>
-              <input type='submit' className={css.loginCard__formLogin__submitButton} />
+              <input type='submit' className={css.loginCard__formLogin__submitButton} value='Iniciar sesión' />
             </div>
           </form>
         </section>

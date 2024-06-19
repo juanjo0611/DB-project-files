@@ -23,6 +23,7 @@ CREATE ROLE 'Administrativo-role';
 GRANT SELECT ON proyecto.Egresado TO 'General-role';
 GRANT SELECT, UPDATE ON proyecto.Egresado TO 'Egresado-role';
 GRANT SELECT ON proyecto.Egresado TO 'Empresa-role';
+GRANT SELECT ON proyecto.Egresado TO 'Administrativo-role';
 
 
 -- -----------------------------------------------------
@@ -102,6 +103,14 @@ GRANT SELECT, INSERT, DELETE ON proyecto.Catedra_con_egresados TO 'Administrativ
 
 
 -- -----------------------------------------------------
+-- Tabla Egresado_coordinador_catedra
+-- -----------------------------------------------------
+GRANT SELECT ON proyecto.Egresado_coordinador_catedra TO 'General-role';
+GRANT SELECT ON proyecto.Egresado_coordinador_catedra TO 'Egresado-role';
+GRANT SELECT ON proyecto.Egresado_coordinador_catedra TO 'Empresa-role';
+GRANT SELECT, INSERT, DELETE ON proyecto.Egresado_coordinador_catedra TO 'Administrativo-role';
+
+-- -----------------------------------------------------
 -- Tabla Convocatoria
 -- -----------------------------------------------------
 GRANT SELECT ON proyecto.Convocatoria TO 'General-role';
@@ -117,6 +126,9 @@ GRANT SELECT ON proyecto.Convocatoria TO 'Administrativo-role';
 GRANT EXECUTE ON PROCEDURE info_inicio_sesion_egresado TO 'General-role';
 GRANT EXECUTE ON PROCEDURE info_inicion_sesion_empresa TO 'General-role';
 GRANT EXECUTE ON PROCEDURE info_empresa TO 'General-role';
+GRANT EXECUTE ON PROCEDURE info_catedra TO 'General-role';
+GRANT EXECUTE ON PROCEDURE egresados_coordinar_catedra TO 'General-role';
+GRANT EXECUTE ON PROCEDURE registrar_empresa TO 'General-role';
 
 GRANT EXECUTE ON PROCEDURE informacion_usuario_egresado TO 'Egresado-role';
 GRANT EXECUTE ON PROCEDURE egresado_historia_academica_unal TO 'Egresado-role'; -- Traae la historia académica de la unal de un egresado por id
@@ -125,6 +137,8 @@ GRANT EXECUTE ON PROCEDURE egresado_documento_investigacion TO 'Egresado-role'; 
 GRANT EXECUTE ON PROCEDURE trabajo_egresado TO 'Egresado-role'; -- Trae los trabajos que ha realizado un egresado dando un id de un egresado
 GRANT EXECUTE ON PROCEDURE editar_informacion_usuario_egresado TO 'Egresado-role'; -- Edita la información de un registro de la tabla Egresado
 GRANT EXECUTE ON PROCEDURE info_empresa TO 'Egresado-role';
+GRANT EXECUTE ON PROCEDURE info_catedra TO 'Egresado-role';
+GRANT EXECUTE ON PROCEDURE egresados_coordinar_catedra TO 'Egresado-role';
 
 GRANT EXECUTE ON PROCEDURE informacion_usuario_egresado TO 'Empresa-role';
 GRANT EXECUTE ON PROCEDURE egresado_historia_academica_unal TO 'Empresa-role'; -- Traae la historia académica de la unal de un egresado por id
@@ -133,8 +147,20 @@ GRANT EXECUTE ON PROCEDURE egresado_documento_investigacion TO 'Empresa-role'; -
 GRANT EXECUTE ON PROCEDURE trabajo_egresado TO 'Empresa-role'; -- Trae los trabajos que ha realizado un egresado dando un id de un egresado
 GRANT EXECUTE ON PROCEDURE info_empresa TO 'Empresa-role';
 GRANT EXECUTE ON PROCEDURE editar_info_empresa TO 'Empresa-role';
+GRANT EXECUTE ON PROCEDURE info_catedra TO 'Empresa-role';
+GRANT EXECUTE ON PROCEDURE egresados_coordinar_catedra TO 'Empresa-role';
 
 GRANT EXECUTE ON PROCEDURE info_empresa TO 'Administrativo-role';
+GRANT EXECUTE ON PROCEDURE info_catedra TO 'Administrativo-role';
+GRANT EXECUTE ON PROCEDURE egresados_coordinar_catedra TO 'Administrativo-role';
+GRANT EXECUTE ON PROCEDURE informacion_usuario_egresado TO 'Administrativo-role';
+GRANT EXECUTE ON PROCEDURE egresado_historia_academica_unal TO 'Administrativo-role'; -- Traae la historia académica de la unal de un egresado por id
+GRANT EXECUTE ON PROCEDURE egresado_historia_academica_externa TO 'Administrativo-role'; -- Trae la historia académica externa de un egresado por id
+GRANT EXECUTE ON PROCEDURE egresado_documento_investigacion TO 'Administrativo-role'; -- Trae los documentos de investigación de un egresado por id
+GRANT EXECUTE ON PROCEDURE trabajo_egresado TO 'Administrativo-role'; -- Trae los trabajos que ha realizado un egresado dando un id de un egresado
+GRANT EXECUTE ON PROCEDURE eliminar_catedra TO 'Administrativo-role';
+GRANT EXECUTE ON PROCEDURE insertar_catedra TO 'Administrativo-role';
+GRANT EXECUTE ON PROCEDURE inserta_egresado_catedra TO 'Administrativo-role';
 
 
 -- -----------------------------------------------------

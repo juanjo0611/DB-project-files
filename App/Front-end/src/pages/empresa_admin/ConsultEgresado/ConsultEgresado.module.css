@@ -1,0 +1,30 @@
+.title {
+  text-align: center;
+}
+
+.subtitle {
+  text-align: center;
+}
+
+
+.formContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.egresadoTableContainer {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0 0 0;
+}
+
+.egresadoAHContainer, .egresadoDIContainer, .egresadoHLContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.egresadoHLContainer {
+  margin-bottom: 50px;
+}

@@ -1,22 +1,28 @@
-import put_info_empresa from "../Procedures/empresas/put_info_empresa.js";
+import post_new_empresa from "../Procedures/empresas/post_new_empresa.js";
 
-export const putInfoEmpresa = async (req, res) => {
-  const { id, role } = req;
+export const postNewEmpresa = async (req, res) => {  
+  const { role } = req;
   const {
+    Nit_empresa,
+    Password_empresa,
     Nom_empresa,
     Actividad_economica_principal,
     Nombre_gerente,
+    Pais_empresa,
     Ciudad_empresa,
     Direccion_empresa,
     Descripcion,
   } = req.body;
+  console.log(Nit_empresa)
 
   try {
-    const response = await put_info_empresa({
-      Nit_empresa: id,
+    const response = await post_new_empresa({
+      Nit_empresa,
+      Password_empresa,
       Nom_empresa,
       Actividad_economica_principal,
       Nombre_gerente,
+      Pais_empresa,
       Ciudad_empresa,
       Direccion_empresa,
       Descripcion,

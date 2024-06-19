@@ -4,11 +4,15 @@
   gap: 10px;
   padding: 15px;
   border: solid 2px var(--dark-green-3);
+  border-radius: 4px;
   text-align: center;
 }
 
 .divName {
   width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .divInitDate {

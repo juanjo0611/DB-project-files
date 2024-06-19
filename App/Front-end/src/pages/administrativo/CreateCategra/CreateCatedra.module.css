@@ -1,0 +1,75 @@
+.cancelAndBackBtnContainer_1 {
+  padding: 10px;
+}
+
+.cancelAndBackBtn,
+.submitBtn {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 7px 35px;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cancelAndBackBtn {
+  background-color: var(--strong-red);
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.submitBtn {
+  background-color: var(--dark-green-3);
+  border: none;
+  outline: none;
+}
+
+.title {
+  text-align: center;
+}
+
+.formUpdate {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  margin: 0 auto 40px auto;
+  width: 90%;
+  max-width: 500px;
+}
+
+.dataFieldContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.dataFieldContainer label {
+  text-align: center;
+}
+
+.dataFieldContainer input {
+  background-color: var(--gray-ed);
+  color: var(--gray-54);
+  border: none;
+  outline: 0;
+  font-size: 15px;
+  padding: 6px 6px;
+  text-align: center;
+}
+
+.dataFieldContainer select {
+  padding: 5px;
+  background-color: var(--gray-ed);
+  border: none;
+  text-align: center;
+  cursor: pointer;
+}
+
+.dataFieldContainer textarea {
+  padding: 5px;
+  background-color: var(--gray-ed);
+  resize: none;
+  border: none;
+  height: 100px;
+}

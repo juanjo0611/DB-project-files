@@ -90,6 +90,18 @@ export const MyConvocatoriasLinkItem = () => {
   )
 }
 
+export const MyCatedrasLinkItem = () => {
+  const { who } = useContext(WhoContext)
+
+  return (
+    <>
+      {who.role === ROLES.ADMINISTRATIVO
+        ? <LinkGroup link='/mis-catedras-manager' anchor='Mis cátedras' />
+        : null}
+    </>
+  )
+}
+
 export const MyProfileEmpresaLinkItem = () => {
   const { who } = useContext(WhoContext)
 

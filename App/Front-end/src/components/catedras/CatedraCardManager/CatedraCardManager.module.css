@@ -1,0 +1,64 @@
+.catedraCard {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 15px;
+  border: solid 2px var(--dark-green-3);
+  border-radius: 4px;
+  text-align: center;
+}
+
+.divName {
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.divInitDate {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+
+.spanInitDate {
+  color: var(--gray-a6);
+}
+
+.divEndDate {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+
+.spanEndDate {
+  color: var(--gray-a6);
+}
+
+.divButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  gap: 10px;
+}
+
+.aSeeMore, .buttonDelete {
+  text-decoration: none;
+  width: 100%;
+  padding: 7px;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.aSeeMore {
+  background-color: var(--dark-green-3);
+}
+
+.buttonDelete {
+  border: none;
+  outline: 0;
+  background-color: var(--strong-red);
+}

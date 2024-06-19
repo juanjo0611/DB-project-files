@@ -1,16 +1,17 @@
 import { useEffect, useState } from 'react'
 import { GET } from '../../CRUD/GET'
 
-export const useEgresadoDocumentosInvestigacion = () => {
+export const useEgresadoDocumentosInvestigacion = ({ byId, id }) => {
   const [documentosInvestigacion, setDocumentosInvestigacion] = useState([])
 
   const setInfo = async () => {
+    const urlResource = '/egresado/get-documentos-investigacion' + (byId ? '/' + id : '')
     const documentos = await GET({
-      resource: '/egresado/get-documentos-investigacion'
+      resource: urlResource
     })
     setDocumentosInvestigacion(documentos)
   }
-  useEffect(() => { setInfo() }, [])
+  useEffect(() => { setInfo() }, [id])
 
   return { documentosInvestigacion }
 }

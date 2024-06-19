@@ -1,45 +1,46 @@
+import { useNavigate, useParams } from 'react-router-dom'
 import Header from '../../../components/global/Header/Header'
-import css from './MyprofileEgresado.module.css'
-import { useEgresadoInfo } from '../../../hooks/egresado/useEgresadoInfo'
+import css from './ConsultEgresado.module.css'
+import ConsultsForm from '../../../components/global/ConsultsForm/ConsultsForm'
 import SimpleDataObjectTable from '../../../components/shared/SimpleDataObjectTable/SimpleDataObjectTable'
-import { useNavigate } from 'react-router-dom'
-import { useContext, useEffect } from 'react'
-import { WhoContext } from '../../../Routes'
-import { ROLES } from '../../../globalVariables/Data'
+import { useEgresadoInfo } from '../../../hooks/egresado/useEgresadoInfo'
+import { formatDate } from '../../../utilities/formatDate'
 import { useEgresadoHistoriaAcademicaUnal } from '../../../hooks/egresado/useEgresadoHistoriaAcademicaUnal'
 import { useEgresadoHistoriaAcademicaExterna } from '../../../hooks/egresado/useEgresadoHistoriaAcademicaExterna'
 import { useEgresadoDocumentosInvestigacion } from '../../../hooks/egresado/useEgresadoDocumentosInvestigacion'
 import { useEgresadoHistorialLaboral } from '../../../hooks/egresado/useEgresadoHistorialLaboral'
-import { formatDate } from '../../../utilities/formatDate'
 
-const MyProfileEgresado = () => {
-  const { who } = useContext(WhoContext)
-  const { egresadoProps } = useEgresadoInfo({ byId: false })
-  const { historiaAcademicaUnal } = useEgresadoHistoriaAcademicaUnal({ byId: false })
-  const { historiaAcademicaExterna } = useEgresadoHistoriaAcademicaExterna({ byId: false })
-  const { documentosInvestigacion } = useEgresadoDocumentosInvestigacion({ byId: false })
-  const { historialLaboral } = useEgresadoHistorialLaboral({ byId: false })
+const ConsultEgresado = () => {
   const navigate = useNavigate()
+  const { id } = useParams()
+  const { egresadoProps } = useEgresadoInfo({ byId: true, id })
+  const { historiaAcademicaUnal } = useEgresadoHistoriaAcademicaUnal({ byId: true, id })
+  const { historiaAcademicaExterna } = useEgresadoHistoriaAcademicaExterna({ byId: true, id })
+  const { documentosInvestigacion } = useEgresadoDocumentosInvestigacion({ byId: true, id })
+  const { historialLaboral } = useEgresadoHistorialLaboral({ byId: true, id })
 
-  useEffect(() => {
-    if (who.role !== undefined && who.role !== ROLES.EGRESADO) {
-      navigate('/login')
-    }
-  }, [who.role])
-
-  // console.log(historiaAcademicaUnal)
-  // console.log(historiaAcademicaExterna)
-  // console.log(documentosInvestigacion)
-  // console.log(historialLaboral)
+  const consult = nit => {
+    const url = '/consultar-egresado/' + nit
+    navigate(url)
+  }
 
   return (
     <>
       <Header />
-      <main className={css.main}>
-        <h1 className={css.title}>Mi perfil de egresado</h1>
+      <main>
+        <h1 className={css.title}>Consulta la información de un egresado</h1>
+        <div className={css.formContainer}>
+          <ConsultsForm
+            title='Ingresa el NIT'
+            placeholder='NIT'
+            btnText='Consultar'
+            callback={consult}
+          />
+        </div>
         <section className={css.egresadoTableContainer}>
           {egresadoProps?.[0]
             ? <SimpleDataObjectTable dataObject={{
+              'Documento de identidad': egresadoProps?.[0].Id_egresado,
               Nombre: egresadoProps?.[0].Nom_egresado,
               Apellido: egresadoProps?.[0].Ape_egresado,
               'Tipo de documento': egresadoProps?.[0].Tipo_documento,
@@ -52,11 +53,8 @@ const MyProfileEgresado = () => {
               'País del egresado': egresadoProps?.[0].Pais_egresado
             }}
               />
-            : null}
+            : <h2>No hay ningún egresado con el DNI {id}</h2>}
         </section>
-        <div className={css.editDataLinkContainer}>
-          <a href='/editar-mi-perfil-de-egresado' className={css.editDataLink}>Editar mis datos</a>
-        </div>
         {historiaAcademicaUnal?.[0]
           ? <h2 className={css.subtitle}>Historial académico de la UNAL</h2>
           : null}
@@ -139,4 +137,4 @@ const MyProfileEgresado = () => {
     </>
   )
 }
-export default MyProfileEgresado
+export default ConsultEgresado

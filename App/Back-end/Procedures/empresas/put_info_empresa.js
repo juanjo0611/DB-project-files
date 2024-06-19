@@ -1,8 +1,5 @@
 import { callProcedure } from "../../config/call_procedure.js";
 
-// (IN P_nit_empresa BIGINT,IN P_nom_Empresa varchar(70),IN P_actividad_economica_principal varchar(60),
-// IN P_nombre_gerente varchar(70),IN P_ciudad_empresa varchar(60),IN P_direccion_empresa varchar(70),IN P_descripcion varchar(500))
-
 const put_info_empresa = async ({
   Nit_empresa,
   Nom_empresa,
