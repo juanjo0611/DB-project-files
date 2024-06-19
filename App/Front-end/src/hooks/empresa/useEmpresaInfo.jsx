@@ -6,7 +6,7 @@ import { PUT } from '../../CRUD/PUT'
 export const useEmpresaInfo = ({ byId, id }) => {
   const [empresaProps, setEmpresaProps] = useState({})
 
-  const setDataEgresado = async () => {
+  const setDataEmpresa = async () => {
     const urlResource = '/empresa/get-info' + (byId ? '/' + id : '')
     const empresa = await GET({
       resource: urlResource
@@ -35,14 +35,14 @@ export const useEmpresaInfo = ({ byId, id }) => {
           Descripcion: descripcion
         }
       })
-      setDataEgresado()
+      setDataEmpresa()
       response.msg = 'success'
     } catch (error) {
       response.msg = 'error'
     }
     return { msg: response.msg }
   }
-  useEffect(() => { setDataEgresado() }, [id])
+  useEffect(() => { setDataEmpresa() }, [id])
 
   return { empresaProps, updateEmpresa }
 }

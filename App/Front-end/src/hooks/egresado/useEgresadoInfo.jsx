@@ -43,7 +43,7 @@ export const useEgresadoInfo = ({ byId, id }) => {
     }
     return { msg: response.msg }
   }
-  useEffect(() => { setDataEgresado() }, [])
+  useEffect(() => { setDataEgresado() }, [id])
 
   return { egresadoProps, updateEgresado }
 }

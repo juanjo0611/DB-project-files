@@ -1,5 +1,5 @@
 import css from './Header.module.css'
-import { HomeLinkItem, LoginLinkItem, LogoutBtnItem, MyConvocatoriasLinkItem, MyProfileEgresadoLinkItem, MyProfileEmpresaLinkItem, NameInfoItem, RegisterAsCompanyLinkItem } from './HeaderComponents'
+import { HomeLinkItem, LoginLinkItem, LogoutBtnItem, MyCatedrasLinkItem, MyConvocatoriasLinkItem, MyProfileEgresadoLinkItem, MyProfileEmpresaLinkItem, NameInfoItem, RegisterAsCompanyLinkItem } from './HeaderComponents'
 
 const Header = () => {
   return (
@@ -20,7 +20,8 @@ const Header = () => {
             <LogoutBtnItem />
             <MyProfileEgresadoLinkItem />
 
-            <MyConvocatoriasLinkItem />
+            {/* <MyConvocatoriasLinkItem /> */}
+            <MyCatedrasLinkItem />
             <MyProfileEmpresaLinkItem />
 
             <NameInfoItem />

@@ -30,6 +30,7 @@
   display: flex;
   justify-content: space-around;
   gap: 20px;
+  padding: 20px;
 }
 
 .homeLink {
@@ -52,4 +53,7 @@
 }
 .homeLink_consultarEmpresa {
   background-color: var(--strong-light-blue);
+}
+.homeLink_consultarEgresado {
+  background-color: var(--strong-orange);
 }

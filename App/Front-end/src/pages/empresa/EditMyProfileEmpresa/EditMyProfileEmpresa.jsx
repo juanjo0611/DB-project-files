@@ -34,7 +34,7 @@ const EditMyProfileEmpresa = () => {
     // Check Nombre, Descripcion
     if (data.name === '' || data.descripcion === '') {
       return Swal.fire({
-        title: 'Los campos nombre ni descripción debeb pueden estar vacíos',
+        title: 'Los campos nombre ni descripción pueden estar vacíos',
         icon: 'warning'
       })
     }

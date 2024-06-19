@@ -1,7 +1,11 @@
+import { useContext } from 'react'
 import Header from '../../../components/global/Header/Header'
 import css from './Home.module.css'
+import { WhoContext } from '../../../Routes'
+import { ROLES } from '../../../globalVariables/Data'
 
 const Home = () => {
+  const { who } = useContext(WhoContext)
   return (
     <>
       <Header />
@@ -30,6 +34,15 @@ const Home = () => {
             className={`${css.homeLink} ${css.homeLink_consultarEmpresa}`}
           >Consultar empresa
           </a>
+          {who.role === ROLES.EMPRESA || who.role === ROLES.ADMINISTRATIVO
+            ? (
+              <a
+                href='/consultar-egresado'
+                className={`${css.homeLink} ${css.homeLink_consultarEgresado}`}
+              >Consultar egresado
+              </a>)
+            : null}
+
         </div>
       </main>
     </>

@@ -5,3 +5,24 @@ export const formatDate = ({ date }) => {
 
   return formated
 }
+
+const months = {
+  '01': 'Enero',
+  '02': 'Febrero',
+  '03': 'Marzo',
+  '04': 'Abril',
+  '05': 'Mayo',
+  '06': 'Junio',
+  '07': 'Julio',
+  '08': 'Agosto',
+  '09': 'Septiembre',
+  10: 'Octubre',
+  11: 'Noviembre',
+  12: 'Diciembre'
+}
+
+export const getOnlyDate = (date) => {
+  const fd = date.split('T')[0]
+  const [year, month, day] = fd.split('-')
+  return [year, months[month], day].join(' - ')
+}

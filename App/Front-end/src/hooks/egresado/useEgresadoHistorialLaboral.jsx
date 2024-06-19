@@ -1,16 +1,17 @@
 import { useEffect, useState } from 'react'
 import { GET } from '../../CRUD/GET'
 
-export const useEgresadoHistorialLaboral = () => {
+export const useEgresadoHistorialLaboral = ({ byId, id }) => {
   const [historialLaboral, setHistorialLaboral] = useState([])
 
   const setInfo = async () => {
+    const urlResource = '/egresado/get-historial-laboral' + (byId ? '/' + id : '')
     const historial = await GET({
-      resource: '/egresado/get-historial-laboral'
+      resource: urlResource
     })
     setHistorialLaboral(historial)
   }
-  useEffect(() => { setInfo() }, [])
+  useEffect(() => { setInfo() }, [id])
 
   return { historialLaboral }
 }

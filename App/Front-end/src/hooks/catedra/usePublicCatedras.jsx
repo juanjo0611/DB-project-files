@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { GET } from '../../CRUD/GET'
 
-export const useEgresadoDocumentosInvestigacion = () => {
+export const usePublicCatedras = () => {
   const [catedras, setCatedras] = useState([])
 
   const setInfo = async () => {
