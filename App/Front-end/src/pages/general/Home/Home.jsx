@@ -14,11 +14,11 @@ const Home = () => {
         <p className={css.home__p1}>Sistema de consulta de egresados</p>
         <p className={css.home__p2}>¿Qué quieres hacer?</p>
         <div className={css.homeLinksContainer}>
-          <a
+          {/* <a
             href='/ver-convocatorias'
             className={`${css.homeLink} ${css.homeLink_verConvocatorias}`}
           >Ver convocatorias
-          </a>
+          </a> */}
           <a
             href='/ver-catedras'
             className={`${css.homeLink} ${css.homeLink_verCatedras}`}
