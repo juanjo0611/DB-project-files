@@ -215,13 +215,16 @@ SET ID = max_id_catedra()+1;
 INSERT INTO catedra_con_egresados VALUES (ID,P_nombre_catedra,P_docente,P_Descripcion,P_modalidad,P_fecha_inicio,
 P_fecha_final,P_hora_inicio,P_hora_final,P_id_facultad_UNAL);
 WHILE i<JSON_LENGTH(P_egresados_coordinadores) DO
-SELECT JSON_UNQUOTE(JSON_EXTRACT(P_egresados_coordinadores,CONCAT('$[', i, ']'))) INTO egresado;
+SELECT JSON_EXTRACT(P_egresados_coordinadores,CONCAT('$[', i, ']')) INTO egresado;
 CALL inserta_egresado_catedra(egresado,ID);
 SET i = i+1;
 END WHILE;
 COMMIT;
 END$$
 DELIMITER ;
+
+call insertar_catedra('test','a','','Presencial','2024-01-01','2024-02-02','05:00:00','07:00:00',1011,'[1]');
+select * from egresado_coordinador_catedra;
 
 DROP PROCEDURE IF EXISTS eliminar_catedra;
 
@@ -246,8 +249,6 @@ SELECT Count(DISTINCT Id_egresado) INTO cuenta_seleccionados FROM Seleccion_conv
 RETURN cuenta_seleccionados;
 END$$
 DELIMITER ;
-
-DROP PROCEDURE IF EXISTS buscar_convocatorias_siguientes;
 
 DROP PROCEDURE IF EXISTS info_convocatoria;
 
@@ -348,7 +349,7 @@ RETURN seleccionado;
 END $$
 DELIMITER ;
 
-DROP FUNCTION IF EXISTS seleccionados_convocatoria;
+DROP PROCEDURE IF EXISTS seleccionados_convocatoria;
 
 DELIMITER $$
 CREATE PROCEDURE seleccionados_convocatoria(IN P_convocatoria INT)
@@ -430,7 +431,7 @@ INSERT INTO Convocatoria VALUES (ID,P_fecha_incio_convoc,P_fecha_finalizacion_co
 P_tipo_contrato,P_rango_salarial_min,P_rango_salarial_max,P_ciudad,P_region,P_pais,P_experiencia_años,P_experiencia_meses,P_nivel_educativo,P_requirimientos_especificos,
 P_nit_empresa);
 WHILE i<JSON_LENGTH(idiomas) DO
-SELECT JSON_UNQUOTE(JSON_EXTRACT(idiomas,CONCAT('$[', i, ']'))) INTO idioma;
+SELECT JSON_EXTRACT(idiomas,CONCAT('$[', i, ']')) INTO idioma;
 CALL inserta_requerimietno_idioma(idioma,ID);
 SET i = i+1;
 END WHILE;
@@ -472,7 +473,7 @@ Rango_salarial_max=P_rango_salarial_max,Ciudad=P_ciudad,Region=P_region,Pais=P_p
 Requirimientos_especificos=P_requirimientos_especificos WHERE Id_convocatoria=P_id_convocatoria;
 DELETE FROM Requerimiento_idioma WHERE Id_convocatoria=P_id_convocatoria;
 WHILE i<JSON_LENGTH(idiomas) DO
-SELECT JSON_UNQUOTE(JSON_EXTRACT(idiomas,CONCAT('$[', i, ']'))) INTO idioma;
+SELECT JSON_EXTRACT(idiomas,CONCAT('$[', i, ']')) INTO idioma;
 CALL inserta_requerimietno_idioma(idioma,P_id_convocatoria);
 SET i = i+1;
 END WHILE;

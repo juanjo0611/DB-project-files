@@ -1,5 +1,5 @@
 import Header from '../../../components/global/Header/Header'
-import css from './MyProfileEgresado.module.css'
+import css from './MyprofileEgresado.module.css'
 import { useEgresadoInfo } from '../../../hooks/egresado/useEgresadoInfo'
 import SimpleDataObjectTable from '../../../components/shared/SimpleDataObjectTable/SimpleDataObjectTable'
 import { useNavigate } from 'react-router-dom'
