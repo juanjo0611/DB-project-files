@@ -1,7 +1,12 @@
+import Header from '../../../components/global/Header/Header'
+
 const ReadConvocatorias = () => {
   return (
     <>
-      <a href='/'>Home</a>
+      <Header />
+      <main>
+        <h1>Bienvenido a la sección convocatoria</h1>
+      </main>
     </>
   )
 }

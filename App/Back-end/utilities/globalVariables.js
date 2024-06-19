@@ -1,4 +1,6 @@
 export const PORT = 4000;
+export const SECRET = 'LADY_BOY_IN_TAILANDIA';
+export const TOKEN_EXP_TIME = 900;
 
 export const DB_INFO = {
   PORT: 3306,

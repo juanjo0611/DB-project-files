@@ -1,0 +1,21 @@
+.table {
+  border-spacing: 4px;
+  text-align: center;
+}
+
+.tr_head th {
+  padding: 5px 10px;
+  font-weight: 600;
+}
+
+.table td {
+  padding: 4px 10px;
+  font-size: 15px;
+}
+
+.table [parity='0'] {
+  background-color: var(--light-green-3);
+}
+.table [parity='1'] {
+  background-color: var(--gray-ed);
+}

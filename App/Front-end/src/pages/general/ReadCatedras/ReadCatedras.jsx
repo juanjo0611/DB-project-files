@@ -1,37 +1,17 @@
 import { useState } from 'react'
 import { POST } from '../../../CRUD/POST'
+import Header from '../../../components/global/Header/Header'
+import css from './ReadCatedras.module.css'
+import CatedraCard from '../../../components/catedras/CatedraCard/CatedraCard'
 
 const ReadCatedras = () => {
-  const [response, setResponse] = useState(null)
-  const [id, setId] = useState(null)
-  const handleClick = async () => {
-    console.log(id)
-    const qy = await POST({
-      resource: '/auth/login',
-      body: {
-        dni: parseInt(id)
-      }
-    })
-    console.log(qy)
-    setResponse(qy)
-  }
-
-  const handleKey = event => {
-    setId(event.target.value)
-  }
-
   return (
     <>
-      <input type='text' onKeyUp={handleKey} />
-      <button onClick={() => handleClick()}>
-        Llamar procediminento almacenado
-      </button>
-      <div>
-        <span>Nombre: </span>{response?.[0]?.Nom_egresado ?? ''}
-      </div>
-      <div>
-        <span>Apellido: </span>{response?.[0]?.Ape_egresado ?? ''}
-      </div>
+      <Header />
+      <main>
+        <h1 className={css.title}>Cátedras</h1>
+        <CatedraCard />
+      </main>
     </>
   )
 }
