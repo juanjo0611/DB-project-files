@@ -98,7 +98,17 @@ GRANT SELECT ON proyecto.Trabajo TO 'Administrativo-role';
 GRANT SELECT ON proyecto.Catedra_con_egresados TO 'General-role';
 GRANT SELECT ON proyecto.Catedra_con_egresados TO 'Egresado-role';
 GRANT SELECT ON proyecto.Catedra_con_egresados TO 'Empresa-role';
-GRANT SELECT ON proyecto.Catedra_con_egresados TO 'Administrativo-role';
+GRANT SELECT, INSERT, DELETE ON proyecto.Catedra_con_egresados TO 'Administrativo-role';
+
+
+-- -----------------------------------------------------
+-- Tabla Convocatoria
+-- -----------------------------------------------------
+GRANT SELECT ON proyecto.Convocatoria TO 'General-role';
+GRANT SELECT ON proyecto.Convocatoria TO 'Egresado-role';
+GRANT SELECT ON proyecto.Convocatoria TO 'Empresa-role';
+GRANT SELECT ON proyecto.Convocatoria TO 'Administrativo-role';
+
 
 
 -- -----------------------------------------------------
@@ -144,3 +154,14 @@ GRANT SELECT ON documentos_por_facultad TO 'General-role';
 GRANT SELECT ON documentos_por_facultad TO 'Egresado-role';
 GRANT SELECT ON documentos_por_facultad TO 'Empresa-role';
 GRANT SELECT ON documentos_por_facultad TO 'Administrativo-role';
+
+
+GRANT SELECT ON convocatorias TO 'General-role';
+GRANT SELECT ON convocatorias TO 'Egresado-role';
+GRANT SELECT ON convocatorias TO 'Empresa-role';
+GRANT SELECT ON convocatorias TO 'Administrativo-role';
+
+GRANT SELECT ON catedras TO 'General-role';
+GRANT SELECT ON catedras TO 'Egresado-role';
+GRANT SELECT ON catedras TO 'Empresa-role';
+GRANT SELECT ON catedras TO 'Administrativo-role';

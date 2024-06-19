@@ -6,6 +6,7 @@ import authRoutes from './routes/authRoutes.js'
 import egresadoRoutes from './routes/egresadoRoutes.js'
 import empresaRoutes from './routes/empresaRoutes.js'
 import viewRoutes from './routes/viewRoutes.js'
+import catedraRoutes from './routes/catedraRoutes.js'
 
 const app = express();
 app.use(express.json({extended: true}));
@@ -16,7 +17,8 @@ app.use(cors());
 // Routes
 app.use('/auth', authRoutes);
 app.use('/egresado', egresadoRoutes);
-app.use('/empresa', empresaRoutes)
-app.use('/view', viewRoutes)
+app.use('/empresa', empresaRoutes);
+app.use('/view', viewRoutes);
+app.use('/catedra', catedraRoutes);
 
 app.listen(4000);
