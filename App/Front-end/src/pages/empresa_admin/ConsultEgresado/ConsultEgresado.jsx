@@ -31,8 +31,8 @@ const ConsultEgresado = () => {
         <h1 className={css.title}>Consulta la información de un egresado</h1>
         <div className={css.formContainer}>
           <ConsultsForm
-            title='Ingresa el NIT'
-            placeholder='NIT'
+            title='Ingresa el DNI'
+            placeholder='DNI'
             btnText='Consultar'
             callback={consult}
           />
